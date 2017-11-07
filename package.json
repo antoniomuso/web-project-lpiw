@@ -1,0 +1,19 @@
+{
+  "name": "web-project-lpiw",
+  "version": "1.0.0",
+  "description": "web page progetto Linguaggi per il Web",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antoniomuso/web-project-lpiw.git"
+  },
+  "author": "AntonioMuso and Stefan Benju and Giovannino Manni",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/antoniomuso/web-project-lpiw/issues"
+  },
+  "homepage": "https://github.com/antoniomuso/web-project-lpiw#readme"
+}
