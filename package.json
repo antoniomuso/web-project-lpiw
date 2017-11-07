@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/antoniomuso/web-project-lpiw/issues"
   },
-  "homepage": "https://github.com/antoniomuso/web-project-lpiw#readme"
+  "homepage": "https://github.com/antoniomuso/web-project-lpiw#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
 }
