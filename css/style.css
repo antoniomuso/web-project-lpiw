@@ -1,0 +1,12 @@
+.logo {
+    height: 3000
+}
+.logoIMG{
+    text-shadow: none;
+    color: rgb(255, 255, 255);
+    height: 400;
+    padding: 10px;
+    position: relative;
+    bottom: 15px;
+    left: 20px;
+}
