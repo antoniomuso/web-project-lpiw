@@ -3,38 +3,130 @@
 
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"-->
+    <link rel="stylesheet" href="materialize.min.css">
     <link rel="stylesheet" href="css/style.css">
     <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <!--link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"-->
     <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <!--script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>chat</title>
+    <style type="text/css">
+        #container-form{
+            margin:50px 100px;
+            width: auto;
+        }
+        #description{
+            margin: auto auto;
+        }
+        #form-header{
+            width:400px;
+            background-color: white;
+        }
+        #form-body{
+            width:400px;
+            background-color: rgba(245, 245, 245, 0.959);
+        }
+        #signup-btn {
+            border-left:1px #D7D7D7 solid;
+        }
+        #signup-btn:hover{
+            background-color:rgba(211, 210, 210, 0.959);
+        }
+        #signup-btn{
+            background-color: white;
+        }
+        #form{
+        }
+    </style>
 </head>
 
 <body>
-    <div class="navbar-fixed">
-        <nav>
-            <div class="nav-wrapper blue accent-4">
-                <a href="#!" class="brand-logo">
-                    <i id="icon" class="fa fa-forumbee logoIMG"></i>
-                </a>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li>
-                        <a href="sass.html">Sass</a>
-                    </li>
-                    <li>
-                        <a href="badges.html">Components</a>
-                    </li>
-                    <li>
-                        <a href="collapsible.html">JavaScript</a>
-                    </li>
-                </ul>
+    <div id="container">
+        <div class="navbar-fixed">
+            <nav>
+                <div class="nav-wrapper blue accent-4">
+                    <a href="#!" class="brand-logo center">
+                        <i id="icon" class="fa fa-forumbee logoIMG"></i>
+                    </a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li>
+                            <a href="badges.html"></a>
+                        </li>
+                        <li>
+                            <a href="collapsible.html"></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div id="container-form" class="row">
+            <div id="description" class="center-align col s6">
+                <p><h2>Lorem ipsum dolor sit amet</h2>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate </p>
             </div>
-        </nav>
+            <div id="form" class="col s6 center-align">
+                <div id="form-header">
+                    <div class="row s12">
+                        <div onClick="clickLogin()" id="login-btn" class="col s6">
+                            <h5>Login</h5>
+                        </div>
+                        <div onClick="clickSignUp()" id="signup-btn" class="col s6">
+                            <h5>Sign Up</h5>
+                        </div>
+                        <div id="form-body">
+                            <div class="row">
+                                <form>
+                                    <div class="input-field col s6">
+                                        <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+                                        <label for="first_name">First Name</label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                        <input id="last_name" type="text" class="validate">
+                                        <label for="last_name">Last Name</label>
+                                    </div>
+                                    </div>
+                                    <div class="row">
+                                    <div class="row">
+                                    <div class="input-field col s12">
+                                        <input id="password" type="password" class="validate">
+                                        <label for="password">Password</label>
+                                    </div>
+                                    </div>
+                                    <div class="row">
+                                    <div class="input-field col s12">
+                                        <input id="email" type="email" class="validate">
+                                        <label for="email">Email</label>
+                                    </div>
+                                    </div>
+                                    <div class="row">
+                                    <div class="col s12">
+                                        This is an inline input field:
+                                        <div class="input-field inline">
+                                        <input id="email" type="email" class="validate">
+                                        <label for="email" data-error="wrong" data-success="right">Email</label>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
+    <script>
+            function clickSignUp()
+            {
+                document.getElementById("signup-btn").style.backgroundColor = "rgba(245, 245, 245, 0.959)";
+                document.getElementById("login-btn").style.backgroundColor = "white";
+            }
+            function clickLogin()
+            {
+                document.getElementById("login-btn").style.backgroundColor = "rgba(245, 245, 245, 0.959)";
+                document.getElementById("signup-btn").style.backgroundColor = "white";
+            }
+    </script>
 </body>
