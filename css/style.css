@@ -23,5 +23,11 @@
 
 .border
 {
-  border:5px solid #f57542;  
+  border:5px solid white;  
+}
+#div-chat{
+    border-right: 1px gray solid;
+    border-left: 1px gray solid;
+    
+    
 }
