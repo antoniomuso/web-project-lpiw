@@ -15,3 +15,13 @@
     position: fixed;
     top: 0;
 }
+
+.full-height
+{
+    min-height: 90vh !important;
+}
+
+.border
+{
+  border:5px solid #42a5f5;  
+}
