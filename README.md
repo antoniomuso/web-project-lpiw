@@ -1,2 +1,2 @@
 # web-project-lpiw
-Progetto linguaggi per il web, Stefan, giovannino, Antonio.
+Progetto tecnologie e linguaggi per il web, Stefan, giovannino, Antonio.
