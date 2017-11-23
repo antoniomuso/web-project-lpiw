@@ -29,16 +29,19 @@
             width:400px;
             background-color: rgba(245, 245, 245, 0.959);
         }
-        #signup-btn {
+        #signup-tab {
             border-left:1px #D7D7D7 solid;
-        }
-        #signup-btn:hover{
-            background-color:rgba(211, 210, 210, 0.959);
-        }
-        #signup-btn{
             background-color: white;
         }
-        #form{
+        #signup-tab:hover{
+            background-color: rgba(255, 254, 254, 0.726);
+        }
+        #form-login{
+            z-index: 2;
+        }
+        #form-signup{
+            z-index: 1;
+            display: none;
         }
     </style>
 </head>
@@ -69,47 +72,63 @@
             <div id="form" class="col s6 center-align">
                 <div id="form-header">
                     <div class="row s12">
-                        <div onClick="clickLogin()" id="login-btn" class="col s6">
+                        <div onClick="clickLogin()" id="login-tab" class="col s6">
                             <h5>Login</h5>
                         </div>
-                        <div onClick="clickSignUp()" id="signup-btn" class="col s6">
+                        <div onClick="clickSignUp()" id="signup-tab" class="col s6">
                             <h5>Sign Up</h5>
                         </div>
                         <div id="form-body">
-                            <div class="row">
-                                <form>
-                                    <div class="input-field col s6">
-                                        <input placeholder="Placeholder" id="first_name" type="text" class="validate">
-                                        <label for="first_name">First Name</label>
-                                    </div>
-                                    <div class="input-field col s6">
-                                        <input id="last_name" type="text" class="validate">
-                                        <label for="last_name">Last Name</label>
-                                    </div>
-                                    </div>
-                                    <div class="row">
-                                    <div class="input-field col s12">
-                                        <input id="password" type="password" class="validate">
-                                        <label for="password">Password</label>
-                                    </div>
-                                    <div class="input-field col s12">
-                                            <input placeholder="Placeholder" id="topic" type="text">
-                                            <label for="topic">Argomento</label>
+                            <div id="form-login">
+                                <div class="row">
+                                    <form>
+                                        <div class="input-field col s12">
+                                            <input id="email-login" type="text" class="validate">
+                                            <label for="email-login">Your email or username</label>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                    <div class="input-field col s12">
-                                        <input id="email" type="email" class="validate">
-                                        <label for="email">Email</label>
-                                    </div>
-                                    </div>
-                                    <div class="row">
-                                    <div class="col s12">
-                                        <div class="input-field inline">
-                                        <button class="btn waves-effect waves-light" type="submit">Submit</button>
+                                        <div class="row">
+                                        <div class="input-field col s12">
+                                            <input id="password-login" type="password" class="validate">
+                                            <label for="password-login">Password</label>
                                         </div>
-                                    </div>
-                                </form>
+                                        </div>
+                                        <div class="row">
+                                        <div class="col s12">
+                                            <div class="input-field inline">
+                                                <button class="btn waves-effect waves-light" type="submit">Log in</button>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div id="form-signup">
+                                <div class="row">
+                                    <form>
+                                        <div class="input-field col s12">
+                                            <input id="username-signup" type="text" class="validate">
+                                            <label for="username-signup">Username</label>
+                                        </div>
+                                        <div class="row">
+                                        <div class="input-field col s12">
+                                            <input id="password-signup" type="password" class="validate">
+                                            <label for="password-signup">Password</label>
+                                        </div>
+                                        </div>
+                                        <div class="row">
+                                        <div class="input-field col s12">
+                                            <input id="email-signup" type="email" class="validate">
+                                            <label for="email-signup">Email</label>
+                                        </div>
+                                        </div>
+                                        <div class="row">
+                                        <div class="col s12">
+                                            <div class="input-field inline">
+                                            <button class="btn waves-effect waves-light" type="submit">Create account</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -120,13 +139,21 @@
     <script>
             function clickSignUp()
             {
-                document.getElementById("signup-btn").style.backgroundColor = "rgba(245, 245, 245, 0.959)";
-                document.getElementById("login-btn").style.backgroundColor = "white";
+                document.getElementById("signup-tab").style.backgroundColor = "rgba(245, 245, 245, 0.959)";
+                document.getElementById("login-tab").style.backgroundColor = "white";
+                document.getElementById("form-signup").style.display = "initial";
+                document.getElementById("form-login").style.display = "none";
+               // document.insertRule('#login-tab:hover { background-color: rgba(255, 254, 254, 0.726); }');
             }
             function clickLogin()
             {
-                document.getElementById("login-btn").style.backgroundColor = "rgba(245, 245, 245, 0.959)";
-                document.getElementById("signup-btn").style.backgroundColor = "white";
+                document.getElementById("login-tab").style.backgroundColor = "rgba(245, 245, 245, 0.959)";
+                document.getElementById("signup-tab").style.backgroundColor = "white";
+                document.getElementById("form-signup").style.display = "none";
+                document.getElementById("form-login").style.display = "initial";
+                //document.getElementById("form-signup").style('#signup-tab:hover { background-color: rgba(255, 254, 254, 0.726); }');
+
+
             }
     </script>
     
