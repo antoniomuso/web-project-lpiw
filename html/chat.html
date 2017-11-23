@@ -40,9 +40,10 @@
     <!-- Questa è la tabella che divide le diverse parti della chat -->
     <div class='row s12 border' name="div-main">
         
-        <!-- Questa è la barra di navigazione -->
+        <!-- Questo è il container della lista delle chat -->
         <div class='col s3 full-height ' name='div-chat-list'>
 
+             <!-- Questa è la lista delle chat -->
             <div class="collection" name="div-chat-collection">
                 <a href="#!" class="collection-item">
                     <span class="badge">69</span>Chat 1</a>
@@ -53,16 +54,21 @@
                     <span class="badge">42</span>Chat 4</a>
             </div>
 
+            <!-- Questo è il pulsante + -->
             <h1 class="center-align">
                 <a class="btn-floating modal-trigger btn-large waves-effect waves-light blue" href="#div-create_new_chat">
                     <i class="material-icons">add</i>
                 </a>
             </h1>
         </div>
+
+        <!-- Questo è il container della chat -->
         <div class='col s6 green full-height ' name='div-chat'>
         
             SECONDA COLONNA
         </div>
+
+         <!-- Questo è il container degli utenti attivi -->
         <div class='col s3 blue full-height' name='div-users'>
 
             TERZA COLONNA
@@ -72,6 +78,7 @@
 
     </div>
 
+    <!-- Questo è il messaggio che appare per creare nuove chat-->
     <div id="div-create_new_chat" class="modal modal-fixed-footer">
         <div class="modal-content">
             <div class="row">
@@ -98,6 +105,7 @@
         </div>
     </div>
 
+    
     <script> $(document).ready(function () {
             // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
             $('.modal').modal();
