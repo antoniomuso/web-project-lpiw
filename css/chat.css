@@ -3,7 +3,7 @@
 
 html, body {
     background: #e5e5e5;
-    font-family: 'Lato', sans-serif;
+    font-family: "Roboto", sans-serif;;
     margin: 0px auto;
 }
 ::selection{
@@ -183,14 +183,14 @@ a{
 }
 
 .msg {
-    background: rgb(61, 129, 175);
+    background: #039be5;
     min-width: 50px;
     padding: 10px;
     border-radius: 2px;
     box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.07);
 }
 .msg p {
-    font-size: 0.8rem;
+    font-size: 1.1rem;
     margin: 0 0 0.2rem 0;
     color: rgb(255, 255, 255);
 }
