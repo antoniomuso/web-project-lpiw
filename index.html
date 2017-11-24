@@ -7,12 +7,19 @@
     <link rel="stylesheet" href="./css/materialize.min.css">
     <script src="./js/materialize.min.js"></script>
     <link rel="stylesheet" href="./css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>chat</title>
     <style type="text/css">
+        #container{
+            background-image:  linear-gradient(rgba(41, 98, 255, 0.322), white);
+            background-repeat: no-repeat;
+            position: fixed;
+            background-size: cover;
+        }
         #container-form{
             margin:30px 100px;
             width: auto;
@@ -33,7 +40,7 @@
             background-color: #EBEBF5;
         }
         #signup-tab {
-            border-left:1px #D7D7D7 solid;
+            /*border-left:1px #D7D7D7 solid;*/
             background-color: white;
         }
         #signup-tab:hover{
@@ -46,7 +53,16 @@
             z-index: 1;
             display: none;
         }
-        .margine{margin-bottom: 20px;}
+        .margine{
+            margin-bottom: 20px;
+        }
+        .icon{
+            margin:10px 0;
+            color:#2962FF;
+        }
+        .margin-label-form{
+            margin:0px 30px;
+        }
     </style>
 </head>
 
@@ -73,12 +89,12 @@
             <div id="description" class="center-align col m6 s5">
                 <p><h2>Lorem ipsum dolor sit amet</h2>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate </p>
             </div>
-            <div id="form" style="backgrgound-color: blue" class="col offset-s2 s4 z-depth-3 center-align">
+            <div id="form" class="col offset-s2 s4 z-depth-3 center-align">
                 <div id="form-header">
-                    <div onClick="clickLogin()" id="login-tab" class="col s6">
+                    <div onClick="clickLogin()" id="login-tab" class="col s6 z-depth-1">
                         <h5>Login</h5>
                     </div>
-                    <div onClick="clickSignUp()" id="signup-tab" class="col s6">
+                    <div onClick="clickSignUp()" id="signup-tab" class="col s6 z-depth-1">
                         <h5>Sign Up</h5>
                     </div>
                 </div>
@@ -87,12 +103,23 @@
                         <div class="row" style="margin-bottom: 0px;">
                             <form>
                                 <div class="input-field col s12">
-                                    <input id="email-login" type="text" class="validate">
-                                    <label for="email-login">Your email or username</label>
+                                    <div style="float:left">
+                                        <i class="material-icons icon">person</i>
+                                    </div>
+                                    <div style="float:left">
+                                        <label class="margin-label-form" for="email-login">Your email or username</label>
+                                        <input id="email-login" type="text" class="validate">
+                                    </div>
                                 </div>
+
                                 <div class="input-field col s12">
-                                    <input id="password-login" type="password" class="validate">
-                                    <label for="password-login">Password</label>
+                                    <div style="float:left">
+                                        <i class="material-icons icon">https</i>
+                                    </div>
+                                    <div style="float:left">
+                                        <input id="password-login" type="password" class="validate">
+                                        <label class="margin-label-form" for="password-login">Password</label>
+                                    </div>
                                 </div>
                                 <div class="col s12 margine">
                                     <div class="input-field inline">
@@ -106,16 +133,31 @@
                         <div class="row" style="margin-bottom: 0px;">
                             <form>
                                 <div class="input-field col s12">
-                                    <input id="username-signup" type="text" class="validate">
-                                    <label for="username-signup">Username</label>
+                                    <div style="float:left">
+                                        <i class="material-icons icon">person</i>
+                                    </div>
+                                    <div style="float:left">
+                                        <input id="username-signup" type="text" class="validate">
+                                        <label class="margin-label-form" for="username-signup">Username</label>
+                                    </div>
                                 </div>
                                 <div class="input-field col s12">
-                                    <input id="password-signup" type="password" class="validate">
-                                    <label for="password-signup">Password</label>
+                                    <div style="float:left">
+                                        <i class="material-icons icon">https</i>
+                                    </div>
+                                    <div style="float:left">
+                                        <input id="password-signup" type="password" class="validate">
+                                        <label class="margin-label-form" for="password-signup">Password</label>
+                                    </div>
                                 </div>
                                 <div class="input-field col s12">
-                                    <input id="email-signup" type="email" class="validate">
-                                    <label for="email-signup">Email</label>
+                                    <div style="float:left">
+                                        <i class="material-icons icon">mail</i>
+                                    </div>
+                                    <div style="float:left">
+                                        <input id="email-signup" type="email" class="validate">
+                                        <label class="margin-label-form" for="email-signup">Email</label>
+                                    </div>
                                 </div>
                                 <div class="col s12 margine">
                                     <div class="input-field inline">
