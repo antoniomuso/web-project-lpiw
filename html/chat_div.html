@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/materialize.min.js"></script>
+
+    <link href="../css/icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link type="text/css" rel="stylesheet" href="../css/materialize.min.css" media="screen,projection" />
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Chat</title>
+
+
+    <style>
+        div[name='div-chat'] {
+            height: 100vh;
+            width: 100%;
+        }
+
+        div[name='div-message-list'] {
+            float: bottom;
+            border: 2px solid #000000;
+            margin-left: 10px;
+            height: 80%;
+            width: 100%;
+        }
+
+        div[name='div-form-message'] {
+            float: bottom;
+            height: 10%;
+            width: 100%;
+            margin-top: 5px;
+            border: 2px solid #000000;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div name='div-chat'>
+        <div class='container' name='div-message-list'>
+
+        </div>
+
+        <div class='container' name='div-form-message'>
+            <div class="row">
+                <div class="input-field col s8">
+                    <i class="material-icons prefix">mode_edit</i>
+                    <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+                    <label for="icon_prefix2">Message</label>
+                </div>
+            </div>
+            
+        </div>
+
+
+
+
+    </div>
+
+</body>
+
+</html>
