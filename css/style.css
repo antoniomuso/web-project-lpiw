@@ -16,9 +16,18 @@
     top: 0;
 }
 
+.fixedBOTTOM {
+    position: fixed;
+    bottom: 0;
+}
+
 .full-height
 {
     min-height: 90vh !important;
+}
+
+.full-width {
+    min-width: 90vh !important;
 }
 
 .border
