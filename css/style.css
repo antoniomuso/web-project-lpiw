@@ -11,6 +11,12 @@
     left: 20px;
 }
 
+.scrollable {
+    overflow-y: scroll;
+    width:300px; 
+    height:200px;
+}
+
 .fixedTOP {
     position: fixed;
     top: 0;

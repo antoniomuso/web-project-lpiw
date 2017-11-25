@@ -191,7 +191,7 @@ a{
     box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.07);
 }
 .msg p {
-    max-width:60%;
+    max-width:90%;
     word-wrap:break-word;
     font-size: 1.1rem;
     margin: 0 0 0.2rem 0;

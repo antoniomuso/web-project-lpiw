@@ -2,18 +2,42 @@
 <html lang="it">
 
 <head>
+    <script src="../js/chat_div.js"></script>
     <script src="../js/jquery.min.js"></script>
     <script src="../js/materialize.min.js"></script>
-
+    <script src="../js/w3.js"></script>
     <link href="../css/icons.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/chat.css">
     <link rel="stylesheet" href="../css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/style.css">
     <link type="text/css" rel="stylesheet" href="../css/materialize.min.css" media="screen,projection" />
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Chat</title>
+
+
+    <script> 
+        $(document).ready(function () {
+            // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+            $('.modal').modal();
+            w3.includeHTML(() => { // callback di fine embedd
+
+                $('#input-chat').keydown(function (e) {
+                    if (e.which == 13) {
+                        var msg = sendMessage('MyName', this.value)
+                        console.log(msg)
+                        $(this).val('')
+                        $('.scrollable').animate({
+                            scrollTop: msg.offsetTop
+                        }, 2000);
+                    }
+                });
+            }); // embedda chat_div in questa pagina html
+
+        }); 
+    </script>
 </head>
 
 <body>
@@ -64,15 +88,13 @@
 
         <!-- Questo è il container della chat -->
         <div class='col s6  full-height ' id='div-chat'>
-            <embed src="./chat_div.html" class="full-height full-width">
-            </embed>
+            <div id='#chat-scroll' class='scrollable full-height full-width' w3-include-html="./chat_div.html"></div>
         </div>
 
         <!-- Questo è il container degli utenti attivi -->
         <div class='col s3  full-height' name='div-users'>
 
             <!-- Questa è la lista degli utenti attivi-->
-
             <ul class="collection with-header">
                 <li class="collection-header">
                     <h4>Online Users</h4>
@@ -131,11 +153,6 @@
         </div>
     </div>
 
-
-    <script> $(document).ready(function () {
-            // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
-            $('.modal').modal();
-        }); </script>
 
 
 
