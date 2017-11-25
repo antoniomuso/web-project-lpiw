@@ -23,7 +23,7 @@
         function callBackKeyPressed(e) {
             if (e.which == 13) {
                 var msg = sendMessage('MyName', this.value)
-                console.log(msg)
+                //console.log(msg)
                 $(this).val('')
                 $('.scrollable').animate({
                     scrollTop: msg.offsetTop
