@@ -185,11 +185,14 @@ a{
 .msg {
     background: #039be5;
     min-width: 50px;
+    max-width: 60%;
     padding: 10px;
     border-radius: 2px;
     box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.07);
 }
 .msg p {
+    max-width:60%;
+    word-wrap:break-word;
     font-size: 1.1rem;
     margin: 0 0 0.2rem 0;
     color: rgb(255, 255, 255);
