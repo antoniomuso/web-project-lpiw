@@ -29,13 +29,22 @@
         $(document).ready(function () {
 
             chatOperation = (function () {
-                let ol = $('#chats')
+                var ol = $('#chats')
+                var date = new Date();
                 return {
                     reciveMessFrom: (otherName, img, message) => {
                         
                     },
                     sendMessage: (name, message) => {
-
+                        ol.append(`<li class="self">
+            <div class="avatar">
+                <img class='cricle #c5cae9 indigo lighten-4' src="https://i.imgur.com/HYcn9xO.png" draggable="false" />
+            </div>
+            <div class="msg">
+                <p>${message}</p>
+                <time>${date.toLocaleTimeString()}</time>
+            </div>
+        </li>`)
                     }
                 }
             })()
