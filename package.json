@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/antoniomuso/web-project-lpiw#readme",
   "dependencies": {
+    "body-parser": "^1.18.2",
+    "email-validator": "^1.1.1",
     "express": "^4.16.2"
   }
 }
