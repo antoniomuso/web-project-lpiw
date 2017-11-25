@@ -1,7 +1,11 @@
 
+// prende un messaggio ricevuto dal server e lo inserisce nella chat come messaggio ricevuto 
+// da un altra persona
 function reciveMessFrom (otherName, img, message)  {
 
 }
+// Prende in input un nome utente un messaggio, Dovrebbe prendere anche avatar ecc...
+// restituisce il messaggio html aggiunto
 function sendMessage (name, message) {
     var ol = $('#chats').append(`<li class="self">
         <div class="avatar">
