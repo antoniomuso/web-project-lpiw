@@ -100,7 +100,6 @@ a{
     height: 40px;
     position: relative;
     display: block;
-    z-index: 2;
     border-radius: 100%;
     -webkit-border-radius: 100%;
     -moz-border-radius: 100%;
