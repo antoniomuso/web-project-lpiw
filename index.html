@@ -88,18 +88,15 @@
                         <li>
                             <a href="./html/chat.html">Chat</a>
                         </li>
-                        <li>
-                            <a href="collapsible.html"></a>
-                        </li>
                     </ul>
                 </div>
             </nav>
         </div>
-        <div id="container-form" class="row col s12">
+        <div id="container-form" class="row">
             <div id="description" class="center-align col m6 s5">
                 <p><h2>Lorem ipsum dolor sit amet</h2>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate </p>
             </div>
-            <div id="form" class="col offset-s2 s4 z-depth-3 center-align">
+            <div id="form" class="col offset-s2 s4 z-depth-2 center-align">
                 <div id="form-header">
                     <div onClick="clickLogin()" id="login-tab" class="col s6 z-depth-1">
                         <h5>Login</h5>
@@ -117,7 +114,7 @@
                                         <i class="material-icons icon">person</i>
                                     </div>
                                     <div style="float:left">
-                                        <label class="margin-label-form" for="email-login">Your email or username</label>
+                                        <label class="margin-label-form" for="email-login">Username</label>
                                         <input id="email-login" type="text" class="validate">
                                     </div>
                                 </div>
@@ -136,6 +133,7 @@
                                         <button class="btn waves-effect waves-light" type="submit">Log in</button>
                                     </div>
                                 </div>
+                                <a class="margine" href="./html/password_lost.html">I forgot my username or password.</a>
                             </form>
                         </div>
                     </div>
@@ -181,27 +179,5 @@
             </div>
         </div>
     </div>
-    <script>
-            function clickSignUp()
-            {
-                document.getElementById("signup-tab").style.backgroundColor = "#EBEBF5";
-                document.getElementById("login-tab").style.backgroundColor = "white";
-                document.getElementById("form-signup").style.display = "initial";
-                document.getElementById("form-login").style.display = "none";
-                document.getElementById("login-tab").style.opacity = "0.50";
-                document.getElementById("signup-tab").style.opacity = "1";
-
-            }
-            function clickLogin()
-            {
-                document.getElementById("signup-tab").style.backgroundColor = "white";
-                document.getElementById("login-tab").style.backgroundColor = "#EBEBF5";
-                document.getElementById("form-signup").style.display = "none";
-                document.getElementById("form-login").style.display = "initial";
-                document.getElementById("login-tab").style.opacity = "1";
-                document.getElementById("signup-tab").style.opacity = "0.50";
-
-            }
-    </script>
-    
+    <script src="./js/homepage.js"></script>
 </body>
