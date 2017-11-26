@@ -3,6 +3,12 @@
         position: relative;
         bottom: 2%;
     }
+    #white-bar {
+        position: fixed;
+        right: 75% !important;
+        left: 25% !important;
+        width: 96vh !important;
+    }
 </style>
 
 
@@ -183,6 +189,6 @@
         </div>
     </li>
 </ol>
-<div class='fixedBOTTOM white full-width border-blue'>
+<div id='white-bar' class='fixedBOTTOM white'>
     <input id='input-chat' class="materialize-textarea center blue-text text-darken-5" type="text" placeholder="Write message..." />
 </div>
