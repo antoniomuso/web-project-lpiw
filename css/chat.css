@@ -10,8 +10,10 @@ html, body {
   background: rgba(82,179,217,0.3);
   color: inherit;
 }
-a{
-  color: rgba(82,179,217,0.9);
+.chat a {
+    color: red;
+    text-decoration: underline;
+    text-decoration-color: rgb(255, 255, 255);
 }
 
 /* M E N U */

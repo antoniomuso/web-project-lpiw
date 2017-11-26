@@ -45,8 +45,3 @@
     display: inline;
     margin: 0 0;
 }
-.chat a {
-    color: red;
-    text-decoration: underline;
-    text-decoration-color: rgb(255, 255, 255);
-}

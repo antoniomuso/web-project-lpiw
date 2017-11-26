@@ -10,8 +10,12 @@ function reciveMessFrom(otherName, img, message) {
             <p>${message}</p>
             <time>${(new Date()).toLocaleTimeString()}</time>
         </div>
-    </li>`).hide()
-    var ol = object.appendTo('#chats').toggle('bounce')
+    </li>`)
+    object.find('.avatar').hide()
+    object.find('.msg').hide()
+    var ol = object.appendTo('#chats')
+    ol.find('.avatar').fadeIn();
+    ol.find('.msg').toggle('bounce')
     return ol[0].children[ol[0].children.length - 1]
 }
 // Prende in input un nome utente un messaggio, Dovrebbe prendere anche avatar ecc...
@@ -26,8 +30,12 @@ function sendMessage(name, message) {
             <p>${message}</p>
             <time>${(new Date()).toLocaleTimeString()}</time>
         </div>
-        </li>`).hide()
-    var ol = object.appendTo('#chats').toggle('bounce')
+        </li>`)
+    object.find('.avatar').hide()
+    object.find('.msg').hide()
+    var ol = object.appendTo('#chats')
+    ol.find('.avatar').fadeIn();
+    ol.find('.msg').toggle('bounce')
     return ol[0].children[ol[0].children.length - 1]
 }
 
