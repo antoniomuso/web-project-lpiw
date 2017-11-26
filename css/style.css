@@ -23,27 +23,30 @@
     margin-bottom: 0;
 }
 
-.fixedTOP {
+.afixedTOP {
     position: fixed;
     top: 0;
 }
 
-.fixedBOTTOM {
+.afixedBOTTOM {
     position: fixed;
     bottom: 0;
 }
 
-.full-height
+.afull-height
 {
     min-height: 90vh !important;
 }
 
-.full-width {
+.afull-width {
     min-width: 95vh !important;
 }
 
-/*.border
-{
-  border:5px solid white;  
-}*/
-
+#chat{
+    overflow-y: scroll;
+    width: auto; 
+    
+}
+#container-chat{
+    padding: 0 0;
+}
