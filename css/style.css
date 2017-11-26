@@ -14,38 +14,13 @@
     overflow-y: auto;    
 }
 
-.scrollable {
-    overflow-y: scroll;
-    width:300px; 
-    height:200px;
-}
 #div-main{
     margin-bottom: 0;
-}
-
-.afixedTOP {
-    position: fixed;
-    top: 0;
-}
-
-.afixedBOTTOM {
-    position: fixed;
-    bottom: 0;
-}
-
-.afull-height
-{
-    min-height: 90vh !important;
-}
-
-.afull-width {
-    min-width: 95vh !important;
 }
 
 #chat{
     overflow-y: scroll;
     height: 80vh;
-    
 }
 #container-chat{
     padding: 0 0;
