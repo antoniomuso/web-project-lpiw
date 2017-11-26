@@ -27,7 +27,7 @@
                 var msg = sendMessage('MyName', this.value)
                 //console.log(msg)
                 $(this).val('')
-                $('.scrollable').animate({
+                $('#chat').animate({
                     scrollTop: msg.offsetTop
                 }, 2000)
             }
