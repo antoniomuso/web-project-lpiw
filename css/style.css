@@ -42,7 +42,10 @@
     min-width: 95vh !important;
 }
 #div-chat{
-        
+        background-color: black;
+        height: auto;
+        width: auto;
+        padding: 0 0;    
 }
 /*.border
 {
