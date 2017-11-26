@@ -11,7 +11,7 @@ function reciveMessFrom(otherName, img, message) {
             <time>${(new Date()).toLocaleTimeString()}</time>
         </div>
     </li>`).hide()
-    var ol = object.appendTo('#chats').fadeIn(fadeIn)
+    var ol = object.appendTo('#chats').toggle('bounce')
     return ol[0].children[ol[0].children.length - 1]
 }
 // Prende in input un nome utente un messaggio, Dovrebbe prendere anche avatar ecc...
@@ -27,7 +27,7 @@ function sendMessage(name, message) {
             <time>${(new Date()).toLocaleTimeString()}</time>
         </div>
         </li>`).hide()
-    var ol = object.appendTo('#chats').fadeIn(fadeIn)
+    var ol = object.appendTo('#chats').toggle('bounce')
     return ol[0].children[ol[0].children.length - 1]
 }
 
