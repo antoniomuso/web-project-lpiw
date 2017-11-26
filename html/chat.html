@@ -2,12 +2,12 @@
 <html lang="it">
 
 <head>
-    <script src="../js/chat_div.js"></script>
     <script src="../js/jquery.min.js"></script>
     <script src="../js/materialize.min.js"></script>
     <script src="../js/w3.js"></script>
+    <script src="../js/chat.js"></script>
+    
     <link href="../css/icons.css" rel="stylesheet">
-
     <link rel="stylesheet" href="../css/chat.css">
     <link rel="stylesheet" href="../css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/style.css">
@@ -18,30 +18,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Chat</title>
-
-
-    <script>
-        // cattura l'evento di pressione dell'enter
-        function callBackKeyPressed(e) {
-            if (e.which == 13) {
-                var msg = sendMessage('MyName', this.value)
-                //console.log(msg)
-                $(this).val('')
-                $('#chat').animate({
-                    scrollTop: msg.offsetTop
-                }, 2000)
-            }
-        }
-        $(document).ready(function () {
-            // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
-            $('.modal').modal();
-            w3.includeHTML(() => { // callback di fine embedd
-                $('#input-chat').keydown(callBackKeyPressed)
-            }) // embedda chat_div in questa pagina html
-
-        })
-
-    </script>
 </head>
 
 <body>

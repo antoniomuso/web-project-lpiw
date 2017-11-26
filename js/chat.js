@@ -32,4 +32,24 @@ function sendMessage(name, message) {
 }
 
 
+// cattura l'evento di pressione dell'enter
+function callBackKeyPressed(e) {
+    if (e.which == 13) {
+        var msg = sendMessage('MyName', this.value)
+        //console.log(msg)
+        $(this).val('')
+        $('#chat').animate({
+            scrollTop: msg.offsetTop
+        }, 2000)
+    }
+}
+$(document).ready(function () {
+    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal();
+    w3.includeHTML(() => { // callback di fine embedd
+        $('#input-chat').keydown(callBackKeyPressed)
+    }) // embedda chat_div in questa pagina html
+
+})
+
 
