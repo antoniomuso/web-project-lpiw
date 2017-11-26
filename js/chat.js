@@ -43,10 +43,11 @@ function sendMessage(name, message) {
 // cattura l'evento di pressione dell'enter
 function callBackKeyPressed(e) {
     if (e.which == 13) {
+        if (this.value === '') return
         var msg = sendMessage('MyName', this.value)
         //console.log(msg)
         $(this).val('')
-        $('#chat').animate({
+        $('#chat').stop().animate({
             scrollTop: msg.offsetTop
         }, 2000)
     }
