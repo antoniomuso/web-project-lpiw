@@ -28,8 +28,8 @@
 #chat-input-bar{
     padding: 10px 10px 0px 10px;
     margin: 0 0;
-    border-style: solid;
-    border-color: gray;
+    border: solid rgb(201, 201, 201) ;
+    border-radius: 10px;
     border-width: 2px 0px 0px 0px;
 }
 
@@ -44,4 +44,10 @@
     top: -5px;
     display: inline;
     margin: 0 0;
+}
+#container-chat{
+    background-color: transparent;
+}
+#chat ol{
+    margin-bottom: 0;
 }
