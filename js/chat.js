@@ -1,10 +1,10 @@
 const fadeIn = 1000
 // prende un messaggio ricevuto dal server e lo inserisce nella chat come messaggio ricevuto 
 // da un altra persona
-function reciveMessFrom(otherName, img, message) {
+function reciveMessFrom(otherName, message, link_img) {
     var object = $(`<li class="other">
         <div class="avatar">
-            <img class='cricle #c5cae9 indigo lighten-4' src="https://i.imgur.com/DY6gND0.png" draggable="false" />
+            <img class='cricle #c5cae9 indigo lighten-4' src="${link_img}" draggable="false" />
         </div>
         <div class="msg">
             <p>${message}</p>
@@ -20,11 +20,11 @@ function reciveMessFrom(otherName, img, message) {
 }
 // Prende in input un nome utente un messaggio, Dovrebbe prendere anche avatar ecc...
 // restituisce il messaggio html aggiunto
-function sendMessage(name, message) {
+function sendMessage(name, message, link_img) {
     var object = $(
         `<li class="self">
         <div class="avatar">
-            <img class='cricle #c5cae9 indigo lighten-4' src="https://i.imgur.com/HYcn9xO.png" draggable="false" />
+            <img class='cricle #c5cae9 indigo lighten-4' src="${link_img}" draggable="false" />
         </div>
         <div class="msg">
             <p>${message}</p>
@@ -44,7 +44,7 @@ function sendMessage(name, message) {
 function callBackKeyPressed(e) {
     if (e.which == 13) {
         if (this.value === '') return
-        var msg = sendMessage('MyName', this.value)
+        var msg = sendMessage('Giovanni Varricchione', this.value, 'https://scontent-mxp1-1.xx.fbcdn.net/v/t1.0-9/20770225_10212100619488480_2709822859667583246_n.jpg?oh=2aced0a77a1238729b5fc0886ae1f28a&oe=5AD25825')
         //console.log(msg)
         $(this).val('')
         $('#chat').stop().animate({
