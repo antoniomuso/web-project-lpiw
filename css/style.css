@@ -61,13 +61,14 @@
 }
 #chat .self .msg{
     background-color: #f7f7f7;
+    text-decoration-style: dashed;  
 }
 #chat .self .msg p{
     color: black;
 }
 #chat .other .msg{
     background-color: rgba(103, 144, 194, 0.63);
-    
+    text-decoration-style: dashed;
 }
 #input-chat::placeholder{
     color: rgb(61, 61, 61);
