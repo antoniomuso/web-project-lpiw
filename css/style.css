@@ -51,3 +51,15 @@
 #chat ol{
     margin-bottom: 0;
 }
+#chat ol li .msg{
+    border-radius: 10px;
+    background-color: rgb(219, 219, 219);
+    color: black;
+}
+#chat ol li .msg p{
+    color: black;
+    font-family: "Roboto", sans-serif; 
+}
+#input-chat::placeholder{
+    color: rgb(61, 61, 61);
+}
