@@ -62,3 +62,6 @@ $(document).ready(function () {
 })
 
 
+function hideShowChat () {
+    $('#chat').toggle('bounce')
+}
