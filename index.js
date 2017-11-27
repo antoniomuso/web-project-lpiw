@@ -5,7 +5,7 @@ var bodyParser = require('body-parser')
 var app = express()
 var { Pool } = require('pg')
 const client = new Pool({
-    connectionString: 'postgres://bxylseqz:pWDOpkFKHown21tKRLGc7F6EJAXIrrJ1@horton.elephantsql.com:5432/bxylseqz'
+    connectionString: 'postgres://obbhdnav:1ONsv6xTGR21Tl2KliBMS4p5mzRrPBr1@horton.elephantsql.com:5432/obbhdnav'
 })
 
 var port = 8000
