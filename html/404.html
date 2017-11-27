@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/materialize.min.js"></script>
+    <script src="../js/w3.js"></script>
+    <script src="../js/chat.js"></script>
+    
+    <link href="../css/icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/chat.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link href='http://fonts.googleapis.com/css?family=Oleo+Script' rel='stylesheet' type='text/css'>
+    
+    <link type="text/css" rel="stylesheet" href="../css/materialize.min.css" media="screen,projection" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Chat</title>
+</head>
+
+<body>
+	<div id="container">
+		<!-- Questa è la barra di navigazione -->
+		<div class="navbar-fixed">
+			<nav class="nav-wrapper blue accent-4">
+				<div>
+					<a href="#" data-activates="slide-out" style="margin-left:3%;" class="profile-collapse btn-small left hide-on-med-and-up">
+						<i class="material-icons">menu</i>
+					</a>
+					<a href="#!" id="brand-name">
+						ChatSuperCool
+					</a>
+					<ul id="nav-mobile" class="right">
+						<li>
+							<a href="#" data-activates="chat-slide-out" class="chat-collapse hide-on-large-only">Chat</a>
+						</li>
+						<li>
+							<a href="#" data-activates="users-slide-out" class="users-collapse hide-on-large-only">Online Users</a>
+						</li>
+						<li>
+							<a href="../index.html" class="hide-on-med-and-down">Logout</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+		<div class="center-align">
+			<p><h3>pagina non trovata</h3></p>
+			<button class="btn waves-effect waves-light gren" onclick="goBack()">Torna indietro</button>
+		</div>
+	</div>
+	<script>
+	function goBack() {
+		window.history.back();
+	}
+	</script> 
+</body>
+</html>

@@ -45,8 +45,8 @@
     display: inline;
     margin: 0 0;
 }
-#container-chat{
-    background-color: transparent;
+#chat{
+    padding: 0 0;
 }
 #chat ol{
     margin-bottom: 0;
@@ -72,4 +72,8 @@
 }
 #input-chat::placeholder{
     color: rgb(61, 61, 61);
+}
+#avatar-chat-statebar{
+    margin: 2px;
+    padding: 0 0
 }

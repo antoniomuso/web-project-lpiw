@@ -33,9 +33,6 @@
                 </a>
                 <ul id="nav-mobile" class="right">
                     <li>
-                        <a href="#" data-activates="chat-slide-out" class="chat-collapse hide-on-large-only">Chat</a>
-                    </li>
-                    <li>
                         <a href="#" data-activates="users-slide-out" class="users-collapse hide-on-large-only">Online Users</a>
                     </li>
                     <li>
@@ -51,7 +48,6 @@
 
         <!-- Questo è il container della lista delle chat -->
         <div class='col l3 xl3 hide-on-med-and-down' id='div-chat-list'>
-
             <!-- Questa è la lista delle chat -->
             <div id="list-chat" class="collection" name="div-chat-collection">
                 <a href="#!" class="collection-item">
@@ -62,33 +58,40 @@
                 <a href="#!" class="collection-item">
                     <span class="badge">42</span>Chat 4</a>
             </div>
-
             <!-- Questo è il pulsante + -->
-            <h1 class="center-align">
-                <a class="btn-floating modal-trigger btn-large waves-effect waves-light blue" href="#div-create_new_chat">
-                    <i class="material-icons">add</i>
-                </a>
-            </h1>
+            <div style="position:fixed">
+                <h1 class="center-align">
+                    <a class="btn-floating modal-trigger btn-large waves-effect waves-light blue" href="#div-create_new_chat">
+                        <i class="material-icons">add</i>
+                    </a>
+                </h1>
+            </div>
         </div>
         
         <!-- Questo è il container della chat -->
         <div id="container-chat" class="col s12 m12 l6 xl6 z-depth-3">
-            <div id='chat' w3-include-html="./chat_div.html"></div>
-            <div id="chat-input-bar" class="card white darken-3 z-depth-3">
+            <div id="container-chatbar"class="blue accent-4 z-depth-3 col s12 m12 l12 xl12">
+                <a href="#" data-activates="chat-slide-out" class="chat-collapse hide-on-large-only">Chat</a>
+                <div id="avatar-chat-statebar" class="left-align col s1" >
+                    <img width="40" class='cricle #c5cae9 indigo lighten-4' src="https://i.imgur.com/HYcn9xO.png" draggable="false" />
+                </div>
+                <span id="name-chat-statebar" class="center-align col s10">html css js</span>
+            </div>
+            <div id='chat' class="col s12 m12 l12 xl12" w3-include-html="./chat_div.html"></div>
+            <div id="chat-input-bar" class="card white darken-3 z-depth-3 col s12 m12 l12 xl12">
                 <input id='input-chat' class="materialize-textarea center black-text text-darken-5" type="text" placeholder="Write message..."/>
                 <div id='button-extend' class="fixed-action-btn vertical click-to-toggle">
                     <a class="btn-floating btn-large red">
-                      <i class="material-icons">menu</i>
+                    <i class="material-icons">menu</i>
                     </a>
                     <ul>
-                      <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
-                      <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
-                      <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
-                      <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+                    <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
+                    <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
+                    <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+                    <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
                     </ul>
                 </div>
             </div>
-            
         </div>
 
         <!-- Questo è il container degli utenti attivi -->
@@ -178,9 +181,7 @@
                 <a href="#!" class="collection-item">
                 <span class="badge">42</span>Chat 4</a>
             </ul>
-
         </div>
-
     </div>
     
     <!-- Questo è il messaggio che appare per creare nuove chat-->
@@ -194,10 +195,8 @@
                             <label for="topic">Argomento</label>
                         </div>
                     </div>
-
             </form>
         </div>
-
         <div class="modal-footer">
             <a id="confirm-topic" href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Confirm</a>
         </div>
@@ -211,7 +210,12 @@
         $(".users-collapse").sideNav({edge: 'right'})
         $("#confirm-topic").click(function(){
             var chatName = $("#topic").val();
-            $("#list-chat").append('<a href="#!" class="collection-item">' + chatName + '</a>')});
+            if (chatName)
+                $("#list-chat").append('<a href="#!" class="collection-item">' + chatName + '</a>')});
+        $("#confirm-topic").bind('keypress', function(e){
+            if ( e.keyCode == 13 )
+                $( this ).find( 'input[type=submit]:first' ).click();
+            });
     </script>
 </body>
 </html>
