@@ -53,7 +53,7 @@
         <div class='col l3 xl3 hide-on-med-and-down' id='div-chat-list'>
 
             <!-- Questa è la lista delle chat -->
-            <div class="collection" name="div-chat-collection">
+            <div id="list-chat" class="collection" name="div-chat-collection">
                 <a href="#!" class="collection-item">
                     <span class="badge">65</span>Chat 1</a>
                 <a href="#!" class="collection-item">
@@ -199,17 +199,19 @@
         </div>
 
         <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Confirm</a>
+            <a id="confirm-topic" href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Confirm</a>
         </div>
     </div>
 
 
-
+    
     <script>
         $(".profile-collapse").sideNav()
         $(".chat-collapse").sideNav({edge: 'right'})
         $(".users-collapse").sideNav({edge: 'right'})
-
+        $("#confirm-topic").click(function(){
+            var chatName = $("#topic").val();
+            $("#list-chat").append('<a href="#!" class="collection-item">' + chatName + '</a>')});
     </script>
 </body>
 </html>
