@@ -27,8 +27,8 @@ module.exports = (db) => {
         let passH = hash.digest().toString('hex')
         try {
         await db.query('INSERT INTO Email(value) values($1);', [req.body.email])
-        await db.query('INSERT INTO Utente(conf, username, descr, pass, sale, email, ist) values ($1,$2,$3,$4,$5,$6,current_timestamp);'
-            ,[false,req.body.username,'',passH,random,req.body.email])
+        await db.query('INSERT INTO Utente(conf, username, pass, sale, email, ist) values ($1,$2,$3,$4,$5,$6,current_timestamp);'
+            ,[false,req.body.username,passH,random,req.body.email])
         } catch(error) {
             return res.json({
                 err: error
