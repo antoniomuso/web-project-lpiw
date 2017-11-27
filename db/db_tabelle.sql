@@ -32,6 +32,7 @@ CREATE TABLE Cookie {
     ist timestamp not null,
     utente integer not null,
     scad timestamp not null,
+    val mediums not null,
     foreign key utente references Utente(id),
     check (ist < scad),
     primary key(ist, utente)
