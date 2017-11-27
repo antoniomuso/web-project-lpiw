@@ -50,3 +50,28 @@ CREATE TABLE Chat (
     foreign key (utente) references Utente(id)
 );
 
+CREATE TABLE Categoria (
+    nome smalls not null,
+    primary key (nome)
+);
+
+CREATE TABLE Chatcat(
+    chat timestamp not null,
+    categoria smalls not null,
+    primary key (chat, categoria),
+    foreign key (chat) references Chat(ist),
+    foreign key (categoria) references Categoria(nome)
+);
+
+CREATE TABLE Messaggio (
+    ist timestamp not null,
+    utente integer not null,
+    corpo bigs not null,
+    chat timestamp not null,
+    img mediums,
+    primary key (ist,utente),
+    foreign key (utente) references Utente(id),
+    foreign key (chat) references Chat(ist),
+    foreign key (img) references Img(path)
+);
+
