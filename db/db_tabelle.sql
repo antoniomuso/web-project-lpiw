@@ -28,15 +28,15 @@ CREATE TABLE Utente (
     foreign key (img) references Img(path)
 );
 
-CREATE TABLE Cookie {
+CREATE TABLE Cookie (
     ist timestamp not null,
     utente integer not null,
     scad timestamp not null,
     val mediums not null,
-    foreign key utente references Utente(id),
+    foreign key (utente) references Utente(id),
     check (ist < scad),
     primary key(ist, utente)
-}
+);
 
 CREATE TABLE Chat (
     ist timestamp not null,
