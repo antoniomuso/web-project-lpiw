@@ -20,7 +20,8 @@
 
 #chat{
     overflow-y: scroll;
-    height: 80vh;
+    height: 60vh;
+    padding: 0 0;
 }
 #container-chat{
     padding: 0 0;
@@ -45,8 +46,11 @@
     display: inline;
     margin: 0 0;
 }
-#chat{
-    padding: 0 0;
+#list-chat{
+    overflow-y: scroll;
+    height: 75vh;
+    
+    
 }
 #chat ol{
     margin-bottom: 0;
@@ -75,5 +79,11 @@
 }
 #avatar-chat-statebar{
     margin: 2px;
-    padding: 0 0
+    padding: 0 0;
+    float: left;
+}
+#btn-add-chat{
+    position:fixed;
+    bottom: 2px;
+    left: auto;
 }

@@ -28,7 +28,7 @@
                 <a href="#" data-activates="slide-out" style="margin-left:3%;" class="profile-collapse btn-small left hide-on-med-and-up">
                     <i class="material-icons">menu</i>
                 </a>
-                <a href="#!" id="brand-name">
+                <a href="#!" id="brand-name" class="hide-on-med-and-down">
                     ChatSuperCool
                 </a>
                 <ul id="nav-mobile" class="right">
@@ -57,9 +57,30 @@
                 <a href="#!" class="collection-item">Chat 3</a>
                 <a href="#!" class="collection-item">
                     <span class="badge">42</span>Chat 4</a>
+                <a href="#!" class="collection-item">
+                    <span class="badge">65</span>Chat 1</a>
+                <a href="#!" class="collection-item">
+                    <span class="new badge">32</span>Chat 2</a>
+                <a href="#!" class="collection-item">Chat 3</a>
+                <a href="#!" class="collection-item">
+                    <span class="badge">42</span>Chat 4</a>
+                <a href="#!" class="collection-item">
+                        <span class="badge">65</span>Chat 1</a>
+                <a href="#!" class="collection-item">
+                    <span class="new badge">32</span>Chat 2</a>
+                <a href="#!" class="collection-item">Chat 3</a>
+                <a href="#!" class="collection-item">
+                <span class="badge">42</span>Chat 4</a>
+                <a href="#!" class="collection-item">
+                        <span class="badge">65</span>Chat 1</a>
+                <a href="#!" class="collection-item">
+                    <span class="new badge">32</span>Chat 2</a>
+                <a href="#!" class="collection-item">Chat 3</a>
+                <a href="#!" class="collection-item">
+                <span class="badge">42</span>Chat 4</a>
             </div>
             <!-- Questo è il pulsante + -->
-            <div style="position:fixed">
+            <div id="btn-add-chat">
                 <h1 class="center-align">
                     <a class="btn-floating modal-trigger btn-large waves-effect waves-light blue" href="#div-create_new_chat">
                         <i class="material-icons">add</i>
@@ -69,9 +90,11 @@
         </div>
         
         <!-- Questo è il container della chat -->
-        <div id="container-chat" class="col s12 m12 l6 xl6 z-depth-3">
-            <div id="container-chatbar"class="blue accent-4 z-depth-3 col s12 m12 l12 xl12">
-                <a href="#" data-activates="chat-slide-out" class="chat-collapse hide-on-large-only">Chat</a>
+        <div id="container-chat" class="col s12 m12 l8 xl8 z-depth-3">
+            <div id="container-chatbar" class="blue accent-4 z-depth-3 col s12 m12 l12 xl12">
+                <div>
+                    <a href="#" data-activates="chat-slide-out" class="chat-collapse hide-on-large-only">Chat</a>
+                </div>
                 <div id="avatar-chat-statebar" class="left-align col s1" >
                     <img width="40" class='cricle #c5cae9 indigo lighten-4' src="https://i.imgur.com/HYcn9xO.png" draggable="false" />
                 </div>
@@ -95,7 +118,7 @@
         </div>
 
         <!-- Questo è il container degli utenti attivi -->
-        <div id="container-users" class='col l3 xl3 hide-on-med-and-down' name='div-users'>
+        <div id="container-users" style="display: none" class='col l3 xl3 hide-on-med-and-down' name='div-users'>
             <!-- Questa è la lista degli utenti attivi-->
             <ul class="collection with-header">
                 <li class="collection-header">
@@ -195,8 +218,8 @@
                             <label for="topic">Argomento</label>
                         </div>
                     </div>
-            </form>
-        </div>
+                </form>
+            </div>
         <div class="modal-footer">
             <a id="confirm-topic" href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Confirm</a>
         </div>
