@@ -22,19 +22,13 @@
 
 <body>
     <!-- Questa è la barra di navigazione -->
-    <div class="navbar-fixed">
+    <div class="navbar-fixed  hide-on-small-only">
         <nav class="nav-wrapper blue accent-4">
             <div>
-                <a href="#" data-activates="slide-out" style="margin-left:3%;" class="profile-collapse btn-small left hide-on-med-and-up">
-                    <i class="material-icons">menu</i>
-                </a>
-                <a href="#!" id="brand-name" class="hide-on-med-and-down">
+                <a href="#!" id="brand-name" >
                     ChatSuperCool
                 </a>
                 <ul id="nav-mobile" class="right">
-                    <li>
-                        <a href="#" data-activates="users-slide-out" class="users-collapse hide-on-large-only">Online Users</a>
-                    </li>
                     <li>
                         <a href="../index.html" class="hide-on-med-and-down">Logout</a>
                     </li>
@@ -90,16 +84,29 @@
         </div>
         
         <!-- Questo è il container della chat -->
-        <div id="container-chat" class="col s12 m12 l8 xl8 z-depth-3">
-            <div id="container-chatbar" class="blue accent-4 z-depth-3 col s12 m12 l12 xl12">
-                <div>
-                    <a href="#" data-activates="chat-slide-out" class="chat-collapse hide-on-large-only">Chat</a>
+        <div id="container-chat" class="col s12 m12 l9 xl9 z-depth-3">
+
+            <nav id="container-chatname" class="blue accent-4 navbar-fixed z-depth-3 col s12 m12 l12 xl12">
+                <div class="nav-wrapper">
+                    <a href="#" class="hide brand-logo right">Logo</a>
+                    <ul id="nav-mobile" class="left">
+                        <li><a href="#" data-activates="slide-out" style="margin-left:3%;" class="profile-collapse btn-small show-on-medium-and-down">
+                                <i class="material-icons">menu</i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-activates="chat-slide-out" class="col s1 m1 hide chat-collapse show-on-medium-and-down">Chat</a>
+                        </li>
+                        <li>
+                            <img width="40" class='left cricle #c5cae9 indigo lighten-4' src="https://i.imgur.com/HYcn9xO.png" draggable="false" />
+                        </li>
+                        <li>
+                            <p id="name-chat-statebar" class="center-align col s10">name chat</p>
+                        </li>    
+                    </ul>
                 </div>
-                <div id="avatar-chat-statebar" class="left-align col s1" >
-                    <img width="40" class='cricle #c5cae9 indigo lighten-4' src="https://i.imgur.com/HYcn9xO.png" draggable="false" />
-                </div>
-                <span id="name-chat-statebar" class="center-align col s10">html css js</span>
-            </div>
+            </nav>
+
             <div id='chat' class="col s12 m12 l12 xl12" w3-include-html="./chat_div.html"></div>
             <div id="chat-input-bar" class="card white darken-3 z-depth-3 col s12 m12 l12 xl12">
                 <input id='input-chat' class="materialize-textarea center black-text text-darken-5" type="text" placeholder="Write message..."/>
