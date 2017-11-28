@@ -22,7 +22,7 @@
 
 <body>
     <!-- Questa è la barra di navigazione -->
-    <div class="navbar-fixed  hide-on-small-only">
+    <div class="navbar-fixed hide-on-med-and-down">
         <nav class="nav-wrapper blue accent-4">
             <div>
                 <a href="#!" id="brand-name" >
@@ -41,7 +41,7 @@
     <div class='row border' id="div-main">
 
         <!-- Questo è il container della lista delle chat -->
-        <div class='col l3 xl3 hide-on-med-and-down' id='div-chat-list'>
+        <div class='col s12 m3 l3 xl3' id='div-chat-list'>
             <!-- Questa è la lista delle chat -->
             <div id="list-chat" class="collection" name="div-chat-collection">
                 <a href="#!" class="collection-item">
@@ -51,27 +51,6 @@
                 <a href="#!" class="collection-item">Chat 3</a>
                 <a href="#!" class="collection-item">
                     <span class="badge">42</span>Chat 4</a>
-                <a href="#!" class="collection-item">
-                    <span class="badge">65</span>Chat 1</a>
-                <a href="#!" class="collection-item">
-                    <span class="new badge">32</span>Chat 2</a>
-                <a href="#!" class="collection-item">Chat 3</a>
-                <a href="#!" class="collection-item">
-                    <span class="badge">42</span>Chat 4</a>
-                <a href="#!" class="collection-item">
-                        <span class="badge">65</span>Chat 1</a>
-                <a href="#!" class="collection-item">
-                    <span class="new badge">32</span>Chat 2</a>
-                <a href="#!" class="collection-item">Chat 3</a>
-                <a href="#!" class="collection-item">
-                <span class="badge">42</span>Chat 4</a>
-                <a href="#!" class="collection-item">
-                        <span class="badge">65</span>Chat 1</a>
-                <a href="#!" class="collection-item">
-                    <span class="new badge">32</span>Chat 2</a>
-                <a href="#!" class="collection-item">Chat 3</a>
-                <a href="#!" class="collection-item">
-                <span class="badge">42</span>Chat 4</a>
             </div>
             <!-- Questo è il pulsante + -->
             <div id="btn-add-chat">
@@ -84,31 +63,34 @@
         </div>
         
         <!-- Questo è il container della chat -->
-        <div id="container-chat" class="col s12 m12 l9 xl9 z-depth-3">
+        <div id="container-chat" class="col s12 m9 l9 xl9 z-depth-3">
 
             <nav id="container-chatname" class="blue accent-4 navbar-fixed z-depth-3 col s12 m12 l12 xl12">
                 <div class="nav-wrapper">
-                    <a href="#" class="hide brand-logo right">Logo</a>
+                    <a href="#" id="brand-name" class="hide brand-logo center hide-on-large-only">ChatSuperCool</a>
                     <ul id="nav-mobile" class="left">
-                        <li><a href="#" data-activates="slide-out" style="margin-left:3%;" class="profile-collapse btn-small show-on-medium-and-down">
+                        <li>
+                            <a href="#" data-activates="slide-out" style="margin-left:3%;" class="show-mobile profile-collapse btn-small hide-on-med-and-up">
                                 <i class="material-icons">menu</i>
                             </a>
                         </li>
                         <li>
-                            <a href="#" data-activates="chat-slide-out" class="col s1 m1 hide chat-collapse show-on-medium-and-down">Chat</a>
+                            <a href="#" onclick="backToChat()" style="margin-left:3%;" class="hide-mobile btn-small hide-on-large-only">
+                            <i class="material-icons">chevron_left</i>
+                            </a>
                         </li>
                         <li>
-                            <img width="40" class='left cricle #c5cae9 indigo lighten-4' src="https://i.imgur.com/HYcn9xO.png" draggable="false" />
+                            <img id="avatar-chat-statebar" width="40" class='hide-mobile left cricle #c5cae9 indigo lighten-4' src="https://i.imgur.com/HYcn9xO.png" draggable="false" />
                         </li>
                         <li>
-                            <p id="name-chat-statebar" class="center-align col s10">name chat</p>
+                            <p id="name-chat-statebar" class="hide-mobile center-align col s10">name chat</p>
                         </li>    
                     </ul>
                 </div>
             </nav>
 
-            <div id='chat' class="col s12 m12 l12 xl12" w3-include-html="./chat_div.html"></div>
-            <div id="chat-input-bar" class="card white darken-3 z-depth-3 col s12 m12 l12 xl12">
+            <div id='chat' class="hide-mobile col s12 m12 l12 xl12" w3-include-html="./chat_div.html"></div>
+            <div id="chat-input-bar" class="hide-mobile card white darken-3 z-depth-3 col s12 m12 l12 xl12">
                 <input id='input-chat' class="materialize-textarea center black-text text-darken-5" type="text" placeholder="Write message..."/>
                 <div id='button-extend' class="fixed-action-btn vertical click-to-toggle">
                     <a class="btn-floating btn-large red">
@@ -154,34 +136,6 @@
             </ul>
         </div>
 
-        <!-- Questo è il container degli utenti attivi mobile -->
-        <div>
-            <ul id="users-slide-out" class="side-nav collection with-header">
-                <li class="collection-header">
-                    <h4>Online Users</h4>
-                </li>
-                <li class="collection-item">
-                    <div>Alvin
-                        <a href="#!" class="secondary-content"></a>
-                    </div>
-                </li>
-                <li class="collection-item">
-                    <div>Alvin
-                        <a href="#!" class="secondary-content"></a>
-                    </div>
-                </li>
-                <li class="collection-item">
-                    <div>Alvin
-                        <a href="#!" class="secondary-content"></a>
-                    </div>
-                </li>
-                <li class="collection-item">
-                    <div>Alvin
-                        <a href="#!" class="secondary-content"></a>
-                    </div>
-                </li>
-            </ul>
-        </div>
         <!-- Questo è il container del profilo mobile -->
         <div>
             <ul id="slide-out" class="side-nav">
@@ -198,18 +152,6 @@
                 <li><div class="divider"></div></li>
                 <li><a class="subheader">Subheader</a></li>
                 <li><a class="waves-effect" href="../index.html">Logout</a></li>
-            </ul>
-        </div>
-        <!-- Questo è il container delle chat mobile -->
-        <div>
-            <ul id="chat-slide-out" class="side-nav collection">
-                <a href="#!" class="collection-item">
-                <span class="badge">65</span>Chat 1</a>
-                <a href="#!" class="collection-item">
-                <span class="new badge">32</span>Chat 2</a>
-                <a href="#!" class="collection-item">Chat 3</a>
-                <a href="#!" class="collection-item">
-                <span class="badge">42</span>Chat 4</a>
             </ul>
         </div>
     </div>
@@ -236,8 +178,6 @@
     
     <script>
         $(".profile-collapse").sideNav()
-        $(".chat-collapse").sideNav({edge: 'right'})
-        $(".users-collapse").sideNav({edge: 'right'})
         $("#confirm-topic").click(function(){
             var chatName = $("#topic").val();
             if (chatName)
@@ -246,6 +186,12 @@
             if ( e.keyCode == 13 )
                 $( this ).find( 'input[type=submit]:first' ).click();
             });
+        function backToChat(){
+            $("#list-chat").css("display", "inherit")
+            $(".hide-mobile").css("display", "none")
+            $(".show-mobile").css("display", "inherit")
+            
+        }
     </script>
 </body>
 </html>

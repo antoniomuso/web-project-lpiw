@@ -20,7 +20,7 @@
 
 #chat{
     overflow-y: scroll;
-    height: 60vh;
+    height: 69vh;
     padding: 0 0;
 }
 #container-chat{
@@ -78,9 +78,8 @@
     color: rgb(61, 61, 61);
 }
 #avatar-chat-statebar{
-    margin: 2px;
+    margin: 11px 7px;
     padding: 0 0;
-    float: left;
 }
 #btn-add-chat{
     position:fixed;
