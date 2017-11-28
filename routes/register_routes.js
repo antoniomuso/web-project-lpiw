@@ -10,7 +10,7 @@ module.exports = (db) => {
         req.session.message = err.message
         res.redirect('/')
     })
-    router.post('/register', async (req, res) => {
+    router.post('/register', (req, res) => {
         res.redirect('./../html/chat.html')
     })
 
