@@ -44,7 +44,7 @@
         <div class='col s12 m3 l3 xl3' id='div-chat-list'>
             <!-- Questa è la lista delle chat -->
             <div id="list-chat" class="collection" name="div-chat-collection">
-                <a href="#!" class="collection-item">
+                <a href="#!" onclick="selectedChat('./chat_div.html')" class="collection-item">
                     <span class="badge">65</span>Chat 1</a>
                 <a href="#!" class="collection-item">
                     <span class="new badge">32</span>Chat 2</a>
@@ -105,10 +105,8 @@
                 </div>
             </div>
         </div>
-
-        <!-- Questo è il container degli utenti attivi -->
-        <div id="container-users" style="display: none" class='col l3 xl3 hide-on-med-and-down' name='div-users'>
-            <!-- Questa è la lista degli utenti attivi-->
+        <!--
+        <div id="container-users" class='col l3 xl3 hide-on-med-and-down' name='div-users'>
             <ul class="collection with-header">
                 <li class="collection-header">
                     <h4>Online Users</h4>
@@ -135,7 +133,7 @@
                 </li>
             </ul>
         </div>
-
+    -->
         <!-- Questo è il container del profilo mobile -->
         <div>
             <ul id="slide-out" class="side-nav">
@@ -191,6 +189,9 @@
             $(".hide-mobile").css("display", "none")
             $(".show-mobile").css("display", "inherit")
             
+        }
+        function selectedChat(chat){
+            $("#chat").attr("w3-include-html", chat)
         }
     </script>
 </body>
