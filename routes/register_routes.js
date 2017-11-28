@@ -7,11 +7,10 @@ module.exports = (db) => {
     var router = express.Router()
     router.use('/register',middleware.registration(db))
     router.use('/register', (err, req, res, next) => {
-        res.render('../index.ejs', { error:err, message:err.message } )
+        req.session.message = err.message
+        res.redirect('/')
     })
     router.post('/register', async (req, res) => {
-
-        res.cookie('rememberme', '1')
         res.redirect('./../html/chat.html')
     })
 
