@@ -83,7 +83,7 @@
                     </div>
                 </div>
                 <div id="form-body">
-                    <form id="form-login">
+                    <form id="form-login" action='/login' method='POST'>
                         <div class="input-field col s12">
                             <div style="float:left">
                                 <i class="material-icons icon">person</i>
@@ -140,12 +140,12 @@
                                 <label class="margin-label-form" for="email-signup">Email</label>
                             </div>
                         </div>
-                        <% if (error) { %>
+                        <% if (rError) { %>
                         <div class= 'col s12'>
                             <div class='card #90caf9 blue lighten-3'>
                                 <div class="card-content red-text">
                                         <span class="card-title"><b>Error</b></span>
-                                        <b><%= error %></b>
+                                        <b><%= rError %></b>
                                 </div>
                             </div>
                         </div>

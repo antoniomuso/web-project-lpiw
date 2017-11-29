@@ -3,8 +3,7 @@ var emailV = require('email-validator')
 const querys = require('../lib/query_db')
 
 module.exports = {
-
-    registration: function (db) {
+    registration (db) {
         return async (req, res, next) => {
             var email = req.body.email
             var username = req.body.username
@@ -28,10 +27,11 @@ module.exports = {
             const hash = crypto.createHash('sha256')
             let random = Math.random().toString()
             hash.update(password + random)
-            let passH = hash.digest().toString('hex')
+            let passH = hash.digest('hex')
             if (usEmails.rowCount > 0) { // Se l'email è presente inserisco solo utente
                 try {
-                    await db.query(querys.insert_user(username, passH, random, email, ''))
+                    let id = await db.query(querys.insert_user(username, passH, random, email, ''))
+                    req.session.idUtente = id.rows[0].id
                     return next()
                 } catch (error) {
                     return next(error)
@@ -40,13 +40,41 @@ module.exports = {
 
             try {
                 await db.query('INSERT INTO Email(value) values($1);', [email])
-                await db.query(querys.insert_user(username, passH, random, email, ''))
+                let id = await db.query(querys.insert_user(username, passH, random, email, ''))
+                req.session.idUtente = id.rows[0].id
             } catch (error) {
                 return next(error)
             }
             next()
         }
     },
+    login (db) {
+        return async(req, res, next) => {
+            var username = req.body.username
+            var password = req.body.password
+            if (password === undefined || username === undefined 
+                || username.length < 5 || password.length < 5) {
+                return next(new Error('Incorrect login data'))
+            }
+            try {
+                let table = await db.query(querys.get_user_conf_with_username(username))
+                if (table.rowCount === 0) return next(new Error('Username incorrect or User not confirmed'))
+                let sale = table.rows[0].sale
+                let passInTable = table.rows[0].pass
+                const hash = crypto.createHash('sha256')
+                if ( hash.update(password + sale).digest('hex') !== passInTable) return next(new Error('Password incorrect'))
+                // Salvo i dati nella sessione
+                req.session.autenticato = true
+                req.session.idUtente = table.rows[0].id
+                req.session.username = table.rows[0].username
+                req.session.img = table.rows[0].img
+            } catch(error) {
+                return next(error)
+            }
+            next()
+        }
+    },
+
 
 
 
