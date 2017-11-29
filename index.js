@@ -22,7 +22,7 @@ app.use(express.static('./'));
 //Routes per la registrazione
 app.use('/register',middleware.registration(client))
 app.use('/register', (err, req, res, next) => {
-    req.session.rMessage = err.rMessage
+    req.session.rMessage = err.message
     res.redirect('/')
 })
 app.post('/register', (req, res) => {
@@ -33,8 +33,8 @@ app.post('/register', (req, res) => {
 //Routes per il login
 app.use('/login', middleware.login(client))
 app.use('/login', (err, req, res, next) => {
-    console.log(err) //debug
-    req.session.lMessage = err.lMessage
+    //console.log(err) //debug
+    req.session.lMessage = err.message
     res.redirect('/')
 })
 app.post('/login', (req, res) => {

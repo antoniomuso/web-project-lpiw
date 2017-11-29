@@ -103,6 +103,16 @@
                                 <label class="margin-label-form" for="password-login">Password</label>
                             </div>
                         </div>
+                        <% if (lError) { %>
+                        <div class= 'col s12'>
+                            <div class='card #90caf9 blue lighten-3'>
+                                <div class="card-content red-text">
+                                        <span class="card-title"><b>Error</b></span>
+                                        <b><%= lError %></b>
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
                         <div class="col s12 margine">
                             <div class="input-field inline">
                                 <button class="btn waves-effect waves-light" type="submit">Log in</button>
