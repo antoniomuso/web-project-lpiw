@@ -42,13 +42,19 @@ app.post('/login', (req, res) => {
     res.redirect('./../html/chat.html') // Qua va inserito il render della chat passandogli Username, Immagine Utente ecc.. contenuti nel session storage
 })
 
+app.get('/logout', (req, res) => {
+    req.session.destroy()
+    res.redirect('/')
+})
+
 app.get('/chat', (req, res) => {
     if (!req.session.autenticato) return res.redirect('/') 
     res.redirect('./../html/chat.html') // Qua va inserito il render della chat passandogli Username, Immagine Utente ecc.. contenuti nel session storage
 })
 
 app.get('/',(req, res) => {
-    return res.render('../index.ejs', {rError:req.session.rMessage, lError: req.session.lMessage}) // L'errore riguarda il login
+    res.render('../index.ejs', {rError:req.session.rMessage, lError: req.session.lMessage}) // L'errore riguarda il login
+    req.session.destroy()
 })
 
 
