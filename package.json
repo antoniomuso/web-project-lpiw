@@ -23,6 +23,7 @@
     "express": "^4.16.2",
     "express-session": "^1.15.6",
     "memorystore": "^1.6.0",
+    "nodemailer": "^4.4.0",
     "pg": "^7.4.0"
   }
 }

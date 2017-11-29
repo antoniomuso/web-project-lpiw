@@ -42,8 +42,17 @@ app.post('/login', (req, res) => {
     res.redirect('./../html/chat.html') // Qua va inserito il render della chat passandogli Username, Immagine Utente ecc.. contenuti nel session storage
 })
 
+//Logout
 app.get('/logout', (req, res) => {
     req.session.destroy()
+    res.redirect('/')
+})
+
+app.use('/conf',middleware.conf(client))
+app.use('/conf', (err, req, res) => {
+    res.redirect('https://www.youtube.com/watch?v=IBH4g_ua5es')
+})
+app.get('/conf', (req, res) => {
     res.redirect('/')
 })
 
