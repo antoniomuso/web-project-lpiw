@@ -49,7 +49,7 @@ app.get('/logout', (req, res) => {
 })
 
 app.use('/conf',middleware.conf(client))
-app.use('/conf', (err, req, res) => {
+app.use('/conf', (err, req, res, next) => {
     res.redirect('https://www.youtube.com/watch?v=IBH4g_ua5es')
 })
 app.get('/conf', (req, res) => {
