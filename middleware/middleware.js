@@ -20,7 +20,7 @@ module.exports = {
                 var nam = await db.query(querys.user_with_same_username(username)).rowCount
                 var em = await db.query(querys.user_with_same_email(email)).rowCount
                 if (em > 0) return next(new Error('Email is already being used.'))
-                if (nam > 0) return next(new Error('username is already being used.'))
+                if (nam > 0) return next(new Error('Username is already being used.'))
                 usEmails = await db.query(querys.email_in_db(email)) // controllo se l'email è già presente nel db
             } catch (error) {
                 return next(error)
@@ -39,7 +39,7 @@ module.exports = {
             }  // altrimenti inserisco anche l'email
 
             try {
-                await db.query('INSERT INTO Email(value) values($1);', [email]).then(()=> console.log('finito'))
+                await db.query('INSERT INTO Email(value) values($1);', [email])
                 await db.query(querys.insert_user(username, passH, random, email, ''))
             } catch (error) {
                 return next(error)

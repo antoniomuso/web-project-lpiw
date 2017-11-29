@@ -19,13 +19,19 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 app.use(express.static('./'));
 
-router.use('/register',middleware.registration(client))
-router.use('/register', (err, req, res, next) => {
+app.use('/register',middleware.registration(client))
+app.use('/register', (err, req, res, next) => {
     req.session.message = err.message
     res.redirect('/')
 })
-router.post('/register', (req, res) => {
+app.post('/register', (req, res) => {
+    req.session.autenticato = true
     res.redirect('./../html/chat.html')
+})
+
+app.get('/chat', (req, res) => {
+    if (req.session.autenticato) res.redirect('./../html/chat.html')
+    else res.redirect('/')
 })
 
 app.get('/',(req, res) => {
