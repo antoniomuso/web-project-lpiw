@@ -62,6 +62,7 @@ app.get('/chat', (req, res) => {
 })
 
 app.get('/',(req, res) => {
+    if (req.session.autenticato) return res.redirect('/chat')
     res.render('../index.ejs', {rError:req.session.rMessage, lError: req.session.lMessage}) // L'errore riguarda il login
     req.session.destroy()
 })
