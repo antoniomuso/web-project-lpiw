@@ -2,7 +2,9 @@
 <html lang="it">
 
 <head>
+
     <script src="./js/jquery.min.js"></script>
+    <script src="./js/homepage.js"></script>    
     <link rel="stylesheet" href="./css/font-awesome.min.css">
     <link rel="stylesheet" href="./css/materialize.min.css">
     <script src="./js/materialize.min.js"></script>
@@ -151,6 +153,7 @@
                             </div>
                         </div>
                         <% if (rError) { %>
+                        <script> showSignupTab() </script>
                         <div class= 'col s12'>
                             <div class='card #90caf9 blue lighten-3'>
                                 <div class="card-content red-text">
@@ -171,5 +174,4 @@
             </div>
         </div>
     </div>
-    <script src="./js/homepage.js"></script>
 </body>
