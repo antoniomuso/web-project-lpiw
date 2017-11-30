@@ -6,6 +6,7 @@ const { Pool } = require('pg')
 const session = require('express-session')
 const MemoryStore = require('memorystore')(session)
 const middleware = require('./middleware/middleware')
+const options = require('./conf.json')
 
 const app = express()
 const client = new Pool({ connectionString: 'postgres://obbhdnav:1ONsv6xTGR21Tl2KliBMS4p5mzRrPBr1@horton.elephantsql.com:5432/obbhdnav' })
@@ -73,4 +74,4 @@ app.get('/',(req, res) => {
 app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, './html/404.html'))
 })
-app.listen(port, () => console.log(`listen on ${port}`))
+app.listen(options.port, () => console.log(`listen on ${options.port}`))

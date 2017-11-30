@@ -1,7 +1,7 @@
 {
-    "email": "mojang.gr@gmail.com",
-    "password": "ciaociao96",
-    "emailService": "gmail",
+    "email": "chatsupercool@yandex.com",
+    "password": "nodejseunamerda",
+    "emailService": "yandex",
     "port" : 8000,
     "uri" : "http://localhost" 
 }

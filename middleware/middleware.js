@@ -30,7 +30,7 @@ module.exports = {
 
                 //Faccio l'hash della password
                 const hash = crypto.createHash('sha256')
-                let random = Math.random().toString()
+                var random = Math.random().toString()
                 let passH = hash.update(password + random).digest('hex')
 
                 if (usEmails.rowCount > 0) { // Se l'email è presente inserisco solo utente
