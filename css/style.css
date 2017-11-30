@@ -21,6 +21,7 @@
 #chat{
     overflow-y: scroll;
     height: 69vh;
+    min-height: 400px !important;
     padding: 0 0;
 }
 #container-chat{
