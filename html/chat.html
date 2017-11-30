@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="../css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/style.css">
     <link href='http://fonts.googleapis.com/css?family=Oleo+Script' rel='stylesheet' type='text/css'>
-    
+
     <link type="text/css" rel="stylesheet" href="../css/materialize.min.css" media="screen,projection" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,13 +44,13 @@
         <div class='col s12 m3 l3 xl3' id='div-chat-list'>
             <!-- Questa è la lista delle chat -->
             <div id="list-chat" class="collection" name="div-chat-collection">
-                <a href="#!" onclick="selectedChat('./chat_div.html')" class="collection-item">
+                <!--<a href="#!" onclick="selectedChat('./chat_div.html')" class="collection-item">
                     <span class="badge">65</span>Chat 1</a>
                 <a href="#!" class="collection-item">
                     <span class="new badge">32</span>Chat 2</a>
                 <a href="#!" class="collection-item">Chat 3</a>
                 <a href="#!" class="collection-item">
-                    <span class="badge">42</span>Chat 4</a>
+                    <span class="badge">42</span>Chat 4</a> -->
             </div>
             <!-- Questo è il pulsante + -->
             <div id="btn-add-chat">
@@ -164,6 +164,10 @@
                             <input placeholder="Placeholder" id="topic" type="text">
                             <label for="topic">Argomento</label>
                         </div>
+                        <div class="input-field col s12">
+                            <input placeholder="Placeholder" id="description" type="text">
+                            <label for="description">Descrizione</label>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -171,5 +175,7 @@
             <a id="confirm-topic" href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Confirm</a>
         </div>
     </div>
+    <script>loadChats()</script>
+
 </body>
 </html>
