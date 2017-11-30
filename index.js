@@ -10,7 +10,6 @@ const options = require('./conf.json')
 
 const app = express()
 const client = new Pool({ connectionString: 'postgres://obbhdnav:1ONsv6xTGR21Tl2KliBMS4p5mzRrPBr1@horton.elephantsql.com:5432/obbhdnav' })
-const port = 8000
 
 app.set('view engine', 'ejs')
 app.use(session(
