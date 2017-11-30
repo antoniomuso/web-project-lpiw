@@ -1,4 +1,6 @@
 const fadeIn = 1000
+const chatListName = "chatListName";
+var chatList ;
 // prende un messaggio ricevuto dal server e lo inserisce nella chat come messaggio ricevuto 
 // da un altra persona
 function reciveMessFrom(otherName, message, link_img) {
@@ -39,17 +41,17 @@ function sendMessage(name, message, link_img) {
     return ol[0].children[ol[0].children.length - 1]
 }
 
-function hideShowChat () {
+function hideShowChat() {
     $('#chat').toggle('bounce')
 }
 
-function backToChat(){
+function backToChat() {
     $("#list-chat").css("display", "inherit")
     $(".hide-mobile").css("display", "none")
     $(".show-mobile").css("display", "inherit")
-    
+
 }
-function selectedChat(chat){
+function selectedChat(chat) {
     $("#chat").attr("w3-include-html", chat)
 }
 
@@ -66,16 +68,55 @@ function callBackKeyPressed(e) {
     }
 }
 
-function getTimeStamp(chat)
-{
-    return window.performance && window.performance.now && window.performance.timing && window.performance.timing.navigationStart ? window.performance.now() + window.performance.timing.navigationStart : Date.now();
+//GET TIME STAMP FROM DB
+function setTimeStamp(chat) {
+    chat.timeStamp = window.performance && window.performance.now && window.performance.timing && window.performance.timing.navigationStart ? window.performance.now() + window.performance.timing.navigationStart : Date.now();
 }
 
-function createNewChat(chat){
-    
-    var timeStampInMs = getTimeStamp(chat);
-    var chat ={timeStamp:timeStampInMs, chatName:chat};
+function appendNewChatToDocument(chat) {
     $("#list-chat").append('<a href="#!" class="collection-item">' + chat.chatName + '</a>');
+
+}
+
+function createNewChat(chatName, chatDesc) {
+
+    var chat = { chatName: chatName, chatDesc: chatDesc };
+    setTimeStamp(chat);
+    saveChat(chat);
+    appendNewChatToDocument(chat);
+}
+
+function loadChats() {
+    chatList = {};
+    var loadedChats = JSON.parse(localStorage.chatListName);
+    if (loadedChats)
+        chatList = loadedChats;
+    console.log(chatList)
+    for ( let ind in chatList)
+    {
+        var chat = chatList[ind];
+        appendNewChatToDocument(chat);
+    }
+    
+}
+
+function saveChat(chat) {
+    chatList[chat.timeStamp] = chat;
+    console.log(chatList);
+    localStorage.chatListName = JSON.stringify(chatList);
+}
+
+function remove(chatTimeStamp) {
+    delete chatList[chatTimeStamp];
+    localStorage.chatListName = JSON.stringify(chatList);
+}
+
+function chatSubmitClicked()
+{
+    var chatName = $("#topic").val();
+        var chatDesc = $("#description").val();
+        if (chatName && chatDesc)
+            createNewChat(chatName, chatDesc);
 }
 
 $(document).ready(function () {
@@ -86,15 +127,10 @@ $(document).ready(function () {
     }) // embedda chat_div in questa pagina html
 
     $(".profile-collapse").sideNav()
-    $("#confirm-topic").click(function(){
-        var chatName = $("#topic").val();
-    
-        if (chatName)
-            createNewChat(chatName);
+    $("#confirm-topic").click(chatSubmitClicked);
+    $("#description").bind('keypress', function (e) {
+        if (e.keyCode == 13)
+            $("#confirm-topic").click(chatSubmitClicked) 
     });
-    $("#confirm-topic").bind('keypress', function(e){
-        if ( e.keyCode == 13 )
-            $( this ).find( 'input[type=submit]:first' ).click();
-        });
 
 })
