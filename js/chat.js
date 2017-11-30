@@ -39,6 +39,19 @@ function sendMessage(name, message, link_img) {
     return ol[0].children[ol[0].children.length - 1]
 }
 
+function hideShowChat () {
+    $('#chat').toggle('bounce')
+}
+
+function backToChat(){
+    $("#list-chat").css("display", "inherit")
+    $(".hide-mobile").css("display", "none")
+    $(".show-mobile").css("display", "inherit")
+    
+}
+function selectedChat(chat){
+    $("#chat").attr("w3-include-html", chat)
+}
 
 // cattura l'evento di pressione dell'enter
 function callBackKeyPressed(e) {
@@ -52,6 +65,7 @@ function callBackKeyPressed(e) {
         }, 2000)
     }
 }
+
 $(document).ready(function () {
     // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
     $('.modal').modal();
@@ -59,9 +73,14 @@ $(document).ready(function () {
         $('#input-chat').keydown(callBackKeyPressed)
     }) // embedda chat_div in questa pagina html
 
+    $(".profile-collapse").sideNav()
+    $("#confirm-topic").click(function(){
+        var chatName = $("#topic").val();
+        if (chatName)
+            $("#list-chat").append('<a href="#!" class="collection-item">' + chatName + '</a>')});
+    $("#confirm-topic").bind('keypress', function(e){
+        if ( e.keyCode == 13 )
+            $( this ).find( 'input[type=submit]:first' ).click();
+        });
+
 })
-
-
-function hideShowChat () {
-    $('#chat').toggle('bounce')
-}
