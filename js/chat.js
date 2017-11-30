@@ -66,6 +66,18 @@ function callBackKeyPressed(e) {
     }
 }
 
+function getTimeStamp(chat)
+{
+    return window.performance && window.performance.now && window.performance.timing && window.performance.timing.navigationStart ? window.performance.now() + window.performance.timing.navigationStart : Date.now();
+}
+
+function createNewChat(chat){
+    
+    var timeStampInMs = getTimeStamp(chat);
+    var chat ={timeStamp:timeStampInMs, chatName:chat};
+    $("#list-chat").append('<a href="#!" class="collection-item">' + chat.chatName + '</a>');
+}
+
 $(document).ready(function () {
     // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
     $('.modal').modal();
@@ -76,8 +88,10 @@ $(document).ready(function () {
     $(".profile-collapse").sideNav()
     $("#confirm-topic").click(function(){
         var chatName = $("#topic").val();
+    
         if (chatName)
-            $("#list-chat").append('<a href="#!" class="collection-item">' + chatName + '</a>')});
+            createNewChat(chatName);
+    });
     $("#confirm-topic").bind('keypress', function(e){
         if ( e.keyCode == 13 )
             $( this ).find( 'input[type=submit]:first' ).click();
