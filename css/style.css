@@ -20,16 +20,17 @@
 
 #chat{
     overflow-y: scroll;
-    height: 69vh;
-    min-height: 400px !important;
+    height:  calc(100vh - 218px);
     padding: 0 0;
 }
 #container-chat{
+    height: calc(100vh - 64px);
     padding: 0 0;
 }
 #chat-input-bar{
     padding: 10px 10px 0px 10px;
     margin: 0 0;
+    height: 90px;
     border: solid rgb(201, 201, 201) ;
     border-radius: 5px;
     border-width: 2px 0px 0px 0px;
