@@ -82,9 +82,16 @@
 #avatar-chat-statebar{
     margin: 11px 7px;
     padding: 0 0;
+    border-radius: 50%;
 }
 #btn-add-chat{
     position:fixed;
     bottom: 2px;
     left: auto;
+}
+.center-div{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
 }
