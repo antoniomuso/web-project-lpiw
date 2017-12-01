@@ -50,7 +50,7 @@
 }
 #list-chat{
     overflow-y: auto;
-    height: 75vh;
+    height: calc(100vh - 64px);
     border: 0;
     
 }
@@ -91,9 +91,12 @@
     border-radius: 50%;
 }
 #btn-add-chat{
-    position:fixed;
-    bottom: 2px;
-    left: auto;
+    position: absolute;
+    bottom: 1%;
+    right: 10%;
+}
+#div-chat-list{
+    position: relative;
 }
 .center-div{
     position: absolute;
