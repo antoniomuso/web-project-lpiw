@@ -148,6 +148,10 @@ $(document).ready(function () {
             $("#confirm-topic").click(chatSubmitClicked) 
     });
 
+    const globalComunication = io('/chat')
+    const specChat = io('/prova')
+    
+
 })
 //non so se avete fatto una funzione. quando clicchi sulla chat nella lista fa tornare la barra
 function openChat(chat){

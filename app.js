@@ -7,8 +7,11 @@ const session = require('express-session')
 const MemoryStore = require('memorystore')(session)
 const middleware = require('./middleware/middleware')
 const options = require('./conf.json')
-
+const http = require('http')
 const app = express()
+var server = new http.Server(app)
+var io = require('socket.io')(server);
+require('./lib/chat_socketio')(io)
 const client = new Pool({ connectionString: 'postgres://obbhdnav:1ONsv6xTGR21Tl2KliBMS4p5mzRrPBr1@horton.elephantsql.com:5432/obbhdnav' })
 
 app.set('view engine', 'ejs')
@@ -39,7 +42,7 @@ app.use('/login', (err, req, res, next) => {
 })
 app.post('/login', (req, res) => {
     if (!req.session.autenticato) return res.redirect('/') 
-    res.redirect('./../html/chat.html') // Qua va inserito il render della chat passandogli Username, Immagine Utente ecc.. contenuti nel session storage
+    res.redirect('./chat') // Qua va inserito il render della chat passandogli Username, Immagine Utente ecc.. contenuti nel session storage
 })
 
 //Logout
@@ -58,7 +61,7 @@ app.get('/conf', (req, res) => {
 
 app.get('/chat', (req, res) => {
     if (!req.session.autenticato) return res.redirect('/') 
-    res.redirect('./../html/chat.html') // Qua va inserito il render della chat passandogli Username, Immagine Utente ecc.. contenuti nel session storage
+    res.sendFile(path.join(__dirname, './html/chat.html')) // Qua va inserito il render della chat passandogli Username, Immagine Utente ecc.. contenuti nel session storage
 })
 
 app.get('/',(req, res) => {
@@ -74,4 +77,4 @@ app.get('/',(req, res) => {
 app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, './html/404.html'))
 })
-app.listen(options.port, () => console.log(`listen on ${options.port}`))
+server.listen(options.port, () => console.log(`listen on ${options.port}`))
