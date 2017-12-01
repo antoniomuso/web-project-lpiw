@@ -1,6 +1,11 @@
 const fadeIn = 1000
 const chatListName = "chatListName";
 var chatList ;
+var modalitaEnum = {
+    MOBILE: 0,
+    DESKTOP: 1,
+  };
+  var modalita;
 // prende un messaggio ricevuto dal server e lo inserisce nella chat come messaggio ricevuto 
 // da un altra persona
 function reciveMessFrom(otherName, message, link_img) {
@@ -121,8 +126,10 @@ function chatSubmitClicked()
 
 $(document).ready(function () {
     //nascondi la chat da mobile
-    if($( document ).width() <= 600)    $(".mobile-chat").css("display", "none")
-    
+    if($(document).width() <= 600){
+        modalita = modalitaEnum.MOBILE
+        $(".mobile-chat").css("display", "none")
+    }
     // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
     $('.modal').modal();
     w3.includeHTML(() => { // callback di fine embedd
@@ -139,16 +146,31 @@ $(document).ready(function () {
 })
 //non so se avete fatto una funzione. quando clicchi sulla chat nella lista fa tornare la barra
 function openChat(chat){
-    if($(document).width() <= 600)
+    if(modalita == modalitaEnum.MOBILE)
+    {
+        $(".mobile-chat").css("display", "inherit")
         $(".mobile-list").css("display", "none")
-    $(".mobile-chat").css("display", "inherit")
+    }
     $("#name-chat-statebar").text($(chat).text())
 
 }
 function resizeWindow(){
-    if($(document).width() <= 600)
-        $(".mobile-chat").css("display", "none")
+    var oldModalita = modalita
+    if ($(document).width() <= 600)
+        modalita = modalitaEnum.MOBILE
     else
-        $(".mobile-chat").css("display", "inherit")
-    $(".mobile-list").css("display", "inherit")
+        modalita = modalitaEnum.DESKTOP
+    
+    if (!modalita == oldModalita)
+    {
+        if(modalita == modalitaEnum.MOBILE)
+        {
+            $(".mobile-list").css("display", "inherit")
+            $(".mobile-chat").css("display", "none")
+        }
+        else{
+            $(".mobile-list").css("display", "inherit")
+            $(".mobile-chat").css("display", "inherit")
+        }
+    }
 }
