@@ -46,7 +46,7 @@ function hideShowChat() {
 }
 
 function backToChat() {
-    if(screen.width <= 600)
+    if($( document ).width() <= 600)
         $(".mobile-chat").css("display", "none")
     $(".mobile-list").css("display", "inherit")
     
@@ -121,6 +121,9 @@ function chatSubmitClicked()
 }
 
 $(document).ready(function () {
+    //nascondi la chat da mobile
+    if($( document ).width() <= 600)    $(".mobile-chat").css("display", "none")
+    
     // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
     $('.modal').modal();
     w3.includeHTML(() => { // callback di fine embedd
@@ -137,19 +140,17 @@ $(document).ready(function () {
 })
 //non so se avete fatto una funzione. quando clicchi sulla chat nella lista fa tornare la barra
 function openChat(chat){
-    if(screen.width <= 600)
+   // if(screen.width <= 600)
         $(".mobile-list").css("display", "none")
     $(".mobile-chat").css("display", "inherit")
     $("#name-chat-statebar").text($(chat).text())
 
 }
 function resizeWindow(){
-    if(screen.width <= 600)
+    if($( document ).width() <= 600)
         $(".mobile-chat").css("display", "none")
     else{
         $(".mobile-chat").css("display", "inherit")
         $(".mobile-list").css("display", "inherit")
-    }        
+    }
 }
-if(screen.width <= 600)
-    $(".mobile-chat").css("display", "none")
