@@ -119,12 +119,14 @@ function chatSubmitClicked()
 {
     var chatName = $("#topic").val();
     var chatDesc = $("#description").val();
-    if(chatName.length <= 30)
+    if(chatName.length <= 30)///per non fare i nomi delle chat lunghissime: ci vorrebbe un avviso se superano tale dim
         if (chatName && chatDesc){
             createNewChat(chatName, chatDesc);
             $("#div-create-new-chat").css("display", "none")
-            $("#topic").val("");
-            $("#description").val("");
+            $("#topic").val("")
+            $("#description").val("")
+            var list = document.getElementById("list-chat").firstChild
+            setTimeout(function() { list.className += " show";}, 10)
         }
             
 }
@@ -183,3 +185,13 @@ function showAddChatMenu()
 {
     $("#div-create-new-chat").css("display", "inherit")
 }
+
+$(document).mouseup(function(e) 
+{
+    var container = $("#div-create-new-chat");
+    // if the target of the click isn't the container nor a descendant of the container
+    if (!container.is(e.target) && container.has(e.target).length === 0) 
+    {
+        container.hide();
+    }
+});
