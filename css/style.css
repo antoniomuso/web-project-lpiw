@@ -4,6 +4,9 @@
     text-shadow: 4px 4px 0px rgba(0,0,0,0.1);
     padding-top: 7px;
 }
+body{
+    overflow: hidden
+}
 #container{
     background-image:  linear-gradient(rgba(41, 98, 255, 0.322), white);
     background-repeat: no-repeat;
