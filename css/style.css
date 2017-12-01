@@ -44,10 +44,11 @@
 }
 
 #confirm-topic{
-    position: absolute;
-    right: 5%;
-    bottom: 2%
+    position: static;
+    margin-top:50px;
+    margin-left: calc(50% - 84px);
 }
+
 #button-extend{
     position: absolute !important;
     top: -5px;
