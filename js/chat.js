@@ -46,10 +46,10 @@ function hideShowChat() {
 }
 
 function backToChat() {
-    $("#list-chat").css("display", "inherit")
-    $(".hide-mobile").css("display", "none")
-    $(".show-mobile").css("display", "inherit")
-
+    if(screen.width <= 600)
+        $(".mobile-chat").css("display", "none")
+    $(".mobile-list").css("display", "inherit")
+    
 }
 function selectedChat(chat) {
     $("#chat").attr("w3-include-html", chat)
@@ -74,7 +74,7 @@ function setTimeStamp(chat) {
 }
 
 function appendNewChatToDocument(chat) {
-    $("#list-chat").append('<a href="#!" class="collection-item">' + chat.chatName + '</a>');
+    $("#list-chat").append('<a href="#!" onclick="openChat(this)" class="collection-item">' + chat.chatName + '</a>');
 
 }
 
@@ -114,7 +114,8 @@ function remove(chatTimeStamp) {
 function chatSubmitClicked()
 {
     var chatName = $("#topic").val();
-        var chatDesc = $("#description").val();
+    var chatDesc = $("#description").val();
+    if(chatName.length <= 30)
         if (chatName && chatDesc)
             createNewChat(chatName, chatDesc);
 }
@@ -134,3 +135,21 @@ $(document).ready(function () {
     });
 
 })
+//non so se avete fatto una funzione. quando clicchi sulla chat nella lista fa tornare la barra
+function openChat(chat){
+    if(screen.width <= 600)
+        $(".mobile-list").css("display", "none")
+    $(".mobile-chat").css("display", "inherit")
+    $("#name-chat-statebar").text($(chat).text())
+
+}
+function resizeWindow(){
+    if(screen.width <= 600)
+        $(".mobile-chat").css("display", "none")
+    else{
+        $(".mobile-chat").css("display", "inherit")
+        $(".mobile-list").css("display", "inherit")
+    }        
+}
+if(screen.width <= 600)
+    $(".mobile-chat").css("display", "none")

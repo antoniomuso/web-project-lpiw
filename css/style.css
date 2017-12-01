@@ -2,7 +2,7 @@
     font: 400 30px/1.3 'Oleo Script', Helvetica, sans-serif;
     /*color: #2b2b2b;*/
     text-shadow: 4px 4px 0px rgba(0,0,0,0.1);
-    margin-left: 3%;
+    padding-top: 7px;
 }
 #container{
     background-image:  linear-gradient(rgba(41, 98, 255, 0.322), white);
@@ -52,8 +52,8 @@
     overflow-y: scroll;
     height: 75vh;
     
-    
 }
+#list-chat a{color: black;}
 #chat ol{
     margin-bottom: 0;
 }
@@ -94,4 +94,9 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%);
+}
+#name-chat-statebar{
+    width: 57%;
+    white-space: nowrap;
+    overflow: hidden;
 }
