@@ -148,8 +148,7 @@ function openChat(chat){
 function resizeWindow(){
     if($(document).width() <= 600)
         $(".mobile-chat").css("display", "none")
-    else{
+    else
         $(".mobile-chat").css("display", "inherit")
-        $(".mobile-list").css("display", "inherit")
-    }
+    $(".mobile-list").css("display", "inherit")
 }
