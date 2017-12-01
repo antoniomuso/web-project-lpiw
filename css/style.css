@@ -3,6 +3,7 @@
     /*color: #2b2b2b;*/
     text-shadow: 4px 4px 0px rgba(0,0,0,0.1);
     padding-top: 7px;
+    margin:3%;
 }
 #container{
     background-image:  linear-gradient(rgba(41, 98, 255, 0.322), white);
