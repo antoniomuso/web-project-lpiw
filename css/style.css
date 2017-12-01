@@ -49,7 +49,7 @@
     margin: 0 0;
 }
 #list-chat{
-    overflow-y: scroll;
+    overflow-y: auto;
     height: 75vh;
     
 }
