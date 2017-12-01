@@ -59,6 +59,8 @@
     overflow-y: auto;
     height: calc(100vh - 64px);
     border: 0;
+    z-index: 49;
+    
     
 }
 #list-chat a{
@@ -101,6 +103,7 @@
     position: absolute;
     bottom: 1%;
     right: 10%;
+    z-index: 49;
 }
 #div-chat-list{
     position: relative;
@@ -115,4 +118,21 @@
     width: 57%;
     white-space: nowrap;
     overflow: hidden;
+}
+#div-create-new-chat{
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
+    background-color: white;
+    border-radius: 20%;
+    z-index: 50;
+    display: none;
+    width: 80%;
+    animation-name: showNewChat;
+    animation-duration: 1.5s;
+}
+
+@keyframes showNewChat{
+    from {bottom: -300%; opacity: 0}
+    to {bottom: 5%; opacity: 1}
 }

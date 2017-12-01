@@ -60,14 +60,30 @@
                 <a href="#!" class="collection-item">Chat 3</a>
                 <a href="#!" class="collection-item">
                     <span class="badge">42</span>Chat 4</a> -->
-            </div>
-            <!-- Questo è il pulsante + -->
-            <div id="btn-add-chat">
-                <h1 class="center-align">
-                    <a class="btn-floating modal-trigger btn-large waves-effect waves-light blue accent-4" href="#div-create_new_chat">
-                        <i class="material-icons">add</i>
-                    </a>
-                </h1>
+                </div>
+                <!-- Questo è il messaggio che appare per creare nuove chat-->
+                <div id="div-create-new-chat" class=" ">
+                    <form class="col s12">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="topic" type="text">
+                                <label for="topic">Argomento</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input id="description" type="text">
+                                <label for="description">Descrizione</label>
+                            </div>
+                            <button id="confirm-topic" class="waves-effect waves-green btn">Conferma</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- Questo è il pulsante + -->
+                <div id="btn-add-chat">
+                    <h1 class="center-align">
+                        <button onclick="showAddChatMenu()" class="btn-floating btn-large waves-effect waves-light blue accent-4" href="#div-create_new_chat">
+                            <i class="material-icons">add</i>
+                        </button>
+                    </h1>
             </div>
         </div>
         
@@ -128,26 +144,6 @@
         </div>
     </div>
     
-    <!-- Questo è il messaggio che appare per creare nuove chat-->
-    <div id="div-create_new_chat" class="modal modal-fixed-footer">
-        <div class="modal-content" >
-            <div class="row">
-                <form class="col s12">
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="topic" type="text">
-                            <label for="topic">Argomento</label>
-                        </div>
-                        <div class="input-field col s12">
-                            <input id="description" type="text">
-                            <label for="description">Descrizione</label>
-                        </div>
-                        <button id="confirm-topic" class="modal-action modal-close waves-effect waves-green btn">Conferma</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
     <script>loadChats()</script>
 
 </body>

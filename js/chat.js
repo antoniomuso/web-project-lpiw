@@ -120,8 +120,13 @@ function chatSubmitClicked()
     var chatName = $("#topic").val();
     var chatDesc = $("#description").val();
     if(chatName.length <= 30)
-        if (chatName && chatDesc)
+        if (chatName && chatDesc){
             createNewChat(chatName, chatDesc);
+            $("#div-create-new-chat").css("display", "none")
+            $("#topic").val("");
+            $("#description").val("");
+        }
+            
 }
 
 $(document).ready(function () {
@@ -173,4 +178,8 @@ function resizeWindow(){
             $(".mobile-chat").css("display", "inherit")
         }
     }
+}
+function showAddChatMenu()
+{
+    $("#div-create-new-chat").css("display", "inherit")
 }
