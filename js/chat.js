@@ -78,7 +78,7 @@ function setTimeStamp(chat) {
 }
 
 function appendNewChatToDocument(chat) {
-    $("#list-chat").append('<a href="#!" onclick="openChat(this)" class="collection-item">' + chat.chatName + '</a>');
+    $("#list-chat").prepend('<a href="#!" onclick="openChat(this)" class="collection-item">' + chat.chatName + '</a>');
 
 }
 
