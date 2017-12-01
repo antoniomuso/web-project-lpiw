@@ -57,6 +57,8 @@
 #list-chat a{
     color: black;
     font-weight: bold;
+    text-transform: capitalize;
+    
 }
 #chat ol{
     margin-bottom: 0;
