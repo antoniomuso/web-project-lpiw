@@ -46,8 +46,7 @@ function hideShowChat() {
 }
 
 function backToChat() {
-    if($( document ).width() <= 600)
-        $(".mobile-chat").css("display", "none")
+    $(".mobile-chat").css("display", "none")
     $(".mobile-list").css("display", "inherit")
     
 }
@@ -140,14 +139,14 @@ $(document).ready(function () {
 })
 //non so se avete fatto una funzione. quando clicchi sulla chat nella lista fa tornare la barra
 function openChat(chat){
-   // if(screen.width <= 600)
+    if($(document).width() <= 600)
         $(".mobile-list").css("display", "none")
     $(".mobile-chat").css("display", "inherit")
     $("#name-chat-statebar").text($(chat).text())
 
 }
 function resizeWindow(){
-    if($( document ).width() <= 600)
+    if($(document).width() <= 600)
         $(".mobile-chat").css("display", "none")
     else{
         $(".mobile-chat").css("display", "inherit")
