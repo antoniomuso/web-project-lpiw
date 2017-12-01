@@ -51,6 +51,7 @@
 #list-chat{
     overflow-y: auto;
     height: 75vh;
+    border: 0;
     
 }
 #list-chat a{color: black;}
