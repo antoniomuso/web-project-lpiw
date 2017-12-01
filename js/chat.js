@@ -1,5 +1,6 @@
 const fadeIn = 1000
 const chatListName = "chatListName";
+var snd = new Audio("../sound/pling.wav")
 var chatList ;
 var modalitaEnum = {
     MOBILE: 0,
@@ -119,7 +120,7 @@ function chatSubmitClicked()
 {
     var chatName = $("#topic").val();
     var chatDesc = $("#description").val();
-    if(chatName.length <= 30)///per non fare i nomi delle chat lunghissime: ci vorrebbe un avviso se superano tale dim
+    if(chatName.length <= 30)///da sistemare. per non fare i nomi delle chat lunghissime: ci vorrebbe un avviso se superano tale dim
         if (chatName && chatDesc){
             createNewChat(chatName, chatDesc);
             $("#div-create-new-chat").css("display", "none")
@@ -127,6 +128,7 @@ function chatSubmitClicked()
             $("#description").val("")
             var list = document.getElementById("list-chat").firstChild
             setTimeout(function() { list.className += " show";}, 10)
+            snd.play();
         }
             
 }
