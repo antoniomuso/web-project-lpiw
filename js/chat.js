@@ -1,12 +1,12 @@
 const fadeIn = 1000
 const chatListName = "chatListName";
 var snd = new Audio("../sound/pling.wav")
-var chatList ;
+var chatList;
 var modalitaEnum = new Enum({
-    MOBILE: { value:0, description:'Mobile Mode' },
-    DESKTOP: { value:1, description:'Desktop Mode' },
+    MOBILE: 0,
+    DESKTOP: 1
 });
-  var modalita;
+var modalita;
 // prende un messaggio ricevuto dal server e lo inserisce nella chat come messaggio ricevuto 
 // da un altra persona
 function reciveMessFrom(otherName, message, link_img) {
@@ -54,7 +54,7 @@ function hideShowChat() {
 function backToChat() {
     $(".mobile-chat").css("display", "none")
     $(".mobile-list").css("display", "inherit")
-    
+
 }
 function selectedChat(chat) {
     $("#chat").attr("w3-include-html", chat)
@@ -97,12 +97,11 @@ function loadChats() {
     if (loadedChats)
         chatList = loadedChats;
     console.log(chatList)
-    for ( let ind in chatList)
-    {
+    for (let ind in chatList) {
         var chat = chatList[ind];
         appendNewChatToDocument(chat);
     }
-    
+
 }
 
 function saveChat(chat) {
@@ -116,26 +115,25 @@ function remove(chatTimeStamp) {
     localStorage.chatListName = JSON.stringify(chatList);
 }
 
-function chatSubmitClicked()
-{
+function chatSubmitClicked() {
     var chatName = $("#topic").val();
     var chatDesc = $("#description").val();
-    if(chatName.length <= 30)///da sistemare. per non fare i nomi delle chat lunghissime: ci vorrebbe un avviso se superano tale dim
-        if (chatName && chatDesc){
+    if (chatName.length <= 30)///da sistemare. per non fare i nomi delle chat lunghissime: ci vorrebbe un avviso se superano tale dim
+        if (chatName && chatDesc) {
             createNewChat(chatName, chatDesc);
             $("#div-create-new-chat").css("display", "none")
             $("#topic").val("")
             $("#description").val("")
             var list = document.getElementById("list-chat").firstChild
-            setTimeout(function() { list.className += " show";}, 10)
+            setTimeout(function () { list.className += " show"; }, 10)
             snd.play();
         }
-            
+
 }
 
 $(document).ready(function () {
     //nascondi la chat da mobile
-    if($(document).width() <= 600){
+    if ($(document).width() <= 600) {
         modalita = modalitaEnum.MOBILE
         $(".mobile-chat").css("display", "none")
     }
@@ -149,55 +147,49 @@ $(document).ready(function () {
     $("#confirm-topic").click(chatSubmitClicked);
     $("#description").bind('keypress', function (e) {
         if (e.keyCode == 13)
-            $("#confirm-topic").click(chatSubmitClicked) 
+            $("#confirm-topic").click(chatSubmitClicked)
     });
 
     const globalComunication = io('/chat')
     const specChat = io('/prova')
-    
+
 
 })
 //non so se avete fatto una funzione. quando clicchi sulla chat nella lista fa tornare la barra
-function openChat(chat){
-    if(modalita == modalitaEnum.MOBILE)
-    {
+function openChat(chat) {
+    if (modalita == modalitaEnum.MOBILE) {
         $(".mobile-chat").css("display", "inherit")
         $(".mobile-list").css("display", "none")
     }
     $("#name-chat-statebar").text($(chat).text())
 
 }
-function resizeWindow(){
+function resizeWindow() {
     var oldModalita = modalita
     if ($(document).width() <= 600)
         modalita = modalitaEnum.MOBILE
     else
         modalita = modalitaEnum.DESKTOP
-    
-    if (!modalita == oldModalita)
-    {
-        if(modalita == modalitaEnum.MOBILE)
-        {
+
+    if (!modalita == oldModalita) {
+        if (modalita == modalitaEnum.MOBILE) {
             $(".mobile-list").css("display", "inherit")
             $(".mobile-chat").css("display", "none")
         }
-        else{
+        else {
             $(".mobile-list").css("display", "inherit")
             $(".mobile-chat").css("display", "inherit")
         }
     }
 }
-function showAddChatMenu()
-{
+function showAddChatMenu() {
     $("#div-create-new-chat").css("display", "inherit")
 }
 
-$(document).mouseup(function(e) 
-{
+$(document).mouseup(function (e) {
     var container = $("#div-create-new-chat");
     // if the target of the click isn't the container nor a descendant of the container
-    if (!container.is(e.target) && container.has(e.target).length === 0) 
-    {
+    if (!container.is(e.target) && container.has(e.target).length === 0) {
         container.hide();
     }
 });
