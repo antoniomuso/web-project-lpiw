@@ -7,10 +7,18 @@ $(document).ready(() => {
     socket.on('Error', (error) => {
         console.log(error)
     })
-    socket.on('prova' ,()=> {
-        socket.emit('join','daje')
+
+    socket.on('createRoom', (ist, nome, desc) => {
+        // Qui bisogna creare la chat
+        createNewChat(nome,desc,ist)
     })
 
+    socket.on('message', (user,message) => {
+        reciveMessFrom(user, message, null)
+    })
+    //socket.emit('join','frace')
+    socket.emit('createRoom', 'prova', 'semplice chat')
+    
 
 
 

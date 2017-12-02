@@ -123,10 +123,9 @@ function appendNewChatToDocumentWithAnimation(chat) {
     liShowAnimation(c.prependTo('#list-chat').first())
 }
 
-function createNewChat(chatName, chatDesc) {
-
-    var chat = { chatName: chatName, chatDesc: chatDesc };
-    setTimeStamp(chat);
+function createNewChat(chatName, chatDesc, ist) {
+    var chat = { chatName: chatName, chatDesc: chatDesc, timeStamp: ist };
+    if (!ist) setTimeStamp(chat);
     saveChat(chat);
     appendNewChatToDocumentWithAnimation(chat);
 }
