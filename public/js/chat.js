@@ -104,12 +104,13 @@ function setTimeStamp(chat) {
 }
 
 function appendNewChatToDocument(chat) {
-    $(`<a href="#!" onclick="openChat(this)" class="collection-item"> ${chat.chatName} </a>`).prependTo('#list-chat')
+    $(`<li style='list-style-type: none;'><a href="#!" onclick="openChat(this)" class="collection-item"> ${chat.chatName} </a></li>`).prependTo('#list-chat')
 }
 
-function appendNewChatToDocumentAnimation(chat) {
-    let c = $(`<a href="#!" onclick="openChat(this)" class="collection-item"> ${chat.chatName} </a>`).hide()
-    c.prependTo('#list-chat').first().stop().slideToggle(500)
+function appendNewChatToDocumentWithAnimation(chat) {
+    let c = $(`<li style='list-style-type: none;'><a href="#!" onclick="openChat(this)" class="collection-item"> ${chat.chatName} </a></li>`)
+    c.prependTo('#list-chat')
+    Materialize.showStaggeredList($('#list-chat'))
 }
 
 function createNewChat(chatName, chatDesc) {
@@ -117,11 +118,12 @@ function createNewChat(chatName, chatDesc) {
     var chat = { chatName: chatName, chatDesc: chatDesc };
     setTimeStamp(chat);
     saveChat(chat);
-    appendNewChatToDocumentAnimation(chat);
+    appendNewChatToDocumentWithAnimation(chat);
 }
 
 function loadChats() {
     chatList = {};
+    //var s = $('#list-chat').hide()
     var loadedChats = JSON.parse(localStorage.chatListName);
     if (loadedChats)
         chatList = loadedChats;
@@ -130,6 +132,7 @@ function loadChats() {
         var chat = chatList[ind];
         appendNewChatToDocument(chat);
     }
+    Materialize.showStaggeredList('#list-chat')
 
 }
 
