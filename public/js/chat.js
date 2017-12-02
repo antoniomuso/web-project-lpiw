@@ -27,9 +27,6 @@ $(document).ready(function () {
             $("#confirm-topic").click()
     });
     loadChats()
-
-    const globalComunication = io()
-    const specChat = io('/prova')
 })
 
 // prende un messaggio ricevuto dal server e lo inserisce nella chat come messaggio ricevuto 
