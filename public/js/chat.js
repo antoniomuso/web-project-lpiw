@@ -24,7 +24,7 @@ $(document).ready(function () {
     $("#confirm-topic").click(chatSubmitClicked);
     $("#description").bind('keypress', function (e) {
         if (e.keyCode == 13)
-            $("#confirm-topic").click(chatSubmitClicked)
+            $("#confirm-topic").click()
     });
     loadChats()
 
