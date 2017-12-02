@@ -98,6 +98,11 @@ function callBackKeyPressed(e) {
     }
 }
 
+function liAnimation(element) {
+    element.velocity({ translateX: "-100px" }, { duration: 0 });
+    element.velocity({ opacity: "1", translateX: "0" }, { duration: 800, delay: 0, easing: [60, 10] })
+}
+
 //GET TIME STAMP FROM DB
 function setTimeStamp(chat) {
     chat.timeStamp = window.performance && window.performance.now && window.performance.timing && window.performance.timing.navigationStart ? window.performance.now() + window.performance.timing.navigationStart : Date.now();
@@ -109,8 +114,7 @@ function appendNewChatToDocument(chat) {
 
 function appendNewChatToDocumentWithAnimation(chat) {
     let c = $(`<li style='list-style-type: none;'><a href="#!" onclick="openChat(this)" class="collection-item"> ${chat.chatName} </a></li>`)
-    c.prependTo('#list-chat')
-    Materialize.showStaggeredList($('#list-chat'))
+    liAnimation(c.prependTo('#list-chat').first())
 }
 
 function createNewChat(chatName, chatDesc) {
