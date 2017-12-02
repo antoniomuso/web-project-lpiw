@@ -26,6 +26,7 @@ $(document).ready(function () {
         if (e.keyCode == 13)
             $("#confirm-topic").click(chatSubmitClicked)
     });
+    loadChats()
 
     const globalComunication = io('/chat')
     const specChat = io('/prova')
