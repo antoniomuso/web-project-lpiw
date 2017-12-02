@@ -28,7 +28,7 @@ $(document).ready(function () {
     });
     loadChats()
 
-    const globalComunication = io('/chat')
+    const globalComunication = io()
     const specChat = io('/prova')
 })
 
