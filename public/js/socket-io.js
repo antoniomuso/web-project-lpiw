@@ -17,7 +17,7 @@ $(document).ready(() => {
         reciveMessFrom(user, message, null)
     })
     //socket.emit('join','frace')
-    socket.emit('createRoom', 'prova', 'semplice chat')
+    //socket.emit('createRoom', 'prova', 'semplice chat')
     
 
 
