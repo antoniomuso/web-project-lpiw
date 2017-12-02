@@ -72,6 +72,14 @@ function sendMessage(name, message, link_img) {
     return ol[0].children[ol[0].children.length - 1]
 }
 
+// Rimuove li dalla lista
+function liRemoveAnimation (element) { 
+    if (typeof element === 'string' ) var element = $(element)
+    console.log(typeof element)
+    //element.velocity({ translateX: "-100px" }, { duration: 0 });
+    element.velocity({ opacity: "0", translateX: "-100px" }, { duration: 800, delay: 0, easing: [60, 10] })
+}
+
 function hideShowChat() {
     $('#chat').toggle('bounce')
 }
@@ -98,7 +106,8 @@ function callBackKeyPressed(e) {
     }
 }
 
-function liAnimation(element) {
+function liShowAnimation(element) {
+    if (typeof element === 'string' ) var element = $(element)
     element.velocity({ translateX: "-100px" }, { duration: 0 });
     element.velocity({ opacity: "1", translateX: "0" }, { duration: 800, delay: 0, easing: [60, 10] })
 }
@@ -114,7 +123,7 @@ function appendNewChatToDocument(chat) {
 
 function appendNewChatToDocumentWithAnimation(chat) {
     let c = $(`<li style='list-style-type: none;'><a href="#!" onclick="openChat(this)" class="collection-item"> ${chat.chatName} </a></li>`)
-    liAnimation(c.prependTo('#list-chat').first())
+    liShowAnimation(c.prependTo('#list-chat').first())
 }
 
 function createNewChat(chatName, chatDesc) {
