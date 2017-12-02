@@ -20,7 +20,7 @@ app.use(session(
     store: new MemoryStore({ checkPeriod: 86400000 }), resave: false, saveUninitialized: false}));
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
-app.use(express.static('./'));
+app.use(express.static('./public'));
 
 //Routes per la registrazione
 app.use('/register',middleware.registration(client))
@@ -75,6 +75,6 @@ app.get('/',(req, res) => {
 
 
 app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname, './html/404.html'))
+    res.redirect('/html/404.html')
 })
 server.listen(options.port, () => console.log(`listen on ${options.port}`))

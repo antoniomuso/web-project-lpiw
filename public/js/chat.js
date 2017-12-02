@@ -1,12 +1,36 @@
 const fadeIn = 1000
 const chatListName = "chatListName";
-var snd = new Audio("../sound/pling.wav")
+var snd = new Audio("/sound/pling.wav")
 var chatList;
-var modalitaEnum = new Enum({
+var modalitaEnum = {
     MOBILE: 0,
     DESKTOP: 1
-});
+};
 var modalita;
+
+$(document).ready(function () {
+    //nascondi la chat da mobile
+    if ($(document).width() <= 600) {
+        modalita = modalitaEnum.MOBILE
+        $(".mobile-chat").css("display", "none")
+    }
+    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal();
+    w3.includeHTML(() => { // callback di fine embedd
+        $('#input-chat').keydown(callBackKeyPressed)
+    }) // embedda chat_div in questa pagina html
+
+    $(".profile-collapse").sideNav()
+    $("#confirm-topic").click(chatSubmitClicked);
+    $("#description").bind('keypress', function (e) {
+        if (e.keyCode == 13)
+            $("#confirm-topic").click(chatSubmitClicked)
+    });
+
+    const globalComunication = io('/chat')
+    const specChat = io('/prova')
+})
+
 // prende un messaggio ricevuto dal server e lo inserisce nella chat come messaggio ricevuto 
 // da un altra persona
 function reciveMessFrom(otherName, message, link_img) {
@@ -131,30 +155,6 @@ function chatSubmitClicked() {
 
 }
 
-$(document).ready(function () {
-    //nascondi la chat da mobile
-    if ($(document).width() <= 600) {
-        modalita = modalitaEnum.MOBILE
-        $(".mobile-chat").css("display", "none")
-    }
-    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
-    $('.modal').modal();
-    w3.includeHTML(() => { // callback di fine embedd
-        $('#input-chat').keydown(callBackKeyPressed)
-    }) // embedda chat_div in questa pagina html
-
-    $(".profile-collapse").sideNav()
-    $("#confirm-topic").click(chatSubmitClicked);
-    $("#description").bind('keypress', function (e) {
-        if (e.keyCode == 13)
-            $("#confirm-topic").click(chatSubmitClicked)
-    });
-
-    const globalComunication = io('/chat')
-    const specChat = io('/prova')
-
-
-})
 //non so se avete fatto una funzione. quando clicchi sulla chat nella lista fa tornare la barra
 function openChat(chat) {
     if (modalita == modalitaEnum.MOBILE) {
