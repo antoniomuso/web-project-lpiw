@@ -2,10 +2,10 @@ const fadeIn = 1000
 const chatListName = "chatListName";
 var snd = new Audio("../sound/pling.wav")
 var chatList ;
-var modalitaEnum = {
-    MOBILE: 0,
-    DESKTOP: 1,
-  };
+var modalitaEnum = new Enum({
+    MOBILE: { value:0, description:'Mobile Mode' },
+    DESKTOP: { value:1, description:'Desktop Mode' },
+});
   var modalita;
 // prende un messaggio ricevuto dal server e lo inserisce nella chat come messaggio ricevuto 
 // da un altra persona
