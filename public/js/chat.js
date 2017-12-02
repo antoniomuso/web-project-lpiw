@@ -109,8 +109,7 @@ function appendNewChatToDocument(chat) {
 
 function appendNewChatToDocumentAnimation(chat) {
     let c = $(`<a href="#!" onclick="openChat(this)" class="collection-item"> ${chat.chatName} </a>`).hide()
-    let val = c.prependTo('#list-chat')
-    val.first().stop().slideToggle(500)
+    c.prependTo('#list-chat').first().stop().slideToggle(500)
 }
 
 function createNewChat(chatName, chatDesc) {
