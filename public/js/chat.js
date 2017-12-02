@@ -104,8 +104,13 @@ function setTimeStamp(chat) {
 }
 
 function appendNewChatToDocument(chat) {
-    $("#list-chat").prepend('<a href="#!" onclick="openChat(this)" class="collection-item">' + chat.chatName + '</a>');
+    $(`<a href="#!" onclick="openChat(this)" class="collection-item"> ${chat.chatName} </a>`).prependTo('#list-chat')
+}
 
+function appendNewChatToDocumentAnimation(chat) {
+    let c = $(`<a href="#!" onclick="openChat(this)" class="collection-item"> ${chat.chatName} </a>`).hide()
+    let val = c.prependTo('#list-chat')
+    val.first().stop().slideToggle(500)
 }
 
 function createNewChat(chatName, chatDesc) {
@@ -113,7 +118,7 @@ function createNewChat(chatName, chatDesc) {
     var chat = { chatName: chatName, chatDesc: chatDesc };
     setTimeStamp(chat);
     saveChat(chat);
-    appendNewChatToDocument(chat);
+    appendNewChatToDocumentAnimation(chat);
 }
 
 function loadChats() {
@@ -150,8 +155,8 @@ function chatSubmitClicked() {
             $("#topic").val("")
             $("#description").val("")
             var list = document.getElementById("list-chat").firstChild
-            setTimeout(function () { list.className += " show"; }, 10)
-            snd.play();
+            //setTimeout(function () { list.className += " show"; }, 10)
+            //snd.play();
         }
 
 }

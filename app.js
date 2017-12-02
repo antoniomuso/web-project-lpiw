@@ -61,7 +61,7 @@ app.get('/conf', (req, res) => {
 
 app.get('/chat', (req, res) => {
     if (!req.session.autenticato) return res.redirect('/') 
-    res.sendFile(path.join(__dirname, './html/chat.html')) // Qua va inserito il render della chat passandogli Username, Immagine Utente ecc.. contenuti nel session storage
+    res.sendFile(path.join(__dirname, './public/html/chat.html')) // Qua va inserito il render della chat passandogli Username, Immagine Utente ecc.. contenuti nel session storage
 })
 
 app.get('/',(req, res) => {
