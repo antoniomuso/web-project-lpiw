@@ -8,5 +8,6 @@ Progetto tecnologie e linguaggi per il web, Stefan, giovannino, Antonio.
 - [x] Login e Registrazione.
 - [ ] Più Animazioni.
 - [ ] Modalità telefono.
-- [ ] Gestione delle immagini lato server .
+- [ ] Gestione delle immagini lato server.
 - [ ] View per la chat per inserimento dati. 
+- [ ] Inserire Username dell'utente per i messaggi nella chat.
