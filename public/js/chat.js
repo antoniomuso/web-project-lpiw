@@ -172,6 +172,13 @@ function chatSubmitClicked() {
 
 }
 
+function reset($elem) {
+    $elem.before($elem.clone(true));
+    var $newElem = $elem.prev();
+    $elem.remove();
+    return $newElem;
+} 
+
 //non so se avete fatto una funzione. quando clicchi sulla chat nella lista fa tornare la barra
 function openChat(chat) {
     if (modalita == modalitaEnum.MOBILE) {
@@ -179,15 +186,18 @@ function openChat(chat) {
         $(".mobile-list").css("display", "none")
     }
     //Animazione per far apparire chat
-    $('#container-chat').addClass('animated bounceInLeft').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
-    function()
+    var containerChat = $('#container-chat');
+    containerChat.removeClass("animated bounceInLeft");
+    containerChat = reset(containerChat);
+    if($(chat).text().localeCompare($("#name-chat-statebar").text()) != 0 )
     {
-        $(this).removeClass('animated bounceInLeft');
-    });
-
-    $("#name-chat-statebar").text($(chat).text())
-
-
+        $("#name-chat-statebar").text($(chat).text())
+        containerChat.addClass('animated bounceInLeft').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
+            function()
+            {
+                $(this).removeClass('animated bounceInLeft');
+            });
+    }
 }
 function resizeWindow() {
     var oldModalita = modalita
