@@ -68,11 +68,20 @@ app.get('/conf', (req, res) => {
 
 //Routes per la richiesta di tutte le chat 
 app.use('/rooms', middleware.rooms(client))
-app.use('rooms', (error, req, res, next) => {
+app.use('/rooms', (error, req, res, next) => {
     res.json(error)
 })
 app.get('/rooms', (req, res) => {
     res.json(req.chats)
+})
+
+//Routes per la richiesta dei messaggi di una chat
+app.use('/rooms/message', middleware.messageRooms(client))
+app.use('/rooms/message', (error, req, res, next) => {
+    res.json(error)
+})
+app.post('/rooms/message', (req, res) => {
+    res.json(req.rows)
 })
 
 //Routes per la chat.

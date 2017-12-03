@@ -13,7 +13,7 @@ Progetto tecnologie e linguaggi per il web, Stefan, giovannino, Antonio.
 - [ ] Inserire Username dell'utente per i messaggi nella chat.
 - [ ] Inserire Username e Immagine dell'utente loggato da qualche parte nella chat.
 - [x] API per la richiesta delle chat.
-- [ ] API per la richiesta dei messaggi di una chat.
+- [x] API per la richiesta dei messaggi di una chat.
 - [x] API per la creazione di una chat.
 - [x] API per l'invio di un messaggio.
 

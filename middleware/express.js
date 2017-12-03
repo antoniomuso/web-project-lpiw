@@ -111,6 +111,20 @@ module.exports = {
             req.chats = tab.rows
             next()
         }
+    },
+    messageRooms(db) {
+        return async (req, res, next) => {
+            var ist = req.body.ist
+            var hours = req.body.hours
+            if(!ist || !hours) return next(new Error('ist and hours not defined'))
+            try {
+                var { rows } = await db.query(querys.get_messages_of_chat(ist, hours))
+            } catch (error) {
+                return next(error)
+            }
+            req.rows = rows
+            next()
+        }
     }
 
 
