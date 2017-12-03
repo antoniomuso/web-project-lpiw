@@ -20,7 +20,7 @@ var ses = session(
 const client = new Pool({ connectionString: 'postgres://obbhdnav:1ONsv6xTGR21Tl2KliBMS4p5mzRrPBr1@horton.elephantsql.com:5432/obbhdnav' })
 
 //Gestione socket io 
-require('./lib/chat_socket_io')(io, ses, client)
+require('./lib/chat-socket-io')(io, ses, client)
 
 app.set('view engine', 'ejs')
 app.use(ses)

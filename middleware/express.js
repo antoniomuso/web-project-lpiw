@@ -1,8 +1,8 @@
 const crypto = require('crypto');
 var emailV = require('email-validator')
-const querys = require('../lib/query_db')
+const querys = require('../lib/query-db')
 var options = require('../conf.json')
-var send_email_conf = require('../lib/send_email_conf')
+var send_email_conf = require('../lib/send-email-conf')
 
 module.exports = {
     registration(db) {
