@@ -26,7 +26,13 @@ $(document).ready(function () {
         if (e.keyCode == 13)
             $("#confirm-topic").click()
     });
+
+
     loadChats()
+    $('.tooltipped').tooltip({ delay: 50 });
+
+
+
 })
 
 // prende un messaggio ricevuto dal server e lo inserisce nella chat come messaggio ricevuto 
@@ -70,8 +76,8 @@ function sendMessage(name, message, link_img) {
 }
 
 // Rimuove li dalla lista
-function liRemoveAnimation (element) { 
-    if (typeof element === 'string' ) var element = $(element)
+function liRemoveAnimation(element) {
+    if (typeof element === 'string') var element = $(element)
     console.log(typeof element)
     //element.velocity({ translateX: "-100px" }, { duration: 0 });
     element.velocity({ opacity: "0", translateX: "-100px" }, { duration: 800, delay: 0, easing: [60, 10] })
@@ -104,7 +110,7 @@ function callBackKeyPressed(e) {
 }
 
 function liShowAnimation(element) {
-    if (typeof element === 'string' ) var element = $(element)
+    if (typeof element === 'string') var element = $(element)
     element.velocity({ translateX: "-100px" }, { duration: 0 });
     element.velocity({ opacity: "1", translateX: "0" }, { duration: 800, delay: 0, easing: [60, 10] })
 }
@@ -115,12 +121,15 @@ function setTimeStamp(chat) {
 }
 
 function appendNewChatToDocument(chat) {
-    $(`<li style='list-style-type: none;'><a href="#!" onclick="openChat(this)" class="collection-item"> ${chat.chatName} </a></li>`).prependTo('#list-chat')
+    $(`<li style='list-style-type: none;'><a href="#!" onclick="openChat(this)" class="collection-item tooltipped" data-position="right" data-delay="50" data-tooltip="${chat.chatDesc}" id="${chat.timeStamp}"> ${chat.chatName} </a></li>`).prependTo('#list-chat')
+    //addTooltipItem(chat.timeStamp, chat.chatDesc);
 }
 
 function appendNewChatToDocumentWithAnimation(chat) {
-    let c = $(`<li style='list-style-type: none;'><a href="#!" onclick="openChat(this)" class="collection-item"> ${chat.chatName} </a></li>`)
+    let c = $(`<li style='list-style-type: none;'><a href="#!" onclick="openChat(this)" class="collection-item tooltipped" data-position="right" data-delay="50" data-tooltip="${chat.chatDesc}" id="${chat.timeStamp}"> ${chat.chatName} </a></li>`)
     liShowAnimation(c.prependTo('#list-chat').first())
+    //addTooltipItem(chat.timeStamp, chat.chatDesc);
+
 }
 
 function createNewChat(chatName, chatDesc, ist) {
@@ -136,11 +145,12 @@ function loadChats() {
     var loadedChats = JSON.parse(localStorage.chatListName);
     if (loadedChats)
         chatList = loadedChats;
-    console.log(chatList)
+
     for (let ind in chatList) {
         var chat = chatList[ind];
         appendNewChatToDocument(chat);
     }
+
     Materialize.showStaggeredList('#list-chat')
 
 }
@@ -169,15 +179,17 @@ function chatSubmitClicked() {
             //setTimeout(function () { list.className += " show"; }, 10)
             //snd.play();
         }
+    $('.tooltipped').tooltip({ delay: 50 });
 
 }
+
 
 function reset($elem) {
     $elem.before($elem.clone(true));
     var $newElem = $elem.prev();
     $elem.remove();
     return $newElem;
-} 
+}
 
 //non so se avete fatto una funzione. quando clicchi sulla chat nella lista fa tornare la barra
 function openChat(chat) {
@@ -189,12 +201,10 @@ function openChat(chat) {
     var containerChat = $('#container-chat');
     containerChat.removeClass("animated bounceInLeft");
     containerChat = reset(containerChat);
-    if($(chat).text().localeCompare($("#name-chat-statebar").text()) != 0 )
-    {
+    if ($(chat).text().localeCompare($("#name-chat-statebar").text()) != 0) {
         $("#name-chat-statebar").text($(chat).text())
         containerChat.addClass('animated bounceInLeft').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
-            function()
-            {
+            function () {
                 $(this).removeClass('animated bounceInLeft');
             });
     }
@@ -218,13 +228,36 @@ function resizeWindow() {
     }
 }
 function showAddChatMenu() {
-    $("#div-create-new-chat").css("display", "inherit")
+    var containerChat = $("#div-create-new-chat");
+    if (containerChat.is(":hidden")) {
+        $("#div-create-new-chat").css("display", "inherit")
+        containerChat.removeClass("animated bounceIn");
+        containerChat = reset(containerChat);
+        containerChat.addClass('animated bounceIn').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
+            function () {
+                $(this).removeClass('animated bounceIn');
+            });
+    }
 }
 
+//Funzione usata per controllare se il click ha colpito la nuvoletta usata per aggiungere nuove chat
 $(document).mouseup(function (e) {
-    var container = $("#div-create-new-chat");
+    var containerSubmit = $("#div-create-new-chat");
+    var containerButton = $("#btn-add-chat");
+
     // if the target of the click isn't the container nor a descendant of the container
-    if (!container.is(e.target) && container.has(e.target).length === 0) {
-        container.hide();
+    // And the target is not the add button
+    if (!containerButton.is(e.target)
+        && containerButton.has(e.target).length === 0
+        && !containerSubmit.is(e.target)
+        && containerSubmit.has(e.target).length === 0) {
+
+        containerSubmit.removeClass("animated bounceIn");
+        containerSubmit.removeClass("animated bounceOut");
+        containerSubmit.addClass('animated bounceOut').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
+            function () {
+                $(this).removeClass('animated bounceOut');
+                containerSubmit.hide();
+            });
     }
 });

@@ -128,9 +128,9 @@
     z-index: 50;
     display: none;
     width: 80%;
-    animation-name: showAddChat;
+    /*animation-name: showAddChat;
     animation-duration: 1s;
-    padding: 2% 1%;
+    padding: 2% 1%;*/
 }
 @keyframes showAddChat{
     from {bottom: -300%; opacity: 0}
