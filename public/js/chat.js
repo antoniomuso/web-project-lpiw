@@ -178,7 +178,15 @@ function openChat(chat) {
         $(".mobile-chat").css("display", "inherit")
         $(".mobile-list").css("display", "none")
     }
+    //Animazione per far apparire chat
+    $('#container-chat').addClass('animated bounceInLeft').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
+    function()
+    {
+        $(this).removeClass('animated bounceInLeft');
+    });
+
     $("#name-chat-statebar").text($(chat).text())
+
 
 }
 function resizeWindow() {
