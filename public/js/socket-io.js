@@ -8,13 +8,13 @@ $(document).ready(() => {
         console.log(error)
     })
 
-    socket.on('createRoom', (ist, nome, desc) => {
+    socket.on('createRoom', (data) => {
         // Qui bisogna creare la chat
-        createNewChat(nome,desc,ist)
+        createNewChat(data.name,data.descr,data.ist)
     })
 
-    socket.on('message', (user,message) => {
-        reciveMessFrom(user, message, null)
+    socket.on('message', (data) => {
+        reciveMessFrom(data.user, data.message, data.img)
     })
     //socket.emit('join','frace')
     //socket.emit('createRoom', 'prova', 'semplice chat')

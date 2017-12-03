@@ -100,6 +100,17 @@ module.exports = {
             }
             next()
         }
+    },
+    rooms(db) {
+        return async (req, res, next) => {
+            try {
+                var tab = await db.query(querys.get_chats_of_day())
+            } catch (error) {
+                return next(error)
+            }
+            req.chats = tab.rows
+            next()
+        }
     }
 
 
