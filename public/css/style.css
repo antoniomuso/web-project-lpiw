@@ -14,6 +14,10 @@
     width: 100%;
     overflow-y: auto;
 }
+.material-tooltip {
+    width: 200px;
+    word-break: break-all;
+}
 
 #div-main{
     margin-bottom: 0;
