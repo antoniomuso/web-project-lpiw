@@ -21,7 +21,6 @@ $(document).ready(() => {
     
     //socket.emit('join','frace')
     //socket.emit('createRoom', 'Room Di Prova', 'Semplice chat')
-    
 
 
 })
@@ -35,6 +34,27 @@ function getChats (cb) {
         url: '/rooms',
         type: 'GET',
         cache:false,
+        success: (data) => {
+            cb(null,data)
+        },
+        error: (request, status, error) => {
+            cb (error)
+        }
+    })
+}
+
+/*
+    Effettua la richiesta dei messaggi di una chat
+    input: CallBack cb(error, data)
+*/
+function getMessage (ist, hours, cb) { 
+    $.ajax({
+        url: '/rooms',
+        type: 'POST',
+        cache:false,
+        data: {ist:ist, hours: hours},
+        dataType: 'json',
+        contentType: "application/json",        
         success: (data) => {
             cb(null,data)
         },
