@@ -132,11 +132,11 @@ function appendNewChatToDocumentWithAnimation(chat) {
 
 }
 
-function createNewChat(chatName, chatDesc, ist, notAnimation) {
+function createNewChat(chatName, chatDesc, ist, noAnimation) {
     var chat = { chatName: chatName, chatDesc: chatDesc, timeStamp: ist };
     if (!ist) setTimeStamp(chat);
     saveChat(chat);
-    if (!notAnimation) appendNewChatToDocumentWithAnimation(chat);
+    if (!noAnimation) appendNewChatToDocumentWithAnimation(chat);
     else appendNewChatToDocument(chat)
 }
 
