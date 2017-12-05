@@ -27,9 +27,7 @@ $(document).ready(function () {
             $("#confirm-topic").click()
     });
 
-
     loadChats()
-    $('.tooltipped').tooltip({ delay: 50 });
 
 
 
@@ -66,7 +64,7 @@ function sendMessage(name, message, link_img) {
             <p>${message}</p>
             <time>${(new Date()).toLocaleTimeString()}</time>
         </div>
-        </li>`)
+    </li>`)
     object.find('.avatar').hide()
     object.find('.msg').hide()
     var ol = object.appendTo('#chats')
@@ -138,20 +136,18 @@ function createNewChat(chatName, chatDesc, ist, noAnimation) {
     saveChat(chat);
     if (!noAnimation) appendNewChatToDocumentWithAnimation(chat);
     else appendNewChatToDocument(chat)
+    $('.tooltipped').tooltip({ delay: 50 }); // Mostra le descrizioni           
 }
 
 function loadChats() {
-    chatList = {};
-
+    //chatList = {};
     //Faccio una richiesta al server e chiedo le chat
     getChats((error, obj) => {
         if (error) return console.error(error)
         //console.log(obj)
         obj.forEach(chat => createNewChat(chat.nome, chat.descr, chat.ist, true))
-        Materialize.showStaggeredList('#list-chat')
+        Materialize.showStaggeredList('#list-chat') // Animazione lista delle chat
     })
-
-
 }
 
 function saveChat(chat) {
@@ -178,8 +174,6 @@ function chatSubmitClicked() {
             //setTimeout(function () { list.className += " show"; }, 10)
             //snd.play();
         }
-    $('.tooltipped').tooltip({ delay: 50 });
-
 }
 
 
