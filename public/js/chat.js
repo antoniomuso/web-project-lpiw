@@ -100,6 +100,7 @@ function callBackKeyPressed(e) {
     if (e.which == 13) {
         if (this.value === '') return
         var msg = sendMessage('Giovanni Varricchione', this.value, 'https://scontent-mxp1-1.xx.fbcdn.net/v/t1.0-9/20770225_10212100619488480_2709822859667583246_n.jpg?oh=2aced0a77a1238729b5fc0886ae1f28a&oe=5AD25825')
+        socket.emit('message',this.value)
         //console.log(msg)
         $(this).val('')
         $('#chat').stop().animate({
@@ -206,9 +207,7 @@ function openChat(chat) {
                 function () {
                     $(this).removeClass('animated bounceInLeft');
                 });
-
         })
-
     }
 }
 function resizeWindow() {
