@@ -6,7 +6,7 @@ $(document).ready(() => {
         // document.location = '/' 
     })
     socket.on('Error', (error) => {
-        console.log(error)
+        console.error(error)
     })
 
     socket.on('createRoom', (data) => {
