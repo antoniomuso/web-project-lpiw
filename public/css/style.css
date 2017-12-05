@@ -30,6 +30,7 @@
 }
 #container-chat{
     height: calc(100vh - 64px);
+    background-color: white;
     padding: 0 0;
 }
 #chat-input-bar{

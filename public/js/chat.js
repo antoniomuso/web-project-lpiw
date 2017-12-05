@@ -205,6 +205,7 @@ function openChat(chat) {
         socket.emit('join', ist, (conf) => {
             if (!conf) return
             currentIst = ist
+            removeLiMessage()
             $("#name-chat-statebar").text($(chat).text())
             containerChat.addClass('animated bounceInLeft').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
                 function () {
@@ -213,6 +214,11 @@ function openChat(chat) {
         })
     }
 }
+
+function removeLiMessage () {
+    var chat = $('#chats').empty()
+}
+
 function resizeWindow() {
     var oldModalita = modalita
     if ($(document).width() <= 600)
