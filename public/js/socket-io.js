@@ -16,14 +16,29 @@ $(document).ready(() => {
     socket.on('message', (data) => {
         reciveMessFrom(data.user, data.message, data.img)
     })
+
+    
     //socket.emit('join','frace')
-    //socket.emit('createRoom', 'prova', 'semplice chat')
+    //socket.emit('createRoom', 'Room Di Prova', 'Semplice chat')
     
 
 
-
-
-
-
-
 })
+
+/*
+    Effettua la richiesta per le chat
+    input: CallBack cb(error, data)
+*/
+function getChats (cb) { 
+    $.ajax({
+        url: '/rooms',
+        type: 'GET',
+        cache:false,
+        success: (data) => {
+            cb(null,data)
+        },
+        error: (request, status, error) => {
+            cb (error)
+        }
+    })
+}

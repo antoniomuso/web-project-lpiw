@@ -132,26 +132,25 @@ function appendNewChatToDocumentWithAnimation(chat) {
 
 }
 
-function createNewChat(chatName, chatDesc, ist) {
+function createNewChat(chatName, chatDesc, ist, notAnimation) {
     var chat = { chatName: chatName, chatDesc: chatDesc, timeStamp: ist };
     if (!ist) setTimeStamp(chat);
     saveChat(chat);
-    appendNewChatToDocumentWithAnimation(chat);
+    if (!notAnimation) appendNewChatToDocumentWithAnimation(chat);
+    else appendNewChatToDocument(chat)
 }
 
 function loadChats() {
     chatList = {};
-    //var s = $('#list-chat').hide()
-    var loadedChats = JSON.parse(localStorage.chatListName);
-    if (loadedChats)
-        chatList = loadedChats;
 
-    for (let ind in chatList) {
-        var chat = chatList[ind];
-        appendNewChatToDocument(chat);
-    }
+    //Faccio una richiesta al server e chiedo le chat
+    getChats((error, obj) => {
+        if (error) return console.error(error)
+        //console.log(obj)
+        obj.forEach(chat => createNewChat(chat.nome, chat.descr, chat.ist, true))
+        Materialize.showStaggeredList('#list-chat')
+    })
 
-    Materialize.showStaggeredList('#list-chat')
 
 }
 
