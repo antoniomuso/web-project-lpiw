@@ -1,7 +1,8 @@
 const fadeIn = 1000
 const chatListName = "chatListName";
 var snd = new Audio("/sound/pling.wav")
-var chatList;
+var chatList = {}
+var currentIst = null
 var modalitaEnum = {
     MOBILE: 0,
     DESKTOP: 1
@@ -64,7 +65,7 @@ function sendMessage(name, message, link_img) {
             <p>${message}</p>
             <time>${(new Date()).toLocaleTimeString()}</time>
         </div>
-    </li>`)
+        </li>`)
     object.find('.avatar').hide()
     object.find('.msg').hide()
     var ol = object.appendTo('#chats')
@@ -194,12 +195,20 @@ function openChat(chat) {
     var containerChat = $('#container-chat');
     containerChat.removeClass("animated bounceInLeft");
     containerChat = reset(containerChat);
-    if ($(chat).text().localeCompare($("#name-chat-statebar").text()) != 0) {
-        $("#name-chat-statebar").text($(chat).text())
-        containerChat.addClass('animated bounceInLeft').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
-            function () {
-                $(this).removeClass('animated bounceInLeft');
-            });
+    var ist = $(chat).attr('id')
+    if (ist != currentIst) {
+        // Faccio il join alla chat 
+        socket.emit('join', ist, (conf) => {
+            if (!conf) return
+            currentIst = ist
+            $("#name-chat-statebar").text($(chat).text())
+            containerChat.addClass('animated bounceInLeft').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
+                function () {
+                    $(this).removeClass('animated bounceInLeft');
+                });
+
+        })
+
     }
 }
 function resizeWindow() {
