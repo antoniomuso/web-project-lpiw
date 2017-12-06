@@ -29,7 +29,7 @@ $(document).ready(function () {
 
 
     loadChats()
-    $('.tooltipped').tooltip({ delay: 50 });
+    $('.tooltipped').tooltip({ delay: 1 });
 
 
 
@@ -121,12 +121,12 @@ function setTimeStamp(chat) {
 }
 
 function appendNewChatToDocument(chat) {
-    $(`<li style='list-style-type: none;'><a href="#!" onclick="openChat(this)" class="collection-item tooltipped" data-position="right" data-delay="50" data-tooltip="${chat.chatDesc}" id="${chat.timeStamp}"> ${chat.chatName} </a></li>`).prependTo('#list-chat')
+    $(`<li style='list-style-type: none;'><a href="#!" onclick="openChat(this)" class="collection-item tooltipped" data-position="right" data-delay="10" data-tooltip="${chat.chatDesc}" id="${chat.timeStamp}"> ${chat.chatName} </a></li>`).prependTo('#list-chat')
     //addTooltipItem(chat.timeStamp, chat.chatDesc);
 }
 
 function appendNewChatToDocumentWithAnimation(chat) {
-    let c = $(`<li style='list-style-type: none;'><a href="#!" onclick="openChat(this)" class="collection-item tooltipped" data-position="right" data-delay="50" data-tooltip="${chat.chatDesc}" id="${chat.timeStamp}"> ${chat.chatName} </a></li>`)
+    let c = $(`<li style='list-style-type: none;'><a href="#!" onclick="openChat(this)" class="collection-item tooltipped" data-position="right" data-delay="10" data-tooltip="${chat.chatDesc}" id="${chat.timeStamp}"> ${chat.chatName} </a></li>`)
     liShowAnimation(c.prependTo('#list-chat').first())
     //addTooltipItem(chat.timeStamp, chat.chatDesc);
 
