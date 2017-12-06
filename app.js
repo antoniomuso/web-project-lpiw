@@ -2,7 +2,8 @@ const express = require('express')
 const fs = require('fs')
 const path = require('path')
 const bodyParser = require('body-parser')
-const { Pool } = require('pg')
+const pg = require('pg')
+const Pool = pg.Pool
 const session = require('express-session')
 const MemoryStore = require('memorystore')(session)
 const middleware = require('./middleware/express')
@@ -16,6 +17,10 @@ var ses = session(
         secret: 'Nessuna la IndovinaBell',
         store: new MemoryStore({ checkPeriod: 86400000 }), resave: false, saveUninitialized: false
     })
+// Rimuovo qualsiasi tipo di parser per il timestamp
+pg.types.setTypeParser(1082, val =>  val)
+pg.types.setTypeParser(1114, val =>  val)
+pg.types.setTypeParser(1184, val =>  val)
 
 const client = new Pool({ connectionString: 'postgres://obbhdnav:1ONsv6xTGR21Tl2KliBMS4p5mzRrPBr1@horton.elephantsql.com:5432/obbhdnav' })
 

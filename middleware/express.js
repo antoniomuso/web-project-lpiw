@@ -7,9 +7,7 @@ var send_email_conf = require('../lib/send-email-conf')
 module.exports = {
     registration(db) {
         return async (req, res, next) => {
-            var email = req.body.email
-            var username = req.body.username
-            var password = req.body.password
+            var { email, username, password } = req.body
             // Vincolo sulla lunghezza dell password
             if (password === undefined || username === undefined
                 || email === undefined || username.length < 5 || password.length < 5
@@ -53,8 +51,7 @@ module.exports = {
     },
     login(db) {
         return async (req, res, next) => {
-            var username = req.body.username
-            var password = req.body.password
+            var { username, password } = req.body
             if (password === undefined || username === undefined
                 || username.length < 5 || password.length < 5) {
                 return next(new Error('Incorrect login data'))
@@ -114,8 +111,7 @@ module.exports = {
     },
     messageRooms(db) {
         return async (req, res, next) => {
-            var ist = req.body.ist
-            var hours = req.body.hours
+            var { hours, ist } = req.body
             if(!ist || !hours) return next(new Error('ist and hours not defined'))
             try {
                 var { rows } = await db.query(querys.get_messages_of_chat(ist, hours))

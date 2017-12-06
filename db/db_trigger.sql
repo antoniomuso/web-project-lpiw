@@ -7,7 +7,7 @@ begin
     ISERROR := EXISTS(
         select *
         from Chat c
-        where NEW.chat = c.ist and ( c.ist > NEW.ist or NEW.ist < c.scad)
+        where NEW.chat = c.ist and ( c.ist > NEW.ist or NEW.ist > c.scad)
     );
     if ISERROR then
          raise exception 'Messaggio inserito su una chat scaduta, oppure istante iserimento messaggio sbagliato';

@@ -1,7 +1,8 @@
 const fadeIn = 1000
 const chatListName = "chatListName";
 var snd = new Audio("/sound/pling.wav")
-var chatList;
+var chatList = {}
+var currentIst = null
 var modalitaEnum = {
     MOBILE: 0,
     DESKTOP: 1
@@ -27,11 +28,8 @@ $(document).ready(function () {
             $("#confirm-topic").click()
     });
 
-
     loadChats()
     $('.tooltipped').tooltip({ delay: 1 });
-
-
 
 })
 
@@ -101,6 +99,7 @@ function callBackKeyPressed(e) {
     if (e.which == 13) {
         if (this.value === '') return
         var msg = sendMessage('Giovanni Varricchione', this.value, 'https://scontent-mxp1-1.xx.fbcdn.net/v/t1.0-9/20770225_10212100619488480_2709822859667583246_n.jpg?oh=2aced0a77a1238729b5fc0886ae1f28a&oe=5AD25825')
+        socket.emit('message',this.value)
         //console.log(msg)
         $(this).val('')
         $('#chat').stop().animate({
@@ -132,27 +131,24 @@ function appendNewChatToDocumentWithAnimation(chat) {
 
 }
 
-function createNewChat(chatName, chatDesc, ist) {
+function createNewChat(chatName, chatDesc, ist, noAnimation) {
     var chat = { chatName: chatName, chatDesc: chatDesc, timeStamp: ist };
     if (!ist) setTimeStamp(chat);
     saveChat(chat);
-    appendNewChatToDocumentWithAnimation(chat);
+    if (!noAnimation) appendNewChatToDocumentWithAnimation(chat);
+    else appendNewChatToDocument(chat)
+    $('.tooltipped').tooltip({ delay: 50 }); // Mostra le descrizioni           
 }
 
 function loadChats() {
-    chatList = {};
-    //var s = $('#list-chat').hide()
-    var loadedChats = JSON.parse(localStorage.chatListName);
-    if (loadedChats)
-        chatList = loadedChats;
-
-    for (let ind in chatList) {
-        var chat = chatList[ind];
-        appendNewChatToDocument(chat);
-    }
-
-    Materialize.showStaggeredList('#list-chat')
-
+    //chatList = {};
+    //Faccio una richiesta al server e chiedo le chat
+    getChats((error, obj) => {
+        if (error) return console.error(error)
+        //console.log(obj)
+        obj.forEach(chat => createNewChat(chat.nome, chat.descr, chat.ist, true))
+        Materialize.showStaggeredList('#list-chat') // Animazione lista delle chat
+    })
 }
 
 function saveChat(chat) {
@@ -171,16 +167,17 @@ function chatSubmitClicked() {
     var chatDesc = $("#description").val();
     if (chatName.length <= 30)///da sistemare. per non fare i nomi delle chat lunghissime: ci vorrebbe un avviso se superano tale dim
         if (chatName && chatDesc) {
-            createNewChat(chatName, chatDesc);
-            $("#div-create-new-chat").css("display", "none")
-            $("#topic").val("")
-            $("#description").val("")
-            var list = document.getElementById("list-chat").firstChild
+            // creo la room e aspetto che mi ritorni il time stamp
+            socket.emit('createRoom', {nome:chatName, desc:chatDesc}, (ist) => {
+                createNewChat(chatName, chatDesc, ist);
+                $("#div-create-new-chat").css("display", "none")
+                $("#topic").val("")
+                $("#description").val("")
+                var list = document.getElementById("list-chat").firstChild
+            })
             //setTimeout(function () { list.className += " show"; }, 10)
             //snd.play();
         }
-    $('.tooltipped').tooltip({ delay: 50 });
-
 }
 
 
@@ -201,14 +198,28 @@ function openChat(chat) {
     var containerChat = $('#container-chat');
     containerChat.removeClass("animated bounceInLeft");
     containerChat = reset(containerChat);
-    if ($(chat).text().localeCompare($("#name-chat-statebar").text()) != 0) {
-        $("#name-chat-statebar").text($(chat).text())
-        containerChat.addClass('animated bounceInLeft').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
-            function () {
-                $(this).removeClass('animated bounceInLeft');
-            });
+    var ist = $(chat).attr('id')
+
+    if (ist.localeCompare(currentIst)) {
+        // Faccio il join alla chat 
+        currentIst = ist
+        socket.emit('join', ist, (conf) => {
+            if (!conf) return
+            removeLiMessage()
+        })
+         $("#name-chat-statebar").text($(chat).text())
+            containerChat.addClass('animated bounceInLeft').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
+                function () {
+                    $(this).removeClass('animated bounceInLeft');
+                });
     }
+    
 }
+
+function removeLiMessage () {
+    var chat = $('#chats').empty()
+}
+
 function resizeWindow() {
     var oldModalita = modalita
     if ($(document).width() <= 600)
