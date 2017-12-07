@@ -3,16 +3,6 @@
     /*color: #2b2b2b;*/
     text-shadow: 4px 4px 0px rgba(0,0,0,0.1);
     padding-top: 7px;
-    -moz-animation-duration: 6s;
-    -moz-animation-delay: 2s;
-    -moz-animation-iteration-count: infinite;
-    -webkit-animation-duration: 6s;
-    -webkit-animation-delay: 2s;
-    -webkit-animation-iteration-count: infinite;
-    -MS-animation-duration: 6s;
-    -MS-animation-delay: 2s;
-    -MS-animation-iteration-count: infinite;
-    
     margin:3%;
 }
 #container{
@@ -76,17 +66,10 @@
     border: 0;
     z-index: 49;
 }
-@media (min-width: 768px) {
-    #menu-profile{
-        position: absolute;
-        left: 0;
-        display: none
-    }}
+
 #list-chat a{
     color: black;
-    font-weight: bold;
-    text-transform: capitalize;
-    
+    font-weight: bold;    
 }
 #chat ol{
     margin-bottom: 0;
