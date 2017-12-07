@@ -15,7 +15,7 @@ $(document).ready(() => {
     })
 
     socket.on('message', (data) => {
-        reciveMessFrom(data.user, data.message, data.img)
+        reciveMessFrom(data.username, data.message, data.img)
     })
 
     
