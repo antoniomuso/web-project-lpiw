@@ -3,6 +3,16 @@
     /*color: #2b2b2b;*/
     text-shadow: 4px 4px 0px rgba(0,0,0,0.1);
     padding-top: 7px;
+    -moz-animation-duration: 6s;
+    -moz-animation-delay: 2s;
+    -moz-animation-iteration-count: infinite;
+    -webkit-animation-duration: 6s;
+    -webkit-animation-delay: 2s;
+    -webkit-animation-iteration-count: infinite;
+    -MS-animation-duration: 6s;
+    -MS-animation-delay: 2s;
+    -MS-animation-iteration-count: infinite;
+    
     margin:3%;
 }
 #container{
