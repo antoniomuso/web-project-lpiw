@@ -33,13 +33,11 @@ module.exports = {
 
                 if (usEmails.rowCount > 0) { // Se l'email è presente inserisco solo utente
                     var tab = await db.query(querys.insert_user(username, passH, random, email, ''))
-                    console.log(tab)
                     req.session.idUtente = tab.rows[0].id
                 } else {
                     // altrimenti inserisco anche l'email
                     await db.query('INSERT INTO Email(value) values($1);', [email])
                     var tab = await db.query(querys.insert_user(username, passH, random, email, ''))
-                    console.log(tab)
                     req.session.idUtente = tab.rows[0].id
                 }
             } catch (error) {
