@@ -32,19 +32,21 @@ module.exports = {
                 let passH = hash.update(password + random).digest('hex')
 
                 if (usEmails.rowCount > 0) { // Se l'email è presente inserisco solo utente
-                    let id = await db.query(querys.insert_user(username, passH, random, email, ''))
-                    req.session.idUtente = id.rows[0].id
+                    var tab = await db.query(querys.insert_user(username, passH, random, email, ''))
+                    console.log(tab)
+                    req.session.idUtente = tab.rows[0].id
                 } else {
                     // altrimenti inserisco anche l'email
                     await db.query('INSERT INTO Email(value) values($1);', [email])
-                    var id = await db.query(querys.insert_user(username, passH, random, email, ''))
-                    req.session.idUtente = id.rows[0].id
+                    var tab = await db.query(querys.insert_user(username, passH, random, email, ''))
+                    console.log(tab)
+                    req.session.idUtente = tab.rows[0].id
                 }
             } catch (error) {
                 return next(error)
             }
             // Invio l'email per la conferma
-            send_email_conf(email, random, id.rows[0].id, crypto, options)
+            send_email_conf(email, random, tab.rows[0].id, crypto, options)
 
             next()
         }

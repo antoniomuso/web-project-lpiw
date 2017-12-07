@@ -41,8 +41,7 @@ app.use('/register', (err, req, res, next) => {
     res.redirect('/')
 })
 app.post('/register', (req, res) => {
-    req.session.autenticato = true
-    res.redirect('./../html/chat.html')
+    res.redirect('/')
 })
 
 //Routes per il login
