@@ -62,7 +62,7 @@ function sendMessage(name, message, link_img) {
             <img class='cricle #c5cae9 indigo lighten-4' src="${link_img}" draggable="false" />
         </div>
         <div class="msg">
-            <p>${message}</p>
+            <p><xmp>${message}</xmp></p>
             <time>${(new Date()).toLocaleTimeString()}</time>
         </div>
         </li>`)
@@ -189,7 +189,6 @@ function reset($elem) {
     return $newElem;
 }
 
-//non so se avete fatto una funzione. quando clicchi sulla chat nella lista fa tornare la barra
 function openChat(chat) {
     if (modalita == modalitaEnum.MOBILE) {
         $(".mobile-chat").css("display", "inherit")
