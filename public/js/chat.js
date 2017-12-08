@@ -260,7 +260,7 @@ function resizeWindow() {
         }
         else {
             $(".mobile-list").css("display", "inhiret")
-            $(".mobile-chat").css("display", "inhiret")
+            $(".mobile-chat").css("display", "initial")
         }
     }
 }
