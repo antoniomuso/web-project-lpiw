@@ -15,7 +15,8 @@ $(document).ready(() => {
     })
 
     socket.on('message', (data) => {
-        reciveMessFrom(data.username, data.message, data.img)
+        // Dovrebbe esserci data.image
+        reciveMessFrom(data.username, data.message, (new Date()).toLocaleTimeString() ,'http://dreamicus.com/data/ghost/ghost-08.jpg')
     })
 
     
@@ -49,10 +50,10 @@ function getChats (cb) {
 */
 function getMessage (ist, hours, cb) { 
     $.ajax({
-        url: '/rooms',
+        url: 'rooms/message',
         type: 'POST',
         cache:false,
-        data: {ist:ist, hours: hours},
+        data: JSON.stringify({ist:ist, hours: hours}),
         dataType: 'json',
         contentType: "application/json",        
         success: (data) => {

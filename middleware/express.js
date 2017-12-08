@@ -116,6 +116,7 @@ module.exports = {
             try {
                 var { rows } = await db.query(querys.get_messages_of_chat(ist, hours))
             } catch (error) {
+                console.log(error)
                 return next(error)
             }
             req.rows = rows

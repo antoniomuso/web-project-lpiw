@@ -36,7 +36,7 @@ $(document).ready(function () {
 
 // prende un messaggio ricevuto dal server e lo inserisce nella chat come messaggio ricevuto 
 // da un altra persona
-function reciveMessFrom(otherName, message, link_img) {
+function reciveMessFrom(otherName, message, time, link_img) {
     var object = $(`<li class="other">
         <div class="avatar">
             <img class='cricle #c5cae9 indigo lighten-4' src="${link_img}" draggable="false" />
@@ -44,9 +44,10 @@ function reciveMessFrom(otherName, message, link_img) {
         <div class="msg">
             <p style='word-wrap:normal;'><b>${otherName}:</b></p>
             <p>${message}</p>
-            <time>${(new Date()).toLocaleTimeString()}</time>
+            <time>${time}</time>
         </div>
     </li>`)
+    //(new Date()).toLocaleTimeString()
     object.find('.avatar').hide()
     object.find('.msg').hide()
     var ol = object.appendTo('#chats')
@@ -56,15 +57,15 @@ function reciveMessFrom(otherName, message, link_img) {
 }
 // Prende in input un nome utente un messaggio, Dovrebbe prendere anche avatar ecc...
 // restituisce il messaggio html aggiunto
-function sendMessage(name, message, link_img) {
+function sendMessage(name, message, time, link_img,notEscape) {
     var object = $(
         `<li class="self">
         <div class="avatar">
             <img class='cricle #c5cae9 indigo lighten-4' src="${link_img}" draggable="false" />
         </div>
         <div class="msg">
-            <p>${escapeHtml(message)}</p>
-            <time>${(new Date()).toLocaleTimeString()}</time>
+            <p>${ notEscape ? message : escapeHtml(message) }</p>
+            <time>${time}</time>
         </div>
         </li>`)
     object.find('.avatar').hide()
@@ -109,7 +110,7 @@ function selectedChat(chat) {
 function callBackKeyPressed(e) {
     if (e.which == 13) {
         if (this.value === '') return
-        var msg = sendMessage('Giovanni Varricchione', this.value, 'https://scontent-mxp1-1.xx.fbcdn.net/v/t1.0-9/20770225_10212100619488480_2709822859667583246_n.jpg?oh=2aced0a77a1238729b5fc0886ae1f28a&oe=5AD25825')
+        var msg = sendMessage('Giovanni Varricchione', this.value, (new Date()).toLocaleTimeString(),'https://scontent-mxp1-1.xx.fbcdn.net/v/t1.0-9/20770225_10212100619488480_2709822859667583246_n.jpg?oh=2aced0a77a1238729b5fc0886ae1f28a&oe=5AD25825')
         socket.emit('message',this.value)
         //console.log(msg)
         $(this).val('')
@@ -211,10 +212,25 @@ function openChat(chat) {
     var ist = $(chat).attr('id')
     if (ist != currentIst) {
         // Faccio il join alla chat 
-        socket.emit('join', ist, (conf) => {
+        socket.emit('join', ist, (conf, myId) => {
             if (!conf) return
             currentIst = ist
             removeLiMessage()
+            getMessage(ist, 4, (error, data) => {
+                if (error) console.error(error)
+                // Ultimo messaggio della chat 
+                var last = undefined;
+                for (let mess of data) {
+                    if (mess.utente === myId) {
+                        last = sendMessage(null, mess.corpo,mess.ist,'https://scontent-mxp1-1.xx.fbcdn.net/v/t1.0-9/20770225_10212100619488480_2709822859667583246_n.jpg?oh=2aced0a77a1238729b5fc0886ae1f28a&oe=5AD25825', true)
+                    } else {
+                        last = reciveMessFrom(mess.username, mess.corpo,mess.ist,'http://dreamicus.com/data/ghost/ghost-08.jpg')
+                    }
+                }
+                if (last) {
+                    $('#chat').scrollTo(last)
+                }
+            })
             $("#name-chat-statebar").text($(chat).text())
             containerChat.addClass('animated bounceInLeft').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
                 function () {
