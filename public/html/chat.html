@@ -29,7 +29,7 @@
     <nav class="nav-wrapper blue accent-4 navbar-fixed">
         <ul>
             <li>
-                <a id="menu-profile" href="#" data-activates="slide-out" class="profile-collapse btn-small">
+                <a id="menu-profile" href="#" data-activates="slide-out" class="profile-collapse btn-small show-on-med-and-down">
                     <i class="material-icons">menu</i>
                 </a>
             </li>
@@ -90,26 +90,30 @@
         <!-- Questo è il container della chat -->
         <div id="container-chat" class="mobile-chat z-depth-3">
 
-            <nav id="container-chatname" class="blue accent-4 z-depth-3">
-                <div id="nav-mobile" class="nav-wrapper">
-                    <ul>
-                        <li>
-                            <a href="#" onclick="backToChat()" class="btn-small hide-on-med-and-up">
-                                <i class="material-icons">chevron_left</i>
-                            </a>
-                        </li>
-                        <li>
-                            <img id="avatar-chat-statebar" width="40" class='left cricle #c5cae9 indigo lighten-4' src="https://i.imgur.com/HYcn9xO.png" draggable="false" />
-                        </li>
-                        <li id="name-chat-statebar"  class="center-align">
-                        </li>    
-                    </ul>
-                </div>
+            <nav id="container-chatname" class="nav-wrapper blue accent-4 z-depth-3">
+                <ul>
+                    <li>
+                        <a href="#" onclick="backToChat()" class="btn-small hide-on-med-and-up">
+                            <i class="material-icons">chevron_left</i>
+                        </a>
+                    </li>
+                    <li>
+                        <img id="avatar-chat-statebar" width="40" class='left cricle #c5cae9 indigo lighten-4' src="https://i.imgur.com/HYcn9xO.png" draggable="false" />
+                    </li>
+                    <li id="name-chat-statebar"  class="center-align">
+                    </li>    
+                </ul>
             </nav>
 
             <div id='chat' w3-include-html="/html/chat_div.html"></div>
-            <div id="chat-input-bar" class="card white input-field darken-3 z-depth-3 ">
-                <textarea id='input-chat' class="materialize-textarea center black-text text-darken-5 " rows='3' data-min-rows='3' placeholder="Write message..."/></textarea>
+            <div id="chat-input-bar" class="darken-3 z-depth-3 ">
+                <!--textarea id='input-chat' gclass="materialize-textarea center black-text text-darken-5 " rows='3' data-min-rows='3' placeholder="Write message..."/></textarea-->
+                <div id='input-chat' contenteditable="true" spellcheck="true" placeholder="Write message...">hhhhhjjjjjjjjjjjjjjjjj</div>
+                <div id="send-message">
+                    <a class="btn-small" href="#">
+                        <i class="material-icons">send</i>
+                    </a>
+                </div>
                 <div id='button-extend' class="fixed-action-btn vertical click-to-toggle">
                     <a class="btn-floating btn-large red">
                     <i class="material-icons">menu</i>
