@@ -3,6 +3,16 @@
     /*color: #2b2b2b;*/
     text-shadow: 4px 4px 0px rgba(0,0,0,0.1);
     padding-top: 7px;
+    -moz-animation-duration: 6s;
+    -moz-animation-delay: 2s;
+    -moz-animation-iteration-count: infinite;
+    -webkit-animation-duration: 6s;
+    -webkit-animation-delay: 2s;
+    -webkit-animation-iteration-count: infinite;
+    -MS-animation-duration: 6s;
+    -MS-animation-delay: 2s;
+    -MS-animation-iteration-count: infinite;
+    
     margin:3%;
 }
 #container{
@@ -21,35 +31,23 @@
 
 #div-main{
     margin-bottom: 0;
-    display: flex;
-    height: calc(100vh - 64px);
-    margin-bottom: 1px;
 }
 
 #chat{
     overflow-y: scroll;
-    height:  100%;
+    height:  calc(100vh - 218px);
     padding: 0 0;
 }
-#chats{
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-}
 #container-chat{
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-flow: column;
-    max-width: 80vw;
+    height: calc(100vh - 64px);
+    background-color: white;
     padding: 0 0;
 }
 #chat-input-bar{
     padding: 10px 10px 0px 10px;
     margin: 0 0;
     height: 90px;
-    border: solid rgb(201, 201, 201);
-    position: relative;
+    border: solid rgb(201, 201, 201) ;
     border-radius: 5px;
     border-width: 2px 0px 0px 0px;
 }
@@ -60,13 +58,6 @@
     margin-right: 1%;
 }
 
-#input-chat:hover{
-    border-bottom: 2px #35ADE1 solid;
-}
-#input-chat:focus{
-    border: 0;
-}
-
 #confirm-topic{
     position: static;
     margin-top:50px;
@@ -75,29 +66,27 @@
 
 #button-extend{
     position: absolute !important;
-    top: 5px;
-    margin: 0 0;
-}
-#send-message{
-    float: left;
     top: -5px;
-    right: 15px;
+    display: inline;
     margin: 0 0;
-    padding: 25% 1%;
 }
 #list-chat{
     overflow-y: auto;
-    height: 100%;
-    width: 100%;
-    border: 0￼;
-    z-index: 49;
+    height: calc(100vh - 64px);
     border: 0;
-    margin: 7.5px 0 0 0;
+    z-index: 49;
 }
-
+@media (min-width: 768px) {
+    #menu-profile{
+        position: absolute;
+        left: 0;
+        display: none
+    }}
 #list-chat a{
     color: black;
-    font-weight: bold;    
+    font-weight: bold;
+    text-transform: capitalize;
+    
 }
 #chat ol{
     margin-bottom: 0;
@@ -125,21 +114,18 @@
     color: rgb(61, 61, 61);
 }
 #avatar-chat-statebar{
-    margin: 10px 20px;
+    margin: 11px 7px;
+    padding: 0 0;
     border-radius: 50%;
 }
 #btn-add-chat{
     position: absolute;
-    bottom: -15px;
+    bottom: 1%;
     right: 10%;
     z-index: 49;
-    flex-grow: 1;
 }
 #div-chat-list{
     position: relative;
-    height: 100%;
-    width: 33%;
-    padding: 0 11.25px;
 }
 .center-div{
     position: absolute;
