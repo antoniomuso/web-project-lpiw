@@ -176,7 +176,7 @@ function remove(chatTimeStamp) {
 function chatSubmitClicked() {
     var chatName = $("#topic").val();
     var chatDesc = $("#description").val();
-    if (chatName.length <= 30)///da sistemare. per non fare i nomi delle chat lunghissime: ci vorrebbe un avviso se superano tale dim
+    if (chatName.length <= 20)///da sistemare. per non fare i nomi delle chat lunghissime: ci vorrebbe un avviso se superano tale dim
         if (chatName && chatDesc) {
             // creo la room e aspetto che mi ritorni il time stamp
             socket.emit('createRoom', {nome:chatName, desc:chatDesc}, (ist) => {
