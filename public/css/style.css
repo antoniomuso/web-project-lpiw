@@ -41,6 +41,7 @@
     width: 100%;
     display: flex;
     flex-flow: column;
+    max-width: 80vw;
     padding: 0 0;
 }
 #chat-input-bar{
