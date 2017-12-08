@@ -18,7 +18,7 @@ $(document).ready(function () {
     // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
     $('.modal').modal();
     w3.includeHTML(() => { // callback di fine embedd
-        $('#input-chat').keydown(callBackKeyPressed)
+        $("#input-chat").keydown(callBackKeyPressed)
     }) // embedda chat_div in questa pagina html
 
     $(".profile-collapse").sideNav()
@@ -58,18 +58,19 @@ function reciveMessFrom(otherName, message, time, link_img) {
 // Prende in input un nome utente un messaggio, Dovrebbe prendere anche avatar ecc...
 // restituisce il messaggio html aggiunto
 function sendMessage(name, message, time, link_img,notEscape) {
+    console.log(message)
     var object = $(
         `<li class="self">
         <div class="avatar">
-            <img class='cricle #c5cae9 indigo lighten-4' src="${link_img}" draggable="false" />
+        <img class='cricle #c5cae9 indigo lighten-4' src="${link_img}" draggable="false" />
         </div>
         <div class="msg">
-            <p>${ notEscape ? message : escapeHtml(message) }</p>
-            <time>${time}</time>
+        <p>${ notEscape ? message : escapeHtml(message) }</p>
+        <time>${time}</time>
         </div>
         </li>`)
-    object.find('.avatar').hide()
-    object.find('.msg').hide()
+        object.find('.avatar').hide()
+        object.find('.msg').hide()
     var ol = object.appendTo('#chats')
     ol.find('.avatar').fadeIn();
     ol.find('.msg').toggle('bounce')
@@ -110,8 +111,8 @@ function selectedChat(chat) {
 function callBackKeyPressed(e) {
     if (e.which == 13) {
         if (this.value === '') return
-        var msg = sendMessage('Giovanni Varricchione', this.value, (new Date()).toLocaleTimeString(),'https://scontent-mxp1-1.xx.fbcdn.net/v/t1.0-9/20770225_10212100619488480_2709822859667583246_n.jpg?oh=2aced0a77a1238729b5fc0886ae1f28a&oe=5AD25825')
-        socket.emit('message',this.value)
+        var msg = sendMessage('Giovanni Varricchione', this.innerHTML, (new Date()).toLocaleTimeString(),'https://scontent-mxp1-1.xx.fbcdn.net/v/t1.0-9/20770225_10212100619488480_2709822859667583246_n.jpg?oh=2aced0a77a1238729b5fc0886ae1f28a&oe=5AD25825')
+        socket.emit('message',this.innerHTML)
         //console.log(msg)
         $(this).val('')
         $('#chat').stop().animate({
