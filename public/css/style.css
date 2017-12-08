@@ -69,6 +69,7 @@
     margin: 0 1%;
     border: 0 0;
     padding: 10px 7px;
+    user-select: select;
 }
 #input-chat:hover{
     border-bottom: 2px #35ADE1 solid;
