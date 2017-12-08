@@ -148,8 +148,6 @@
 }
 #div-chat-list{
     position: relative;
-    display: flex;
-    flex-flow: column;
     height: 100%;
     width: 33%;
     padding: 0 11.25px;
