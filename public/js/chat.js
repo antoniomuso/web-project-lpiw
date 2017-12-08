@@ -62,7 +62,7 @@ function sendMessage(name, message, link_img) {
             <img class='cricle #c5cae9 indigo lighten-4' src="${link_img}" draggable="false" />
         </div>
         <div class="msg">
-            <p><xmp>${message}</xmp></p>
+            <p>${message}</p>
             <time>${(new Date()).toLocaleTimeString()}</time>
         </div>
         </li>`)
@@ -270,3 +270,9 @@ $(document).mouseup(function (e) {
             });
     }
 });
+$('textarea').each(function () {
+    this.setAttribute('style', 'height:' + (this.scrollHeight) + 'px;overflow-y:hidden;');
+  }).on('input', function () {
+    this.style.height = 'auto';
+    this.style.height = (this.scrollHeight) + 'px';
+  });
