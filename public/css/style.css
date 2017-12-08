@@ -45,32 +45,21 @@
     padding: 0 0;
 }
 #chat-input-bar{
-    padding: 10px 10px;
-    position: relative;
+    padding: 10px 10px 0px 10px;
+    margin: 0 0;
     height: 90px;
-    border: solid rgb(201, 201, 201) ;
+    border: solid rgb(201, 201, 201);
+    position: relative;
     border-radius: 5px;
     border-width: 2px 0px 0px 0px;
-    display: flex;
-    background-color: #E5E5E5;
 }
 
 #input-chat {
     font-size: 1.1rem;
-    width: 87%;
-    overflow-x: hidden;
-    overflow-y: auto;
-    min-height: 20px;
-    max-height: 100px;
-    white-space: pre-wrap;
-    border-radius: 5px;
-    word-wrap: break-word;
-    background-color: white;
-    margin: 0 1%;
-    border: 0 0;
-    padding: 10px 7px;
-    user-select: select;
+    width: 85%;
+    margin-right: 1%;
 }
+
 #input-chat:hover{
     border-bottom: 2px #35ADE1 solid;
 }
@@ -85,10 +74,8 @@
 }
 
 #button-extend{
-    position: absolute;
-    float: left;
-    top: 0px;
-    right: 15px;
+    position: absolute !important;
+    top: 5px;
     margin: 0 0;
 }
 #send-message{
