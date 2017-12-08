@@ -31,7 +31,7 @@
     height:  100%;
     padding: 0 0;
 }
-#¢hats{
+#chats{
     display: flex;
     width: 100%;
     flex-direction: column;
@@ -56,15 +56,24 @@
 
 #input-chat {
     font-size: 1.1rem;
-    width: 85%;
+    width: 87%;
     overflow-x: hidden;
     overflow-y: auto;
     min-height: 20px;
     max-height: 100px;
     white-space: pre-wrap;
+    border-radius: 5px;
     word-wrap: break-word;
     background-color: white;
     margin: 0 1%;
+    border: 0 0;
+    padding: 10px 7px;
+}
+#input-chat:hover{
+    border-bottom: 2px #35ADE1 solid;
+}
+#input-chat:focus{
+    border: 0;
 }
 
 #confirm-topic{
@@ -76,7 +85,7 @@
 #button-extend{
     position: absolute;
     float: left;
-    top: -5px;
+    top: 0px;
     right: 15px;
     margin: 0 0;
 }
@@ -85,7 +94,7 @@
     top: -5px;
     right: 15px;
     margin: 0 0;
-    padding: 25% 2%;
+    padding: 25% 1%;
 }
 #list-chat{
     overflow-y: auto;
