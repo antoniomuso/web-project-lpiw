@@ -267,7 +267,7 @@ function resizeWindow() {
 function showAddChatMenu() {
     var containerChat = $("#div-create-new-chat");
     if (containerChat.is(":hidden")) {
-        $("#div-create-new-chat").css("display", "inhiret")
+        $("#div-create-new-chat").css("display", "initial")
         containerChat.removeClass("animated bounceIn");
         containerChat = reset(containerChat);
         containerChat.addClass('animated bounceIn').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
