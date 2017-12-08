@@ -5,12 +5,6 @@
     padding-top: 7px;
     margin:3%;
 }
-body{
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
-}
 
 #container{
     background-image:  linear-gradient(rgba(41, 98, 255, 0.322), white);
@@ -29,18 +23,19 @@ body{
 #div-main{
     margin-bottom: 0;
     display: flex;
+    height: calc(100vh - 64px);
+    margin-bottom: 1px;
 }
 
 #chat{
     overflow-y: scroll;
-    height:  calc(100vh - 218px);
+    height:  100%;
     padding: 0 0;
 }
 #container-chat{
     height: 100%;
     width: 100%;
     display: flex;
-    flex-grow: 3;
     flex-flow: column;
     background-color: white;
     padding: 0 0;
@@ -74,10 +69,12 @@ body{
 }
 #list-chat{
     overflow-y: auto;
-    height: calc(100vh - 64px);
+    height: 100%;
     width: 100%;
-    border: 0;
+    border: 0￼;
     z-index: 49;
+    border: 0;
+    margin: 7.5px 0 0 0;
 }
 
 #list-chat a{
@@ -110,17 +107,15 @@ body{
     color: rgb(61, 61, 61);
 }
 #avatar-chat-statebar{
-    margin: 11px 7px;
-    padding: 0 0;
+    margin: 10px 20px;
     border-radius: 50%;
 }
 #btn-add-chat{
     position: absolute;
-    bottom: 1%;
+    bottom: -15px;
     right: 10%;
     z-index: 49;
     flex-grow: 1;
-    
 }
 #div-chat-list{
     position: relative;
@@ -128,6 +123,7 @@ body{
     flex-flow: column;
     height: 100%;
     width: 33%;
+    padding: 0 11.25px;
 }
 .center-div{
     position: absolute;

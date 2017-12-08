@@ -63,11 +63,7 @@ function sendMessage(name, message, link_img) {
             <img class='cricle #c5cae9 indigo lighten-4' src="${link_img}" draggable="false" />
         </div>
         <div class="msg">
-<<<<<<< HEAD
-            <p>${message}</p>
-=======
             <p>${escapeHtml(message)}</p>
->>>>>>> 1b26758be7cfa1e82c5d219b28090669beea7b56
             <time>${(new Date()).toLocaleTimeString()}</time>
         </div>
         </li>`)
@@ -241,19 +237,19 @@ function resizeWindow() {
 
     if (!modalita == oldModalita) {
         if (modalita == modalitaEnum.MOBILE) {
-            $(".mobile-list").css("display", "inherit")
+            $(".mobile-list").css("display", "initial")
             $(".mobile-chat").css("display", "none")
         }
         else {
-            $(".mobile-list").css("display", "inherit")
-            $(".mobile-chat").css("display", "inherit")
+            $(".mobile-list").css("display", "initial")
+            $(".mobile-chat").css("display", "initial")
         }
     }
 }
 function showAddChatMenu() {
     var containerChat = $("#div-create-new-chat");
     if (containerChat.is(":hidden")) {
-        $("#div-create-new-chat").css("display", "inherit")
+        $("#div-create-new-chat").css("display", "initial")
         containerChat.removeClass("animated bounceIn");
         containerChat = reset(containerChat);
         containerChat.addClass('animated bounceIn').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
@@ -284,9 +280,10 @@ $(document).mouseup(function (e) {
             });
     }
 });
+/*
 $('textarea').each(function () {
     this.setAttribute('style', 'height:' + (this.scrollHeight) + 'px;overflow-y:hidden;');
   }).on('input', function () {
     this.style.height = 'auto';
     this.style.height = (this.scrollHeight) + 'px';
-  });
+  });*/
