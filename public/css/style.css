@@ -5,6 +5,13 @@
     padding-top: 7px;
     margin:3%;
 }
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
 #container{
     background-image:  linear-gradient(rgba(41, 98, 255, 0.322), white);
     background-repeat: no-repeat;
@@ -21,6 +28,7 @@
 
 #div-main{
     margin-bottom: 0;
+    display: flex;
 }
 
 #chat{
@@ -29,7 +37,11 @@
     padding: 0 0;
 }
 #container-chat{
-    height: calc(100vh - 64px);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-grow: 3;
+    flex-flow: column;
     background-color: white;
     padding: 0 0;
 }
@@ -63,6 +75,7 @@
 #list-chat{
     overflow-y: auto;
     height: calc(100vh - 64px);
+    width: 100%;
     border: 0;
     z-index: 49;
 }
@@ -106,9 +119,15 @@
     bottom: 1%;
     right: 10%;
     z-index: 49;
+    flex-grow: 1;
+    
 }
 #div-chat-list{
     position: relative;
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    width: 33%;
 }
 .center-div{
     position: absolute;

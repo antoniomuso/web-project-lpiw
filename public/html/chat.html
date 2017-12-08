@@ -47,10 +47,10 @@
     </nav>
 
     <!-- Questa è la tabella che divide le diverse parti della chat -->
-    <div class='row border' id="div-main">
+    <div id="div-main" class='border'>
 
         <!-- Questo è il container della lista delle chat -->
-        <div class='mobile-list col s12 m3 l3 xl3' id='div-chat-list'>
+        <div id='div-chat-list' class='mobile-list'>
             <!-- Questa è la lista delle chat -->
             <div id="list-chat" class="mobile-list collection fade" name="div-chat-collection">
                 <!--<a href="#!" onclick="selectedChat('./chat_div.html')" class="collection-item">
@@ -63,7 +63,7 @@
                 </div>
             <!-- Questo è il messaggio che appare per creare nuove chat-->
             <div id="div-create-new-chat" class="z-depth-2">
-                <form class="col s12">
+                <form>
                     <div class="row">
                         <div class="input-field col s12">
                             <input id="topic" type="text">
@@ -88,7 +88,7 @@
         </div>
         
         <!-- Questo è il container della chat -->
-        <div id="container-chat" class="mobile-chat col s12 m9 l9 xl9 z-depth-3">
+        <div id="container-chat" class="mobile-chat z-depth-3">
 
             <nav id="container-chatname" class="blue accent-4 z-depth-3 col s12 m12 l12 xl12">
                 <div id="nav-mobile" class="nav-wrapper">
@@ -107,8 +107,8 @@
                 </div>
             </nav>
 
-            <div id='chat' class="col s12 m12 l12 xl12" w3-include-html="/html/chat_div.html"></div>
-            <div id="chat-input-bar" class="card white input-field darken-3 z-depth-3 col s12 m12 l12 xl12">
+            <div id='chat' w3-include-html="/html/chat_div.html"></div>
+            <div id="chat-input-bar" class="card white input-field darken-3 z-depth-3 ">
                 <textarea id='input-chat' class="materialize-textarea center black-text text-darken-5 " rows='3' data-min-rows='3' placeholder="Write message..."/></textarea>
                 <div id='button-extend' class="fixed-action-btn vertical click-to-toggle">
                     <a class="btn-floating btn-large red">

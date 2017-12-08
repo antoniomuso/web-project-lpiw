@@ -42,6 +42,7 @@ function reciveMessFrom(otherName, message, link_img) {
             <img class='cricle #c5cae9 indigo lighten-4' src="${link_img}" draggable="false" />
         </div>
         <div class="msg">
+            <p style='word-wrap:normal;'><b>${otherName}:</b></p>
             <p>${message}</p>
             <time>${(new Date()).toLocaleTimeString()}</time>
         </div>
@@ -62,7 +63,11 @@ function sendMessage(name, message, link_img) {
             <img class='cricle #c5cae9 indigo lighten-4' src="${link_img}" draggable="false" />
         </div>
         <div class="msg">
+<<<<<<< HEAD
             <p>${message}</p>
+=======
+            <p>${escapeHtml(message)}</p>
+>>>>>>> 1b26758be7cfa1e82c5d219b28090669beea7b56
             <time>${(new Date()).toLocaleTimeString()}</time>
         </div>
         </li>`)
@@ -73,6 +78,15 @@ function sendMessage(name, message, link_img) {
     ol.find('.msg').toggle('bounce')
     return ol[0].children[ol[0].children.length - 1]
 }
+
+function escapeHtml(unsafe) {
+    return unsafe
+         .replace(/&/g, "&amp;")
+         .replace(/</g, "&lt;")
+         .replace(/>/g, "&gt;")
+         .replace(/"/g, "&quot;")
+         .replace(/'/g, "&#039;");
+ }
 
 // Rimuove li dalla lista
 function liRemoveAnimation(element) {
