@@ -255,19 +255,19 @@ function resizeWindow() {
 
     if (!modalita == oldModalita) {
         if (modalita == modalitaEnum.MOBILE) {
-            $(".mobile-list").css("display", "initial")
+            $(".mobile-list").css("display", "inhiret")
             $(".mobile-chat").css("display", "none")
         }
         else {
-            $(".mobile-list").css("display", "initial")
-            $(".mobile-chat").css("display", "initial")
+            $(".mobile-list").css("display", "inhiret")
+            $(".mobile-chat").css("display", "inhiret")
         }
     }
 }
 function showAddChatMenu() {
     var containerChat = $("#div-create-new-chat");
     if (containerChat.is(":hidden")) {
-        $("#div-create-new-chat").css("display", "initial")
+        $("#div-create-new-chat").css("display", "inhiret")
         containerChat.removeClass("animated bounceIn");
         containerChat = reset(containerChat);
         containerChat.addClass('animated bounceIn').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
