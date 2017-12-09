@@ -7,6 +7,7 @@ var modalitaEnum = {
     MOBILE: 0,
     DESKTOP: 1
 };
+var userData = {}
 var modalita;
 
 $(document).ready(function () {
@@ -15,8 +16,15 @@ $(document).ready(function () {
         modalita = modalitaEnum.MOBILE
         $(".mobile-chat").css("display", "none")
     }
+    getUserData((error, data) => {
+        if (error) return console.error(error)
+        userData.username = data.username
+        userData.idUser = data.id
+        userData.img = data.img
+    })
+
     // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
-    $('.modal').modal();
+    $('.modal').modal()
     w3.includeHTML(() => { // callback di fine embedd
         $("#input-chat").keydown(callBackKeyPressed)
     }) // embedda chat_div in questa pagina html
@@ -57,7 +65,7 @@ function reciveMessFrom(otherName, message, time, link_img) {
 }
 // Prende in input un nome utente un messaggio, Dovrebbe prendere anche avatar ecc...
 // restituisce il messaggio html aggiunto
-function sendMessage(name, message, time, link_img,notEscape) {
+function sendMessage(name, message, time, link_img, notEscape) {
     console.log(message)
     var object = $(
         `<li class="self">
@@ -65,12 +73,12 @@ function sendMessage(name, message, time, link_img,notEscape) {
         <img class='cricle #c5cae9 indigo lighten-4' src="${link_img}" draggable="false" />
         </div>
         <div class="msg">
-        <p>${ notEscape ? message : escapeHtml(message) }</p>
+        <p>${ notEscape ? message : escapeHtml(message)}</p>
         <time>${time}</time>
         </div>
         </li>`)
-        object.find('.avatar').hide()
-        object.find('.msg').hide()
+    object.find('.avatar').hide()
+    object.find('.msg').hide()
     var ol = object.appendTo('#chats')
     ol.find('.avatar').fadeIn();
     ol.find('.msg').toggle('bounce')
@@ -79,12 +87,12 @@ function sendMessage(name, message, time, link_img,notEscape) {
 
 function escapeHtml(unsafe) {
     return unsafe
-         .replace(/&/g, "&amp;")
-         .replace(/</g, "&lt;")
-         .replace(/>/g, "&gt;")
-         .replace(/"/g, "&quot;")
-         .replace(/'/g, "&#039;");
- }
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
 
 // Rimuove li dalla lista
 function liRemoveAnimation(element) {
@@ -112,8 +120,8 @@ function callBackKeyPressed(e) {
     console.log('call')
     if (e.which == 13) {
         if (this.value === '') return
-        var msg = sendMessage('Giovanni Varricchione', this.value, (new Date()).toLocaleTimeString(),'https://scontent-mxp1-1.xx.fbcdn.net/v/t1.0-9/20770225_10212100619488480_2709822859667583246_n.jpg?oh=2aced0a77a1238729b5fc0886ae1f28a&oe=5AD25825')
-        socket.emit('message',this.value)
+        var msg = sendMessage('Giovanni Varricchione', this.value, (new Date()).toLocaleTimeString(), 'https://scontent-mxp1-1.xx.fbcdn.net/v/t1.0-9/20770225_10212100619488480_2709822859667583246_n.jpg?oh=2aced0a77a1238729b5fc0886ae1f28a&oe=5AD25825')
+        socket.emit('message', this.value)
         //console.log(msg)
         $(this).val('')
         $('#chat').stop().animate({
@@ -146,12 +154,12 @@ function appendNewChatToDocumentWithAnimation(chat) {
 }
 
 function createNewChat(chatName, chatDesc, ist, creatorUser, noAnimation) {
-    var chat = { chatName: chatName, chatDesc: chatDesc, timeStamp: ist,creatorUser: creatorUser };
+    var chat = { chatName: chatName, chatDesc: chatDesc, timeStamp: ist, creatorUser: creatorUser };
     if (!ist) setTimeStamp(chat);
     saveChat(chat);
     if (!noAnimation) appendNewChatToDocumentWithAnimation(chat);
     else appendNewChatToDocument(chat)
-    $('.tooltipped').tooltip({ delay: 50 , html:true}); // Mostra le descrizioni           
+    $('.tooltipped').tooltip({ delay: 50, html: true }); // Mostra le descrizioni           
 }
 
 function loadChats() {
@@ -160,7 +168,7 @@ function loadChats() {
     getChats((error, obj) => {
         if (error) return console.error(error)
         //console.log(obj)
-        obj.forEach(chat => createNewChat(chat.nome, chat.descr, chat.ist, chat.creatore,true))
+        obj.forEach(chat => createNewChat(chat.nome, chat.descr, chat.ist, chat.creatore, true))
         Materialize.showStaggeredList('#list-chat') // Animazione lista delle chat
     })
 }
@@ -182,8 +190,8 @@ function chatSubmitClicked() {
     if (chatName.length <= 20)///da sistemare. per non fare i nomi delle chat lunghissime: ci vorrebbe un avviso se superano tale dim
         if (chatName && chatDesc) {
             // creo la room e aspetto che mi ritorni il time stamp
-            socket.emit('createRoom', {nome:chatName, desc:chatDesc}, (ist, username) => {
-                createNewChat(chatName, chatDesc, ist, username);
+            socket.emit('createRoom', { nome: chatName, desc: chatDesc }, (ist) => {
+                createNewChat(chatName, chatDesc, ist, userData.username);
                 $("#div-create-new-chat").css("display", "none")
                 $("#topic").val("")
                 $("#description").val("")
@@ -214,7 +222,7 @@ function openChat(chat) {
     var ist = $(chat).attr('id')
     if (ist != currentIst) {
         // Faccio il join alla chat 
-        socket.emit('join', ist, (conf, myId) => {
+        socket.emit('join', ist, (conf) => {
             if (!conf) return
             currentIst = ist
             removeLiMessage()
@@ -223,10 +231,10 @@ function openChat(chat) {
                 // Ultimo messaggio della chat 
                 var last = undefined;
                 for (let mess of data) {
-                    if (mess.utente === myId) {
-                        last = sendMessage(null, mess.corpo,mess.ist,'https://scontent-mxp1-1.xx.fbcdn.net/v/t1.0-9/20770225_10212100619488480_2709822859667583246_n.jpg?oh=2aced0a77a1238729b5fc0886ae1f28a&oe=5AD25825', true)
+                    if (mess.utente === userData.idUser) {
+                        last = sendMessage(null, mess.corpo, mess.ist, 'https://scontent-mxp1-1.xx.fbcdn.net/v/t1.0-9/20770225_10212100619488480_2709822859667583246_n.jpg?oh=2aced0a77a1238729b5fc0886ae1f28a&oe=5AD25825', true)
                     } else {
-                        last = reciveMessFrom(mess.username, mess.corpo,mess.ist,'http://dreamicus.com/data/ghost/ghost-08.jpg')
+                        last = reciveMessFrom(mess.username, mess.corpo, mess.ist, 'http://dreamicus.com/data/ghost/ghost-08.jpg')
                     }
                 }
                 if (last) {
@@ -242,7 +250,7 @@ function openChat(chat) {
     }
 }
 
-function removeLiMessage () {
+function removeLiMessage() {
     var chat = $('#chats').empty()
 }
 

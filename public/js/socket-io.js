@@ -45,6 +45,24 @@ function getChats (cb) {
 }
 
 /*
+    Effettua la richiesta per i dati dell'utente loggato
+*/
+function getUserData (cb) { 
+    $.ajax({
+        url: '/user',
+        type: 'GET',
+        cache:false,
+        success: (data) => {
+            if (data.error) return cb(data.error)
+            cb(null,data)
+        },
+        error: (request, status, error) => {
+            cb (error)
+        }
+    })
+}
+
+/*
     Effettua la richiesta dei messaggi di una chat
     input: CallBack cb(error, data)
 */

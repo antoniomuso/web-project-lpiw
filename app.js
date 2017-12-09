@@ -55,6 +55,16 @@ app.post('/login', (req, res) => {
     res.redirect('./chat') // Qua va inserito il render della chat passandogli Username, Immagine Utente ecc.. contenuti nel session storage
 })
 
+//Route per ottenere i dati dell'utente loggato 
+app.get('/user', (req, res) => {
+    if (!req.session.autenticato) return {error: 'You must sign in first'}
+    res.json({
+        id: req.session.idUtente,
+        username : req.session.username,
+        img: req.session.img
+    })
+})
+
 //Logout
 app.get('/logout', (req, res) => {
     req.session.destroy()
