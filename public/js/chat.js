@@ -263,11 +263,11 @@ function resizeWindow() {
             $(".mobile-chat").css("display", "inherit")
         }
     }
-}/*
+}
 function showAddChatMenu() {
     var containerChat = $("#div-create-new-chat");
     if (containerChat.is(":hidden")) {
-        $("#div-create-new-chat").css("display", "initial")
+        $("#div-create-new-chat").css("display", "inherit")
         containerChat.removeClass("animated bounceIn");
         containerChat = reset(containerChat);
         containerChat.addClass('animated bounceIn').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
@@ -275,7 +275,7 @@ function showAddChatMenu() {
                 $(this).removeClass('animated bounceIn');
             });
     }
-}*/
+}
 
 //Funzione usata per controllare se il click ha colpito la nuvoletta usata per aggiungere nuove chat
 $(document).mouseup(function (e) {
