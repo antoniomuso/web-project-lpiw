@@ -21,31 +21,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Chat</title>
+    <title>ChatSuperCool</title>
 </head>
 
 <body style="overflow:hidden" onresize="resizeWindow()">
     <!-- Questa è la barra di navigazione -->
-    <nav class="nav-wrapper blue accent-4 mobile-list navbar-fixed">
-        <div>
-            <ul>
-                <li>
-                    <a id="menu-profile" href="#" data-activates="slide-out" class="profile-collapse btn-small">
-                        <i class="material-icons">menu</i>
-                    </a>
-                </li>
-                <li>
-                    <a href="../" class="animated pulse"id="brand-name" >
-                    ChatSuperCool
-                    </a>
-                </li>
-            </ul>
-            <ul id="nav-mobile" class="right">
-                <li>
-                    <a href="/logout" class="hide-on-med-and-down">Logout</a>
-                </li>
-            </ul>
-        </div>
+    <nav class="navbar-fixed nav-wrapper blue accent-4 mobile-list ">
+        <a href="../" class="animated pulse"id="brand-name" >ChatSuperCool</a>
+        <ul id="nav-mobile" class="right">
+            <li><a class="dropdown-button" style="margin-right: 15px;" href="#!" data-activates="dropdown1"><i class="material-icons right">arrow_drop_down</i></a></li>
+        </ul>
     </nav>
 
     <!-- Questa è la tabella che divide le diverse parti della chat -->
@@ -125,27 +110,15 @@
                 </div>
             </div>
         </div>
-
-        <!-- Questo è il container del profilo mobile -->
-        <div>
-            <ul id="slide-out" class="side-nav">
-                <li><div class="user-view">
-                    <div class="background">
-                        <img src="/images/office.jpg">
-                    </div>
-                    <a href="#!user"><img class="circle" src="https://i.imgur.com/DY6gND0.png"></a>
-                    <a href="#!name"><span class="white-text name">John Doe</span></a>
-                    <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
-                </div></li>
-                <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-                <li><a href="/html/settings.html">Impostazioni</a></li>
-                <li><div class="divider"></div></li>
-                <li><a class="subheader">Subheader</a></li>
-                <li><a class="waves-effect" href="../logout">Logout</a></li>
-            </ul>
-        </div>
     </div>
-
+    
+    <!-- Dropdown Structure -->
+    <ul id="dropdown1" class="dropdown-content" style="width:100%;overflow-y:none">
+        <li><a href="#!">one</a></li>
+        <li><a href="/html/settings.html">Impostazioni</a></li>
+        <li class="divider"></li>
+        <li><a href="/logout">Logout</a></li>
+    </ul>
 
 </body>
 </html>
