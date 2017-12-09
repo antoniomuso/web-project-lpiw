@@ -1,5 +1,6 @@
 const fadeIn = 1000
 const chatListName = "chatListName";
+var snd = new Audio("/sound/pling.wav")
 var chatList = {}
 var currentIst = null
 var modalitaEnum = {
@@ -10,8 +11,10 @@ var modalita;
 
 $(document).ready(function () {
     //nascondi la chat da mobile
-    if ($(document).width() <= 600)
+    if ($(document).width() <= 600) {
         modalita = modalitaEnum.MOBILE
+        $(".mobile-chat").css("display", "none")
+    }
     // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
     $('.modal').modal();
     w3.includeHTML(() => { // callback di fine embedd
@@ -243,6 +246,24 @@ function removeLiMessage () {
     var chat = $('#chats').empty()
 }
 
+function resizeWindow() {
+    var oldModalita = modalita
+    if ($(document).width() <= 600)
+        modalita = modalitaEnum.MOBILE
+    else
+        modalita = modalitaEnum.DESKTOP
+
+    if (!modalita == oldModalita) {
+        if (modalita == modalitaEnum.MOBILE) {
+            $(".mobile-list").css("display", "inherit")
+            $(".mobile-chat").css("display", "none")
+        }
+        else {
+            $(".mobile-list").css("display", "inherit")
+            $(".mobile-chat").css("display", "inherit")
+        }
+    }
+}/*
 function showAddChatMenu() {
     var containerChat = $("#div-create-new-chat");
     if (containerChat.is(":hidden")) {
@@ -254,7 +275,7 @@ function showAddChatMenu() {
                 $(this).removeClass('animated bounceIn');
             });
     }
-}
+}*/
 
 //Funzione usata per controllare se il click ha colpito la nuvoletta usata per aggiungere nuove chat
 $(document).mouseup(function (e) {

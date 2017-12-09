@@ -127,13 +127,17 @@
 #div-chat-list{
     position: relative;
 }
-@media screen and(min-width: 480px){
-    .mobile-list{display:inherit}
-    .mobile-chat{display:none}
+@media (max-width: 600px){
+    /*.mobile-list{display:inherit}
+    .mobile-chat{display:none}*/
+    #container-chat{height: 100vh;}
+    #chat{height: calc(100vh - 218px + 71px);}
+    
 }
-@media screen and(min-width: 768px){
-    .mobile-list{display:inherit}
-    .mobile-chat{display:initial}
+@media (min-width: 600px){
+    /*.mobile-list{display:inherit}
+    .mobile-chat{display:inherit}*/
+    
 }
 .center-div{
     position: absolute;
