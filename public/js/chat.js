@@ -134,24 +134,24 @@ function setTimeStamp(chat) {
 }
 
 function appendNewChatToDocument(chat) {
-    $(`<li style='list-style-type: none;'><a href="#!" onclick="openChat(this)" class="collection-item tooltipped" data-position="right" data-delay="50" data-tooltip="${chat.chatDesc}" id="${chat.timeStamp}"> ${chat.chatName} </a></li>`).prependTo('#list-chat')
+    $(`<li style='list-style-type: none;'><a href="#!" onclick="openChat(this)" class="collection-item tooltipped" data-position="right" data-delay="50" data-tooltip="${chat.chatDesc} <p><b><i>${chat.creatorUser}</i></b></p>" id="${chat.timeStamp}"> ${chat.chatName} </a></li>`).prependTo('#list-chat')
     //addTooltipItem(chat.timeStamp, chat.chatDesc);
 }
 
 function appendNewChatToDocumentWithAnimation(chat) {
-    let c = $(`<li style='list-style-type: none;'><a href="#!" onclick="openChat(this)" class="collection-item tooltipped" data-position="right" data-delay="50" data-tooltip="${chat.chatDesc}" id="${chat.timeStamp}"> ${chat.chatName} </a></li>`)
+    let c = $(`<li style='list-style-type: none;'><a href="#!" onclick="openChat(this)" class="collection-item tooltipped" data-position="right" data-delay="50" data-tooltip="${chat.chatDesc} <p><b><i>${chat.creatorUser}</i></b></p>" id="${chat.timeStamp}"> ${chat.chatName} </a></li>`)
     liShowAnimation(c.prependTo('#list-chat').first())
     //addTooltipItem(chat.timeStamp, chat.chatDesc);
 
 }
 
-function createNewChat(chatName, chatDesc, ist, noAnimation) {
-    var chat = { chatName: chatName, chatDesc: chatDesc, timeStamp: ist };
+function createNewChat(chatName, chatDesc, ist, creatorUser, noAnimation) {
+    var chat = { chatName: chatName, chatDesc: chatDesc, timeStamp: ist,creatorUser: creatorUser };
     if (!ist) setTimeStamp(chat);
     saveChat(chat);
     if (!noAnimation) appendNewChatToDocumentWithAnimation(chat);
     else appendNewChatToDocument(chat)
-    $('.tooltipped').tooltip({ delay: 50 }); // Mostra le descrizioni           
+    $('.tooltipped').tooltip({ delay: 50 , html:true}); // Mostra le descrizioni           
 }
 
 function loadChats() {
@@ -160,7 +160,7 @@ function loadChats() {
     getChats((error, obj) => {
         if (error) return console.error(error)
         //console.log(obj)
-        obj.forEach(chat => createNewChat(chat.nome, chat.descr, chat.ist, true))
+        obj.forEach(chat => createNewChat(chat.nome, chat.descr, chat.ist, chat.creatore,true))
         Materialize.showStaggeredList('#list-chat') // Animazione lista delle chat
     })
 }
@@ -182,8 +182,8 @@ function chatSubmitClicked() {
     if (chatName.length <= 20)///da sistemare. per non fare i nomi delle chat lunghissime: ci vorrebbe un avviso se superano tale dim
         if (chatName && chatDesc) {
             // creo la room e aspetto che mi ritorni il time stamp
-            socket.emit('createRoom', {nome:chatName, desc:chatDesc}, (ist) => {
-                createNewChat(chatName, chatDesc, ist);
+            socket.emit('createRoom', {nome:chatName, desc:chatDesc}, (ist, username) => {
+                createNewChat(chatName, chatDesc, ist, username);
                 $("#div-create-new-chat").css("display", "none")
                 $("#topic").val("")
                 $("#description").val("")
