@@ -269,7 +269,7 @@ emoji.scream{background-image: url(https://i.imgur.com/tOLNJgg.png);}
 emoji.hearth_blue{background-image: url(https://i.imgur.com/gR9juts.png);}
 emoji.funny{background-image: url(https://i.imgur.com/qKia58V.png);}
 
-@-webikt-keyframes pulse {
+@-webkit-keyframes pulse {
   from { opacity: 0; }
   to { opacity: 0.5; }
 }

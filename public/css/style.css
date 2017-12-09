@@ -16,7 +16,7 @@
     margin:3%;
 }
 #container{
-    background-image:  linear-gradient(rgba(41, 98, 255, 0.322), white);
+    background-image:  linear-gradient(rgba(41, 98, 255, 0.2),rgba(164, 189, 255, 0.538));
     background-repeat: no-repeat;
     position: fixed;
     background-size: cover;
@@ -28,7 +28,6 @@
     width: 200px;
     word-break: break-all;
 }
-
 #div-main{
     margin-bottom: 0;
 }
@@ -86,7 +85,9 @@
     color: black;
     font-weight: bold;
     text-transform: capitalize;
-    
+}
+#dropdown1{
+    top:64px;
 }
 #chat ol{
     margin-bottom: 0;

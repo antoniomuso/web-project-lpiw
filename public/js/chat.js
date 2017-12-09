@@ -1,6 +1,5 @@
 const fadeIn = 1000
 const chatListName = "chatListName";
-var snd = new Audio("/sound/pling.wav")
 var chatList = {}
 var currentIst = null
 var modalitaEnum = {
@@ -198,7 +197,6 @@ function chatSubmitClicked() {
                 var list = document.getElementById("list-chat").firstChild
             })
             //setTimeout(function () { list.className += " show"; }, 10)
-            //snd.play();
         }
 }
 
