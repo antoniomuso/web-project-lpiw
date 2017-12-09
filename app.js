@@ -57,7 +57,7 @@ app.post('/login', (req, res) => {
 
 //Route per ottenere i dati dell'utente loggato 
 app.get('/user', (req, res) => {
-    if (!req.session.autenticato) return {error: 'You must sign in first'}
+    if (!req.session.autenticato) return res.json({error: 'You must sign in first'})
     res.json({
         id: req.session.idUtente,
         username : req.session.username,
