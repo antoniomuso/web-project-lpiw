@@ -60,7 +60,10 @@ function reciveMessFrom(otherName, message, time, link_img) {
     var ol = object.appendTo('#chats')
     ol.find('.avatar').fadeIn();
     ol.find('.msg').toggle('bounce')
+    $('#chat').stop();
+    $('#chat').scrollTo(ol[0].children[ol[0].children.length - 1])
     return ol[0].children[ol[0].children.length - 1]
+
 }
 // Prende in input un nome utente un messaggio, Dovrebbe prendere anche avatar ecc...
 // restituisce il messaggio html aggiunto
