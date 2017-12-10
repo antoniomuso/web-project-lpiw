@@ -65,6 +65,13 @@ app.get('/user', (req, res) => {
     })
 })
 
+//Route per i settaggi 
+app.get('/settings', (req, res) => {
+    if (!req.session.autenticato) return res.redirect('/')
+    // Va finito
+})
+
+
 //Logout
 app.get('/logout', (req, res) => {
     req.session.destroy()
