@@ -15,14 +15,11 @@
     
     margin:3%;
 }
-#container{
-    background-image:  linear-gradient(rgba(41, 98, 255, 0.2),rgba(164, 189, 255, 0.538));
-    background-repeat: no-repeat;
-    position: fixed;
-    background-size: cover;
-    height: 100%;
+.background{
+    background: #eaeaea url(/images/texture.png);
     width: 100%;
-    overflow-y: auto;
+    height: 100%;
+    position: absolute;
 }
 .material-tooltip {
     width: 200px;
