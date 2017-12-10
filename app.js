@@ -17,7 +17,7 @@ var io = require('socket.io')(server);
 var ses = session(
     {
         secret: 'Nessuna la IndovinaBell',
-        store: new MemoryStore({ checkPeriod: 86400000 }), resave: false, saveUninitialized: false
+        store: new MemoryStore({ checkPeriod: 86400000 }), resave: false, saveUninitialized: true
     })
 // Rimuovo qualsiasi tipo di parser per il timestamp
 pg.types.setTypeParser(1082, val =>  val)
@@ -82,8 +82,10 @@ app.post('/img/upload',upload.single('avatar'), middleware.uploadImg(client))
 
 //Logout
 app.get('/logout', (req, res) => {
-    req.session.destroy()
-    res.redirect('/')
+    req.session.destroy(function (err) {
+        if (err) return next(err)
+        res.redirect('/')
+    })
 })
 
 //Routes per la conferma della registrazione
