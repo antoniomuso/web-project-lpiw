@@ -16,7 +16,7 @@ $(document).ready(() => {
 
     socket.on('message', (data) => {
         // Dovrebbe esserci data.image
-        reciveMessFrom(data.username, data.message, (new Date()).toLocaleTimeString() ,'http://dreamicus.com/data/ghost/ghost-08.jpg')
+        reciveMessFrom(data.username, data.message, (new Date()).toLocaleTimeString() ,data.img)
     })
 
     

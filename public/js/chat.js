@@ -232,7 +232,7 @@ function openChat(chat) {
                     if (mess.utente === userData.idUser) {
                         last = sendMessage(null, mess.corpo, timestampParse(mess.ist), userData.img, true)
                     } else {
-                        last = reciveMessFrom(mess.username, mess.corpo, timestampParse(mess.ist), data.img)
+                        last = reciveMessFrom(mess.username, mess.corpo, timestampParse(mess.ist), mess.img)
                     }
                 }
                 if (last) {
