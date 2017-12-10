@@ -52,14 +52,15 @@ app.use('/login', (err, req, res, next) => {
     req.session.lMessage = err.message
     res.redirect('/')
 })
+app.use('/login', middleware.controlAutenticato())
 app.post('/login', (req, res) => {
-    if (!req.session.autenticato) return res.redirect('/')
+    //if (!req.session.autenticato) return res.redirect('/')
     res.redirect('./chat') // Qua va inserito il render della chat passandogli Username, Immagine Utente ecc.. contenuti nel session storage
 })
 
 //Route per ottenere i dati dell'utente loggato 
+app.use('/user', middleware.controlAutenticato())
 app.get('/user', (req, res) => {
-    if (!req.session.autenticato) return res.json({error: 'You must sign in first'})
     res.json({
         id: req.session.idUtente,
         username : req.session.username,
@@ -68,13 +69,14 @@ app.get('/user', (req, res) => {
 })
 
 //Route per i settaggi 
+app.use('/settings', middleware.controlAutenticato())
 app.get('/settings', (req, res) => {
-    if (!req.session.autenticato) return res.redirect('/')
     res.render('settings.ejs', {img: req.session.img})
 })
 
 
 //Upload image 
+app.use('/img/upload', middleware.controlAutenticato())
 app.post('/img/upload',upload.single('avatar'), middleware.uploadImg(client))
 
 
@@ -112,8 +114,9 @@ app.post('/rooms/message', (req, res) => {
 })
 
 //Routes per la chat.
+app.use('/chat', middleware.controlAutenticato())
 app.get('/chat', (req, res) => {
-    if (!req.session.autenticato) return res.redirect('/')
+    //if (!req.session.autenticato) return res.redirect('/')
     res.sendFile(path.join(__dirname, './public/html/chat.html')) // Qua va inserito il render della chat passandogli Username, Immagine Utente ecc.. contenuti nel session storage
 })
 

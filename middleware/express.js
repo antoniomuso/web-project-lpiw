@@ -4,6 +4,7 @@ const querys = require('../lib/query-db')
 var options = require('../conf.json')
 var send_email_conf = require('../lib/send-email-conf')
 const fs = require('fs')
+const path = require('path')
 
 module.exports = {
     registration(db) {
@@ -126,22 +127,35 @@ module.exports = {
     },
     uploadImg(db) {
         return async (req,res,next) => {
-            if (!req.session.autenticato) return res.redirect('/')
             // tolgo la parte public/
-            var path = req.file.path.slice(req.file.path.indexOf("/")+1,req.file.path.length)
-            console.log(path)
+            if (!req.file) return res.redirect('/settings')
+            var fPath = req.file.path.slice(req.file.path.indexOf("/")+1,req.file.path.length)
+            console.log(fPath)
             try {
                 //console.log(req.file)
                 await db.query('BEGIN')
-                await db.query(querys.insert_img(path))
-                await db.query(querys.add_image_to_user(req.session.idUtente,path))
+                var tab = await db.query(querys.get_user_img(req.session.idUtente)) 
+                await db.query(querys.insert_img(fPath))
+                await db.query(querys.add_image_to_user(req.session.idUtente,fPath))
                 await db.query('COMMIT')
+                // Elimino la vecchia immagine 
+                if (tab.rowCount > 0) {
+                    fs.unlink(path.join('public/', tab.rows[0].img), (err) => {
+                        if (err) console.log('Utente ha inserito per la prima volta un immagine ')
+                    })
+                }
             } catch (error) {
                 console.log(error)
                 return res.redirect('/settings')
             }
-            req.session.img = path;
+            req.session.img = fPath;
             res.redirect('/settings')
+        }
+    },
+    controlAutenticato() {
+        return (req ,res, next) => {
+            if (!req.session.autenticato) return res.redirect('/')
+            next()
         }
     }
 
