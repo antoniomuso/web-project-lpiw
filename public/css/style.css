@@ -133,9 +133,11 @@
     .mobile-chat{display:none}*/
     #container-chat{height: 100vh;}
     #chat{height: calc(100vh - 218px + 71px);}
+    #dropdown1{top: 56px !important;}
     
 }
 @media (min-width: 600px){
+    #dropdown1{top: 64px !important;}
     /*.mobile-list{display:inherit}
     .mobile-chat{display:inherit}*/
     
@@ -151,6 +153,10 @@
     white-space: nowrap;
     overflow: hidden;
 }
+#dropdown1 a{
+    color: #2962FF;
+}
+
 #div-create-new-chat{
     position: absolute;
     bottom: 5%;
