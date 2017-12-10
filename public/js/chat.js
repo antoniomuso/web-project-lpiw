@@ -26,7 +26,7 @@ $(document).ready(function () {
     $('.modal').modal()
     // Inserisco callback di pressione dell'invio, per l'invio dei messaggi 
     $("#input-chat").keydown(callBackKeyPressed)
-    
+
 
     $(".profile-collapse").sideNav()
     $("#confirm-topic").click(chatSubmitClicked);
@@ -274,6 +274,10 @@ function showAddChatMenu() {
     var containerChat = $("#div-create-new-chat");
     if (containerChat.is(":hidden")) {
         $("#div-create-new-chat").css("display", "inherit")
+        //attendi che finisca l'animazione
+        containerChat.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
+            function () {
+            });
         containerChat.removeClass("animated bounceIn");
         containerChat = reset(containerChat);
         containerChat.addClass('animated bounceIn').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
@@ -292,12 +296,14 @@ $(document).mouseup(function (e) {
     // And the target is not the add button
     if ((!containerButton.is(e.target)
         && containerButton.has(e.target).length === 0)
-        &&( !containerSubmit.is(e.target)
-        && containerSubmit.has(e.target).length === 0)) {
+        && !containerSubmit.is(e.target)
+        && containerSubmit.has(e.target).length === 0
+        && !(containerSubmit.is(":hidden"))) //controlla se la nuvoletta è nascosta(Qui si presentava il problema dell'effetto speciale indesiderato)
+    {
 
+        //attendi che l'animazione finisca
         containerSubmit.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
             function () {
-               
             });
         containerSubmit.removeClass("animated bounceOut");
         containerSubmit.addClass('animated bounceOut').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
