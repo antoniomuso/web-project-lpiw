@@ -160,6 +160,7 @@
     z-index: 50;
     display: none;
     width: 80%;
+    margin-top: 5px;
     /*animation-name: showAddChat;
     animation-duration: 1s;
     padding: 2% 1%;*/
