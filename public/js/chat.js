@@ -213,10 +213,6 @@ function reset($elem) {
 }
 
 function openChat(chat) {
-    if (modalita == modalitaEnum.MOBILE) {
-        $(".mobile-chat").css("display", "inherit")
-        $(".mobile-list").css("display", "none")
-    }
     //Animazione per far apparire chat
     var containerChat = $('#container-chat');
     containerChat.removeClass("animated bounceInLeft");
@@ -244,10 +240,14 @@ function openChat(chat) {
                 }
             })
             $("#name-chat-statebar").text($(chat).text())
+            if (modalita == modalitaEnum.MOBILE) {
+                $(".mobile-chat").css("display", "inherit")
+                $(".mobile-list").css("display", "none")
+            }
             containerChat.addClass('animated bounceInLeft').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
-                function () {
-                    $(this).removeClass('animated bounceInLeft');
-                });
+            function () {
+                $(this).removeClass('animated bounceInLeft');
+            });
         })
     }
 }
