@@ -1,4 +1,5 @@
 const fadeIn = 1000
+const triggerScroll = 500
 const chatListName = "chatListName";
 var chatList = {}
 var currentIst = null
@@ -54,14 +55,18 @@ function reciveMessFrom(otherName, message, time, link_img) {
             <time>${time}</time>
         </div>
     </li>`)
+    var trigger = $('#chat')[0].scrollHeight - $('#chat').scrollTop() < triggerScroll;
+
     //(new Date()).toLocaleTimeString()
     object.find('.avatar').hide()
     object.find('.msg').hide()
     var ol = object.appendTo('#chats')
     ol.find('.avatar').fadeIn();
     ol.find('.msg').toggle('bounce')
-    $('#chat').stop();
-    $('#chat').scrollTo(ol[0].children[ol[0].children.length - 1])
+    if (trigger) {
+        $('#chat').stop();
+        $('#chat').scrollTo(ol[0].children[ol[0].children.length - 1])
+    }
     return ol[0].children[ol[0].children.length - 1]
 
 }
@@ -203,8 +208,8 @@ function chatSubmitClicked() {
         }
 }
 
-function timestampParse (string) {
-    return string.slice(0,string.lastIndexOf("."))
+function timestampParse(string) {
+    return string.slice(0, string.lastIndexOf("."))
 }
 
 
@@ -248,9 +253,9 @@ function openChat(chat) {
                 $(".mobile-list").css("display", "none")
             }
             containerChat.addClass('animated bounceInLeft').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
-            function () {
-                $(this).removeClass('animated bounceInLeft');
-            });
+                function () {
+                    $(this).removeClass('animated bounceInLeft');
+                });
         })
     }
 }
