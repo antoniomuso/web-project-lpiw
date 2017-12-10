@@ -65,7 +65,7 @@ function reciveMessFrom(otherName, message, time, link_img) {
 // Prende in input un nome utente un messaggio, Dovrebbe prendere anche avatar ecc...
 // restituisce il messaggio html aggiunto
 function sendMessage(name, message, time, link_img, notEscape) {
-    console.log(message)
+    //console.log(message)
     var object = $(
         `<li class="self">
         <div class="avatar">
@@ -96,7 +96,7 @@ function escapeHtml(unsafe) {
 // Rimuove li dalla lista
 function liRemoveAnimation(element) {
     if (typeof element === 'string') var element = $(element)
-    console.log(typeof element)
+    //console.log(typeof element)
     //element.velocity({ translateX: "-100px" }, { duration: 0 });
     element.velocity({ opacity: "0", translateX: "-100px" }, { duration: 800, delay: 0, easing: [60, 10] })
 }
@@ -116,7 +116,7 @@ function selectedChat(chat) {
 
 // cattura l'evento di pressione dell'enter
 function callBackKeyPressed(e) {
-    console.log('call')
+    //console.log('call')
     if (e.which == 13) {
         if (this.value === '') return
         var msg = sendMessage('Giovanni Varricchione', this.value, (new Date()).toLocaleTimeString(), 'https://scontent-mxp1-1.xx.fbcdn.net/v/t1.0-9/20770225_10212100619488480_2709822859667583246_n.jpg?oh=2aced0a77a1238729b5fc0886ae1f28a&oe=5AD25825')
@@ -174,7 +174,7 @@ function loadChats() {
 
 function saveChat(chat) {
     chatList[chat.timeStamp] = chat;
-    console.log(chatList);
+    //console.log(chatList);
     localStorage.chatListName = JSON.stringify(chatList);
 }
 
