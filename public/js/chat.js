@@ -119,7 +119,7 @@ function callBackKeyPressed(e) {
     //console.log('call')
     if (e.which == 13) {
         if (this.value === '') return
-        var msg = sendMessage('Giovanni Varricchione', this.value, (new Date()).toLocaleTimeString(), 'https://scontent-mxp1-1.xx.fbcdn.net/v/t1.0-9/20770225_10212100619488480_2709822859667583246_n.jpg?oh=2aced0a77a1238729b5fc0886ae1f28a&oe=5AD25825')
+        var msg = sendMessage(userData.username, this.value, (new Date()).toLocaleTimeString(), userData.img)
         socket.emit('message', this.value)
         //console.log(msg)
         $(this).val('')
@@ -230,9 +230,9 @@ function openChat(chat) {
                 var last = undefined;
                 for (let mess of data) {
                     if (mess.utente === userData.idUser) {
-                        last = sendMessage(null, mess.corpo, timestampParse(mess.ist), 'https://scontent-mxp1-1.xx.fbcdn.net/v/t1.0-9/20770225_10212100619488480_2709822859667583246_n.jpg?oh=2aced0a77a1238729b5fc0886ae1f28a&oe=5AD25825', true)
+                        last = sendMessage(null, mess.corpo, timestampParse(mess.ist), userData.img, true)
                     } else {
-                        last = reciveMessFrom(mess.username, mess.corpo, timestampParse(mess.ist), 'http://dreamicus.com/data/ghost/ghost-08.jpg')
+                        last = reciveMessFrom(mess.username, mess.corpo, timestampParse(mess.ist), data.img)
                     }
                 }
                 if (last) {

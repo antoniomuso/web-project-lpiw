@@ -25,6 +25,7 @@
     "express-session": "^1.15.6",
     "express-socket.io-session": "^1.3.2",
     "memorystore": "^1.6.0",
+    "multer": "^1.3.0",
     "nodemailer": "^4.4.0",
     "pg": "^7.4.0",
     "socket.io": "^2.0.4"

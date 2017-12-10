@@ -3,6 +3,7 @@ var emailV = require('email-validator')
 const querys = require('../lib/query-db')
 var options = require('../conf.json')
 var send_email_conf = require('../lib/send-email-conf')
+const fs = require('fs')
 
 module.exports = {
     registration(db) {
@@ -121,6 +122,26 @@ module.exports = {
             }
             req.rows = rows
             next()
+        }
+    },
+    uploadImg(db) {
+        return async (req,res,next) => {
+            if (!req.session.autenticato) return res.redirect('/')
+            // tolgo la parte public/
+            var path = req.file.path.slice(req.file.path.indexOf("/")+1,req.file.path.length)
+            console.log(path)
+            try {
+                //console.log(req.file)
+                await db.query('BEGIN')
+                await db.query(querys.insert_img(path))
+                await db.query(querys.add_image_to_user(req.session.idUtente,path))
+                await db.query('COMMIT')
+            } catch (error) {
+                console.log(error)
+                return res.redirect('/settings')
+            }
+            req.session.img = path;
+            res.redirect('/settings')
         }
     }
 

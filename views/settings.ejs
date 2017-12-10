@@ -48,11 +48,11 @@
         <div id="foto" class="center-align">
                 <h5>Foto</h5>
                 <p>Aggiungi una bella foto per il tuo profilo.</p>
-                <img id="img-profile" src="" width="100" height="100">
+                <img id="img-profile" src="<%= img %>" width="100" height="100">
                 <br>
-                <form>
-                <input id="file-upload" type="file" name="Carica">
-                <br>
+                <form action='/img/upload' method='post' enctype="multipart/form-data" >
+                    <input id="file-upload" type="file" name="avatar">
+                    <br>
                 <input type="submit" style="margin:10px" class="btn waves-effect blue accent-4 waves-light" value="Carica">
                 </form>
             </div>

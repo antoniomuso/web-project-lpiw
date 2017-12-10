@@ -9,6 +9,8 @@ const MemoryStore = require('memorystore')(session)
 const middleware = require('./middleware/express')
 const options = require('./conf.json')
 const http = require('http')
+const multer  = require('multer')
+const upload = multer({ dest: 'public/images/' })
 const app = express()
 var server = new http.Server(app)
 var io = require('socket.io')(server);
@@ -68,8 +70,12 @@ app.get('/user', (req, res) => {
 //Route per i settaggi 
 app.get('/settings', (req, res) => {
     if (!req.session.autenticato) return res.redirect('/')
-    // Va finito
+    res.render('settings.ejs', {img: req.session.img})
 })
+
+
+//Upload image 
+app.post('/img/upload',upload.single('avatar'), middleware.uploadImg(client))
 
 
 //Logout
