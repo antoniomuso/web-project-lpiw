@@ -24,9 +24,9 @@ $(document).ready(function () {
 
     // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
     $('.modal').modal()
-    w3.includeHTML(() => { // callback di fine embedd
-        $("#input-chat").keydown(callBackKeyPressed)
-    }) // embedda chat_div in questa pagina html
+    // Inserisco callback di pressione dell'invio, per l'invio dei messaggi 
+    $("#input-chat").keydown(callBackKeyPressed)
+    
 
     $(".profile-collapse").sideNav()
     $("#confirm-topic").click(chatSubmitClicked);
