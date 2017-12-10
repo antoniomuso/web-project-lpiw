@@ -290,12 +290,15 @@ $(document).mouseup(function (e) {
 
     // if the target of the click isn't the container nor a descendant of the container
     // And the target is not the add button
-    if (!containerButton.is(e.target)
-        && containerButton.has(e.target).length === 0
-        && !containerSubmit.is(e.target)
-        && containerSubmit.has(e.target).length === 0) {
+    if ((!containerButton.is(e.target)
+        && containerButton.has(e.target).length === 0)
+        &&( !containerSubmit.is(e.target)
+        && containerSubmit.has(e.target).length === 0)) {
 
-        containerSubmit.removeClass("animated bounceIn");
+        containerSubmit.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
+            function () {
+               
+            });
         containerSubmit.removeClass("animated bounceOut");
         containerSubmit.addClass('animated bounceOut').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
             function () {
