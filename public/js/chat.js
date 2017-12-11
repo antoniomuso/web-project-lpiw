@@ -1,5 +1,5 @@
 const fadeIn = 1000
-const triggerScroll = 500
+const triggerScroll = 1000
 const chatListName = "chatListName";
 var chatList = {}
 var currentIst = null
