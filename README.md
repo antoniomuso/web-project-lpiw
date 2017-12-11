@@ -2,15 +2,15 @@
 Progetto tecnologie e linguaggi per il web, Stefan, giovannino, Antonio.
 ## Cosa Manca da fare :computer:
 
-- [ ] Comunicazione Socket-io interfaccia grafica lato client.
-- [ ] Gestire lo scorrimento della scrool bar per i messaggi degli altri utenti.
+- [x] Comunicazione Socket-io interfaccia grafica lato client.
+- [x] Gestire lo scorrimento della scrool bar per i messaggi degli altri utenti.
 - [ ] Gestire le connessione simultane dello stesso utente con sessioni differenti.
 - [x] Login e Registrazione.
-- [ ] Più Animazioni.
+- [x] Più Animazioni.
 - [ ] Modalità telefono.
-- [ ] Gestione delle immagini lato server.
+- [x] Gestione delle immagini lato server.
 - [ ] View per la chat per inserimento dati. 
-- [ ] Inserire Username dell'utente per i messaggi nella chat.
+- [x] Inserire Username dell'utente per i messaggi nella chat.
 - [ ] Inserire Username e Immagine dell'utente loggato da qualche parte nella chat.
 - [x] API per la richiesta delle chat.
 - [x] API per la richiesta dei messaggi di una chat.
