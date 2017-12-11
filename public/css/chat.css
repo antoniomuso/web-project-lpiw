@@ -15,6 +15,20 @@ html, body {
     text-decoration: underline;
     text-decoration-color: rgb(255, 255, 255);
 }
+.topics{
+    word-break: break-all;
+    overflow: auto;
+    line-height: 26px;
+    margin: 0 auto;
+    height: 100%;
+      padding: 5px;
+
+ 
+
+}
+
+
+
 
 /* M E N U */
 
@@ -228,6 +242,7 @@ xmp {
 }
 }
 
+
 .msg time {
     font-size: 0.7rem;
     color: #ccc;
@@ -257,17 +272,46 @@ emoji{
     margin-right: 2px;
     transform: translate3d(0px, 3px, 0px);
 }
+
+emoji.fuckyou{background-image: url(https://i.imgur.com/KD6drtq.gif);}
 emoji.please{background-image: url(https://imgur.com/ftowh0s.png);}
 emoji.lmao{background-image: url(https://i.imgur.com/MllSy5N.png);}
-emoji.happy{background-image: url(https://imgur.com/5WUpcPZ.png);}
-emoji.pizza{background-image: url(https://imgur.com/voEvJld.png);}
-emoji.cryalot{background-image: url(https://i.imgur.com/UUrRRo6.png);}
+emoji.happy{background-image: url(https://i.imgur.com/JCAt0Hr.gif);}
+emoji.laught{background-image: url(https://i.imgur.com/8fXSoYo.gif);}
+emoji.pizza{background-image: url(https://az705183.vo.msecnd.net/onlinesupportmedia/onlinesupport/media/skype/screenshots/fa12330/emoticons/pizza_80_anim_gif.gif?width=40&height=40);}
+emoji.thief{background-image: url(https://i.imgur.com/1pVEdDH.gif);}
+emoji.rock{background-image: url(https://i.imgur.com/TN99c3d.gif);}
+emoji.angry{background-image: url(https://az705183.vo.msecnd.net/onlinesupportmedia/onlinesupport/media/skype/screenshots/fa12330/emoticons/headbang_80_anim_gif.gif?width=40&height=40);}
+emoji.crazy{background-image: url(https://i.imgur.com/jGHpqYl.gif);}
+emoji.swear{background-image: url(https://i.imgur.com/ds6l35G.gif);}
+emoji.cantlook{background-image: url(https://i.imgur.com/8bsE8Sr.gif);}
+emoji.kissass{background-image: url(https://i.imgur.com/rIIyyZF.gif);}
+emoji.spider{background-image: url(https://i.imgur.com/pFq3P0o.gif);}
+emoji.sad{background-image: url(https://i.imgur.com/LSBY0aH.gif);}
+emoji.cool{background-image: url(https://i.imgur.com/mwT5aEJ.gif);}
+emoji.wink{background-image: url(https://i.imgur.com/rCbajtM.gif);}
+emoji.bananadance{background-image: url(https://orig00.deviantart.net/dcd7/f/2009/036/a/c/peanut_butter_jelly_tard_by_burgerbunny.gif);}
+emoji.grandmadance{background-image: url(https://az705183.vo.msecnd.net/onlinesupportmedia/onlinesupport/media/skype/screenshots/fa12330/emoticons/gran_40_anim_gif.gif);}
+emoji.drunk{background-image: url(https://az705183.vo.msecnd.net/onlinesupportmedia/onlinesupport/media/skype/screenshots/fa12330/emoticons/drunk_80_anim_gif.gif?width=40&height=40);}
+emoji.smoking{background-image: url(https://az705183.vo.msecnd.net/onlinesupportmedia/onlinesupport/media/skype/screenshots/fa12330/emoticons/smoking_80_anim_gif.gif?width=40&height=40);}
+emoji.sweating{background-image: url(https://az705183.vo.msecnd.net/onlinesupportmedia/onlinesupport/media/skype/screenshots/fa12330/emoticons/sweating_80_anim_gif.gif?width=40&height=40);}
+emoji.heart{background-image: url(https://az705183.vo.msecnd.net/onlinesupportmedia/onlinesupport/media/skype/screenshots/fa12330/emoticons/heart_80_anim_gif.gif?width=40&height=40);}
+emoji.smoking{background-image: url(https://az705183.vo.msecnd.net/onlinesupportmedia/onlinesupport/media/skype/screenshots/fa12330/emoticons/smoking_80_anim_gif.gif?width=40&height=40);}
+emoji.dancingmonkey{background-image: url(https://az705183.vo.msecnd.net/onlinesupportmedia/onlinesupport/media/skype/screenshots/fa12330/emoticons/monkey_80_anim_gif.gif);}
+emoji.cryalot{background-image: url(https://i.imgur.com/npCzj7G.gif);}
 emoji.books{background-image: url(https://i.imgur.com/UjZLf1R.png);}
 emoji.moai{background-image: url(https://imgur.com/uSpaYy8.png);}
 emoji.suffocated{background-image: url(https://i.imgur.com/jfTyB5F.png);}
 emoji.scream{background-image: url(https://i.imgur.com/tOLNJgg.png);}
 emoji.hearth_blue{background-image: url(https://i.imgur.com/gR9juts.png);}
+emoji.bomb{background-image: url(https://az705183.vo.msecnd.net/onlinesupportmedia/onlinesupport/media/skype/screenshots/fa12330/emoticons/bomb_80_anim_gif.gif?width=40&height=40);}
 emoji.funny{background-image: url(https://i.imgur.com/qKia58V.png);}
+emoji.yes{background-image: url(https://az705183.vo.msecnd.net/onlinesupportmedia/onlinesupport/media/skype/screenshots/fa12330/emoticons/yes_80_anim_gif.gif?width=40&height=40);}
+emoji.no{background-image: url(https://az705183.vo.msecnd.net/onlinesupportmedia/onlinesupport/media/skype/screenshots/fa12330/emoticons/no_80_anim_gif.gif?width=40&height=40);}
+emoji.hanshake{background-image: url(https://az705183.vo.msecnd.net/onlinesupportmedia/onlinesupport/media/skype/screenshots/fa12330/emoticons/handshake_80_anim_gif.gif?width=40&height=40);}
+emoji.ninja{background-image: url(https://az705183.vo.msecnd.net/onlinesupportmedia/onlinesupport/media/skype/screenshots/fa12330/emoticons/ninja_80_anim_gif.gif?width=40&height=40);}
+emoji.cheeky{background-image: url(https://az705183.vo.msecnd.net/onlinesupportmedia/onlinesupport/media/skype/screenshots/fa12330/emoticons/tongueout_80_anim_gif.gif?width=40&height=40);}
+emoji.kiss{background-image: url(https://az705183.vo.msecnd.net/onlinesupportmedia/onlinesupport/media/skype/screenshots/fa12330/emoticons/kiss_80_anim_gif.gif?width=40&height=40);}
 
 @-webkit-keyframes pulse {
   from { opacity: 0; }

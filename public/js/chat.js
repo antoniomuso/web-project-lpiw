@@ -3,6 +3,7 @@ const triggerScroll = 500
 const chatListName = "chatListName";
 var chatList = {}
 var currentIst = null
+var emoji2code = {}
 var modalitaEnum = {
     MOBILE: 0,
     DESKTOP: 1
@@ -36,11 +37,57 @@ $(document).ready(function () {
             $("#confirm-topic").click()
     });
 
+    createEmojiMenu()
     loadChats()
 
 
 
 })
+
+function createEmojiMenu() {
+
+    emoji2code[":-\)\)"] = "laught";
+    emoji2code[":-\(\("] = "cryalot";
+    emoji2code[":-\)"] = "happy";
+    emoji2code[";-\)"] = "wink";
+    emoji2code[":-p"] = "cheeky";
+    emoji2code[":-*"] = "kiss";
+    emoji2code[":-\("] = "sad";
+    emoji2code["::thief"] = "thief";
+    emoji2code["::rock"] = "rock";
+    emoji2code["::angry"] = "angry";
+    emoji2code["::fuckyou"] = "fuckyou";
+    emoji2code["::crazy"] = "crazy";
+    emoji2code["::swear"] = "swear";
+    emoji2code["::cantlook"] = "cantlook";
+    emoji2code["::kissass"] = "kissass";
+    emoji2code["::spider"] = "spider";
+    emoji2code["::cool"] = "cool";
+    emoji2code["::bananadance"] = "bananadance";
+    emoji2code["::grandmadance"] = "grandmadance";
+    emoji2code["::drunk"] = "drunk";
+    emoji2code["::smoking"] = "smoking";
+    emoji2code["::sweating"] = "sweating";
+    emoji2code["::heart"] = "heart";
+    emoji2code["::books"] = "books";
+    emoji2code["::moai"] = "moai";
+    emoji2code["::suffocated"] = "suffocated";
+    emoji2code["::scream"] = "scream";
+    emoji2code["::pizza"] = "pizza";
+    emoji2code["::please"] = "please";
+    emoji2code["::dancingmonkey"] = "dancingmonkey";
+    emoji2code["::bomb"] = "bomb";
+    emoji2code["::yes"] = "yes";
+    emoji2code["::no"] = "no";
+    emoji2code["::hanshake"] = "hanshake";
+    emoji2code["::ninja"] = "ninja";
+
+    var emojiList = $("#list-emoji");
+
+    for (var key in emoji2code) {
+        $("<emoji id=\"" + key + "\" onclick=\"insertEmoji(this)\" class=\" button " + emoji2code[key] + "\"></emoji>").prependTo(emojiList);
+    }
+}
 
 // prende un messaggio ricevuto dal server e lo inserisce nella chat come messaggio ricevuto 
 // da un altra persona
@@ -51,7 +98,7 @@ function reciveMessFrom(otherName, message, time, link_img) {
         </div>
         <div class="msg">
             <p style='word-wrap:normal;'><b>${otherName}:</b></p>
-            <p>${message}</p>
+            <p>${parseEmoticon(message)}</p>
             <time>${time}</time>
         </div>
     </li>`)
@@ -80,7 +127,8 @@ function sendMessage(name, message, time, link_img, notEscape) {
         <img class='cricle #c5cae9 indigo lighten-4' src="${link_img}" draggable="false" />
         </div>
         <div class="msg">
-        <p>${ notEscape ? message : escapeHtml(message)}</p>
+        <p>${ parseEmoticon(notEscape ? message : escapeHtml(message))} </p>
+        
         <time>${time}</time>
         </div>
         </li>`)
@@ -92,6 +140,21 @@ function sendMessage(name, message, time, link_img, notEscape) {
     return ol[0].children[ol[0].children.length - 1]
 }
 
+function escapeRegExp(str) {
+    return str.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+}
+function replaceAll(str, find, replace) {
+    return str.replace(new RegExp(escapeRegExp(find), 'gi'), replace);
+}
+
+function parseEmoticon(mes) {
+
+    for (var key in emoji2code) {
+        mes = replaceAll(mes, key, "<emoji class=\"" + emoji2code[key] + "\" \/>")
+    }
+    return mes
+
+}
 function escapeHtml(unsafe) {
     return unsafe
         .replace(/&/g, "&amp;")
@@ -125,6 +188,7 @@ function selectedChat(chat) {
 // cattura l'evento di pressione dell'enter
 function callBackKeyPressed(e) {
     //console.log('call')
+
     if (e.which == 13) {
         if (this.value === '') return
         var msg = sendMessage(userData.username, this.value, (new Date()).toLocaleTimeString(), userData.img)
@@ -223,10 +287,11 @@ function reset($elem) {
 function openChat(chat) {
     //Animazione per far apparire chat
     var containerChat = $('#container-chat');
-    containerChat.removeClass("animated bounceInLeft");
-    containerChat = reset(containerChat);
+    
     var ist = $(chat).attr('id')
     if (ist != currentIst) {
+        containerChat.removeClass("animated bounceInLeft");
+        containerChat = reset(containerChat);
         // Faccio il join alla chat 
         socket.emit('join', ist, (conf) => {
             if (!conf) return
@@ -298,6 +363,46 @@ function showAddChatMenu() {
             });
     }
 }
+
+function insertEmoji(emojiButton) {
+    
+        $("#input-chat").val($("#input-chat").val() + emojiButton.id)
+    
+    $("#input-chat").focus();
+}
+
+
+function openEmoji() {
+    var containerChat = $("#div-emoji");
+    if (containerChat.is(":hidden")) {
+        $("#div-emoji").css("display", "inherit")
+        //attendi che finisca l'animazione
+        containerChat.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
+            function () {
+            });
+        containerChat.removeClass("animated bounceIn");
+        containerChat = reset(containerChat);
+        containerChat.addClass('animated bounceIn').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
+            function () {
+                $(this).removeClass('animated bounceIn');
+            });
+    }
+    else {
+        containerChat.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
+            function () {
+            });
+        containerChat.removeClass("animated bounceOut");
+
+        containerChat = reset(containerChat);
+        containerChat.addClass('animated bounceOut').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
+            function () {
+                $(this).removeClass('animated bounceOut');
+                $(this).hide();
+            });
+    }
+}
+
+
 
 //Funzione usata per controllare se il click ha colpito la nuvoletta usata per aggiungere nuove chat
 $(document).mouseup(function (e) {

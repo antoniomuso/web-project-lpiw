@@ -7,12 +7,12 @@
     <script src="/js/chat.js"></script>
     <script src="/js/socket-io.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
-    
+
     <link href="/css/icons.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/chat.css">
     <link rel="stylesheet" href="/css/animate.css">
 
-    
+
     <link rel="stylesheet" href="/css/style.css">
     <link href='http://fonts.googleapis.com/css?family=Oleo+Script' rel='stylesheet' type='text/css'>
 
@@ -26,7 +26,7 @@
 <body style="overflow:hidden" onresize="resizeWindow()">
     <!-- Questa è la barra di navigazione -->
     <nav class="navbar-fixed nav-wrapper blue accent-4 mobile-list ">
-        <a href="../" class="animated pulse"id="brand-name" >ChatSuperCool</a>
+        <a href="../" class="animated pulse" id="brand-name">ChatSuperCool</a>
         <ul id="nav-mobile" class="right">
             <li><a class="dropdown-button" style="margin-right: 15px;" href="#!" data-activates="dropdown1"><i class="material-icons right">arrow_drop_down</i></a></li>
         </ul>
@@ -46,7 +46,7 @@
                 <a href="#!" class="collection-item">Chat 3</a>
                 <a href="#!" class="collection-item">
                     <span class="badge">42</span>Chat 4</a> -->
-                </div>
+            </div>
             <!-- Questo è il messaggio che appare per creare nuove chat-->
             <div id="div-create-new-chat" class="z-depth-2">
                 <form class="col s12">
@@ -63,6 +63,7 @@
                     </div>
                 </form>
             </div>
+
             <!-- Questo è il pulsante + -->
             <div id="btn-add-chat">
                 <h1 class="center-align">
@@ -72,11 +73,17 @@
                 </h1>
             </div>
         </div>
-        
+
         <!-- Questo è il container della chat -->
         <div id="container-chat" class="mobile-chat col s12 m9 l9 xl9 z-depth-3">
 
+
+
             <nav id="container-chatname" class="blue accent-4 z-depth-3 col s12 m12 l12 xl12">
+                <div id="div-emoji" class="z-depth-2">
+                    <div id="list-emoji" class="topics ">       
+                    </div>
+                </div>
                 <div id="nav-mobile" class="nav-wrapper">
                     <ul>
                         <li>
@@ -85,38 +92,46 @@
                             </a>
                         </li>
                         <li>
-                            <img id="avatar-chat-statebar" width="40" class='left cricle #c5cae9 indigo lighten-4' src="https://i.imgur.com/HYcn9xO.png" draggable="false" />
+                            <img id="avatar-chat-statebar" width="40" class='left cricle #c5cae9 indigo lighten-4' src="https://i.imgur.com/HYcn9xO.png"
+                                draggable="false" />
                         </li>
-                        <li id="name-chat-statebar"  class="center-align">
-                        </li>    
+                        <li id="name-chat-statebar" class="center-align">
+                        </li>
                     </ul>
                 </div>
             </nav>
 
-            <div id='chat' class="col s12 m12 l12 xl12" >
+            <div id='chat' class="col s12 m12 l12 xl12">
                 <div>
-                        <ol id='chats' class="chat">
-                            
-                        </ol>
+                    <ol id='chats' class="chat">
+
+                    </ol>
                 </div>
             </div>
+
+
             <div id="chat-input-bar" class="card white darken-3 z-depth-3 col s12 m12 l12 xl12">
-                <input id='input-chat' autocomplete="off" class="materialize-textarea center black-text text-darken-5" type="text" placeholder="Write message..."/>
+                <div id='button-emoji' onclick="openEmoji()" class="btn-floating btn-large red">
+                    <i class="material-icons">face</i>
+                    </a>
+                </div>
+                <input id='input-chat' autocomplete="off" class="materialize-textarea center black-text text-darken-5" type="text" placeholder="Write message..."
+                />
                 <div id='button-extend' class="fixed-action-btn vertical click-to-toggle">
                     <a class="btn-floating btn-large red">
                     <i class="material-icons">menu</i>
                     </a>
                     <ul>
-                    <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
-                    <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
-                    <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
-                    <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+                        <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
+                        <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
+                        <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+                        <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <!-- Dropdown Structure -->
     <ul id="dropdown1" class="dropdown-content z-depth-2">
         <li><a href="/settings">Settings</a></li>
@@ -125,4 +140,5 @@
     </ul>
 
 </body>
+
 </html>
