@@ -16,13 +16,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ChatSuperCool</title>
     <style type="text/css">
-        #container-form{
-            padding: 5% ;
-            margin-top: 5%;
+        #container{
+            padding: 5%;
+            box-sizing: border-box;
+            max-width: 960px;
+            min-width: 200px;
         }
         #form{
-            padding: 0 0;
+            padding: 0;
             background-color: #EBEBF5;
+            margin-top: 5%;
         }
         #signup-tab {
             background-color: white;
@@ -48,114 +51,101 @@
 </head>
 
 <body class="background">
-    <nav class="nav-wrapper blue accent-4 navbar-fixed" style="width: 100vw;">
+    <nav class="nav-wrapper blue accent-4 navbar-fixed">
         <div>
             <a href="#!" id="brand-name">
                 ChatSuperCool
             </a>
         </div>
     </nav>
-    <div id="container">
-        <div id="container-form" class="row">
-            <div id="description" class="center-align col offset-l1 l5">
-                <p><h2>Lorem ipsum dolor sit amet</h2>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate </p>
+    <div id="container" class="row">
+        <div id="description" class="center-align col m6">
+            <p><h2>Lorem ipsum dolor sit amet</h2>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate </p>
+        </div>
+        <div id="form" class="z-depth-3 center-align offset-m1 col m5">
+            <div id="form-header">
+                <div id="login-tab" class="col s6 z-depth-1">
+                    <h5>Login</h5>
+                </div>
+                <div id="signup-tab" class="col s6 z-depth-1">
+                    <h5>Sign Up</h5>
+                </div>
             </div>
-            <div id="form" class="z-depth-2 center-align offset-l1 col l4">
-                <div id="form-header">
-                    <div id="login-tab" class="col s6 z-depth-1">
-                        <h5>Login</h5>
+            <div id="form-body">
+                <form id="form-login" action='/login' method='POST'>
+                    <div class="input-field col s12">
+                        <i class="material-icons icon" style="float:left">person</i>
+                        <div style="float:left">
+                            <label class="margin-label-form" for="user-login">Username</label>
+                            <input name="username" id="user-login" size="30" maxlength="20" type="text" minlength="5" class="validate">
+                        </div>
                     </div>
-                    <div id="signup-tab" class="col s6 z-depth-1">
-                        <h5>Sign Up</h5>
+                    <div class="input-field col s12">
+                        <i class="material-icons icon" style="float:left">https</i>
+                        <div style="float:left">
+                            <input name="password" id="password-login" size="30" maxlength="100" type="password" minlength="5" class="validate">
+                            <label class="margin-label-form" for="password-login">Password</label>
+                        </div>
                     </div>
-                </div>
-                <div id="form-body">
-                    <form id="form-login" action='/login' method='POST'>
-                        <div class="input-field col s12">
-                            <div style="float:left">
-                                <i class="material-icons icon">person</i>
-                            </div>
-                            <div style="float:left">
-                                <label class="margin-label-form" for="user-login">Username</label>
-                                <input name="username" id="user-login" size="20" maxlength="20" type="text" minlength="5" class="validate">
+                    <% if (lError) { %>
+                    <div class= 'col s12'>
+                        <div class='card #90caf9 blue lighten-4'>
+                            <div class="card-content red-text">
+                                <span class="card-title"><b>Error</b></span>
+                                <b><%= lError %></b>
                             </div>
                         </div>
-
-                        <div class="input-field col s12">
-                            <div style="float:left">
-                                <i class="material-icons icon">https</i>
-                            </div>
-                            <div style="float:left">
-                                <input name="password" id="password-login" size="20" maxlength="100" type="password" minlength="5" class="validate">
-                                <label class="margin-label-form" for="password-login">Password</label>
+                    </div>
+                    <% } %>
+                    <div class="col s12 margine">
+                        <div class="input-field inline">
+                            <button class="btn waves-effect waves-light blue accent-4" type="submit">Log in</button>
+                        </div>
+                        <br>
+                    </div>
+                    <a href="./html/password_lost.html">I forgot my username or password.</a>
+                    <div><br></div>
+                </form>
+                <form id="form-signup" action="/register" method="POST" class="row" style="margin-bottom: 0px;">
+                    <div class="input-field col s12">
+                        <i class="material-icons icon" style="float:left">person</i>
+                        <div style="float:left">
+                            <input name="username" id="username-signup"  type="text" size="30" maxlength="20" minlength="5" class="validate">
+                            <label class="margin-label-form" for="username-signup">Username</label>
+                        </div>
+                    </div>
+                    <div class="input-field col s12">
+                        <i class="material-icons icon" style="float:left">https</i>
+                        <div style="float:left">
+                            <input name="password" id="password-signup" type="password" size="30" maxlength="100" minlength="5" class="validate">
+                            <label class="margin-label-form" for="password-signup">Password</label>
+                        </div>
+                    </div>
+                    <div class="input-field col s12">
+                        <i class="material-icons icon" style="float:left">mail</i>
+                        <div style="float:left">
+                            <input name="email" id="email-signup" type="email" size="30" maxlength="30" class="validate">
+                            <label class="margin-label-form" for="email-signup">Email</label>
+                        </div>
+                    </div>
+                    <% if (rError) { %>
+                    <script> showSignupTab() </script>
+                    <div class= 'col s12'>
+                        <div class='card #90caf9 blue lighten-3'>
+                            <div class="card-content red-text">
+                                    <span class="card-title"><b>Error</b></span>
+                                    <b><%= rError %></b>
                             </div>
                         </div>
-                        <% if (lError) { %>
-                        <div class= 'col s12'>
-                            <div class='card #90caf9 blue lighten-3'>
-                                <div class="card-content red-text">
-                                        <span class="card-title"><b>Error</b></span>
-                                        <b><%= lError %></b>
-                                </div>
-                            </div>
+                    </div>
+                    <% } %>
+                    <div class="col s12 margine">
+                        <div class="input-field inline">
+                        <button class="btn waves-effect waves-light margine blue accent-4" type="submit">Create account</button>
                         </div>
-                        <% } %>
-                        <div class="col s12 margine">
-                            <div class="input-field inline">
-                                <button class="btn waves-effect waves-light blue accent-4" type="submit">Log in</button>
-                            </div>
-                            <br>
-                        </div>
-                        <a href="./html/password_lost.html">I forgot my username or password.</a>
-                        <div><br></div>
-                    </form>
-                    <form id="form-signup" action="/register" method="POST" class="row" style="margin-bottom: 0px;">
-                        <div class="input-field col s12">
-                            <div style="float:left">
-                                <i class="material-icons icon">person</i>
-                            </div>
-                            <div style="float:left">
-                                <input name="username" id="username-signup"  type="text" size="20" maxlength="20" minlength="5" class="validate">
-                                <label class="margin-label-form" for="username-signup">Username</label>
-                            </div>
-                        </div>
-                        <div class="input-field col s12">
-                            <div style="float:left">
-                                <i class="material-icons icon">https</i>
-                            </div>
-                            <div style="float:left">
-                                <input name="password" id="password-signup" type="password" size="20" maxlength="100" minlength="5" class="validate">
-                                <label class="margin-label-form" for="password-signup">Password</label>
-                            </div>
-                        </div>
-                        <div class="input-field col s12">
-                            <div style="float:left">
-                                <i class="material-icons icon">mail</i>
-                            </div>
-                            <div style="float:left">
-                                <input name="email" id="email-signup" type="email" size="20" maxlength="30" class="validate">
-                                <label class="margin-label-form" for="email-signup">Email</label>
-                            </div>
-                        </div>
-                        <% if (rError) { %>
-                        <script> showSignupTab() </script>
-                        <div class= 'col s12'>
-                            <div class='card #90caf9 blue lighten-3'>
-                                <div class="card-content red-text">
-                                        <span class="card-title"><b>Error</b></span>
-                                        <b><%= rError %></b>
-                                </div>
-                            </div>
-                        </div>
-                        <% } %>
-                        <div class="col s12 margine">
-                            <div class="input-field inline">
-                            <button class="btn waves-effect waves-light margine blue accent-4" type="submit">Create account</button>
-                            </div>
-                        </div>
-                        
-                    </form>
-                </div>
+                    </div>
+                    
+                </form>
             </div>
         </div>
     </div>
