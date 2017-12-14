@@ -267,6 +267,7 @@ emoji{
     display: inline-block;
     height: 25px;
     width: 25px;
+    border-radius: 47%;    
     background-size: cover;
     background-repeat: no-repeat;
     margin-top: -7px;
