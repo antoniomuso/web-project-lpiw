@@ -16,6 +16,7 @@ $(document).ready(function () {
     if ($(document).width() <= 600) {
         modalita = modalitaEnum.MOBILE
         $(".mobile-chat").css("display", "none")
+        $("#input-chat").css("width", "80%")
     }
     getUserData((error, data) => {
         if (error) return console.error(error)
@@ -340,6 +341,8 @@ function resizeWindow() {
     if (!modalita == oldModalita) {
         var containerSubmit = $("#div-create-new-chat");
         var containerChat = $("#div-emoji");
+        $("#input-chat").css("width", "90%")
+        
         if (!(containerSubmit.is(":hidden"))) //controlla se la nuvoletta è nascosta(Qui si presentava il problema dell'effetto speciale indesiderato)
         {
 
@@ -356,6 +359,10 @@ function resizeWindow() {
         }
 
         if (modalita == modalitaEnum.MOBILE) {
+           
+                $("#input-chat").css("width", "55%")
+        
+            
             if (!(containerChat.is(":hidden"))) {
                 containerChat.hide();
 
