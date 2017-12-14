@@ -412,8 +412,8 @@ function openEmoji() {
 
     }
     else {
-        containerChat.css("width", "30%")
-        containerChat.css("height", "30%")
+        containerChat.css("width", "25%")
+        containerChat.css("height", "25%")
 
 
     }

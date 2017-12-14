@@ -184,13 +184,13 @@
 }
 
 #div-emoji{
-    position: fixed;   
+    position: absolute;   
     bottom: 90px;    
     background-color: white;
     border-radius: 2%;
     z-index: 50;
     display: none;
-    width: 30%;
+    width: 25%;
     height: 30%;
 
     /*animation-name: showAddChat;
