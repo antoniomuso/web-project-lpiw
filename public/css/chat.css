@@ -254,7 +254,7 @@ xmp {
     -moz-user-select: none;
     -ms-user-select: none;
 }
-.msg time:before{
+.msg time_before{
     content:"\f017";
     color: #ddd;
     font-family: FontAwesome;
@@ -262,10 +262,11 @@ xmp {
     margin-right: 4px;
 }
 
+
 emoji{
     display: inline-block;
-    height: 18px;
-    width: 18px;
+    height: 25px;
+    width: 25px;
     background-size: cover;
     background-repeat: no-repeat;
     margin-top: -7px;

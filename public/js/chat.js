@@ -129,7 +129,7 @@ function sendMessage(name, message, time, link_img, notEscape) {
         <div class="msg">
         <p>${ parseEmoticon(notEscape ? message : escapeHtml(message))} </p>
         
-        <time>${time}</time>
+        <time id="${time}"><i class="fa fa-check " aria-hidden="true"></i> ${time}</time>
         </div>
         </li>`)
     object.find('.avatar').hide()
@@ -191,8 +191,9 @@ function callBackKeyPressed(e) {
 
     if (e.which == 13) {
         if (this.value === '') return
-        var msg = sendMessage(userData.username, this.value, (new Date()).toLocaleTimeString(), userData.img)
-        socket.emit('message', this.value)
+        var time = (new Date()).toLocaleTimeString();
+        var msg = sendMessage(userData.username, this.value, time, userData.img)
+        socket.emit('message', this.value);
         //console.log(msg)
         $(this).val('')
         $('#chat').stop().animate({
@@ -287,7 +288,7 @@ function reset($elem) {
 function openChat(chat) {
     //Animazione per far apparire chat
     var containerChat = $('#container-chat');
-    
+
     var ist = $(chat).attr('id')
     if (ist != currentIst) {
         containerChat.removeClass("animated bounceInLeft");
@@ -337,11 +338,41 @@ function resizeWindow() {
         modalita = modalitaEnum.DESKTOP
 
     if (!modalita == oldModalita) {
+        var containerSubmit = $("#div-create-new-chat");
+        var containerChat = $("#div-emoji");
+        if (!(containerSubmit.is(":hidden"))) //controlla se la nuvoletta è nascosta(Qui si presentava il problema dell'effetto speciale indesiderato)
+        {
+
+            //attendi che l'animazione finisca
+            containerSubmit.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
+                function () {
+                });
+            containerSubmit.removeClass("animated bounceOut");
+            containerSubmit.addClass('animated bounceOut').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
+                function () {
+                    $(this).removeClass('animated bounceOut');
+                    containerSubmit.hide();
+                });
+        }
+
         if (modalita == modalitaEnum.MOBILE) {
+            if (!(containerChat.is(":hidden"))) {
+                containerChat.hide();
+
+            }
             $(".mobile-list").css("display", "inherit")
             $(".mobile-chat").css("display", "none")
         }
         else {
+
+            if (!(containerChat.is(":hidden"))) {
+                containerChat.addClass('animated bounceOut').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
+                    function () {
+                        $(this).removeClass('animated bounceOut');
+                        containerChat.hide();
+                    });
+            }
+
             $(".mobile-list").css("display", "inherit")
             $(".mobile-chat").css("display", "inherit")
         }
@@ -365,41 +396,48 @@ function showAddChatMenu() {
 }
 
 function insertEmoji(emojiButton) {
-    
-        $("#input-chat").val($("#input-chat").val() + emojiButton.id)
-    
+
+    $("#input-chat").val($("#input-chat").val() + emojiButton.id)
+
     $("#input-chat").focus();
 }
 
 
 function openEmoji() {
+
     var containerChat = $("#div-emoji");
+    if (modalita == modalitaEnum.MOBILE) {
+        containerChat.css("width", "50%")
+        containerChat.css("height", "50%")
+
+    }
+    else {
+        containerChat.css("width", "30%")
+        containerChat.css("height", "30%")
+
+
+    }
+    var button = $("#button-emoji");
+
     if (containerChat.is(":hidden")) {
         $("#div-emoji").css("display", "inherit")
-        //attendi che finisca l'animazione
+
         containerChat.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
             function () {
             });
         containerChat.removeClass("animated bounceIn");
         containerChat = reset(containerChat);
+
         containerChat.addClass('animated bounceIn').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
             function () {
                 $(this).removeClass('animated bounceIn');
+                button.on('click', function () {
+                    openEmoji();
+                });
             });
     }
-    else {
-        containerChat.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
-            function () {
-            });
-        containerChat.removeClass("animated bounceOut");
 
-        containerChat = reset(containerChat);
-        containerChat.addClass('animated bounceOut').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
-            function () {
-                $(this).removeClass('animated bounceOut');
-                $(this).hide();
-            });
-    }
+
 }
 
 
@@ -408,6 +446,10 @@ function openEmoji() {
 $(document).mouseup(function (e) {
     var containerSubmit = $("#div-create-new-chat");
     var containerButton = $("#btn-add-chat");
+
+    var containerChat = $("#div-emoji");
+    var button = $("#button-emoji");
+
 
     // if the target of the click isn't the container nor a descendant of the container
     // And the target is not the add button
@@ -418,15 +460,25 @@ $(document).mouseup(function (e) {
         && !(containerSubmit.is(":hidden"))) //controlla se la nuvoletta è nascosta(Qui si presentava il problema dell'effetto speciale indesiderato)
     {
 
-        //attendi che l'animazione finisca
-        containerSubmit.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
-            function () {
-            });
+        
         containerSubmit.removeClass("animated bounceOut");
         containerSubmit.addClass('animated bounceOut').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
             function () {
                 $(this).removeClass('animated bounceOut');
                 containerSubmit.hide();
+            });
+    }
+    else if (!containerChat.is(e.target)
+        && containerChat.has(e.target).length === 0
+        && !(containerChat.is(":hidden"))) {
+        
+        containerChat.removeClass("animated bounceOut");
+        containerChat.addClass('animated bounceOut').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
+            function () {
+                $(this).removeClass('animated bounceOut');
+                containerChat.hide();
+
+
             });
     }
 });
