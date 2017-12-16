@@ -1,8 +1,8 @@
 {
-    "email": "mojang.gr@gmail.com",
-    "password": "ciaociao96",
+    "email": "",
+    "password": "",
     "emailService": "gmail",
     "port" : 8000,
     "uri" : "http://localhost",
-    "dbConnectionString": "postgres://obbhdnav:1ONsv6xTGR21Tl2KliBMS4p5mzRrPBr1@horton.elephantsql.com:5432/obbhdnav"
+    "dbConnectionString": ""
 }
