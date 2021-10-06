@@ -18,7 +18,7 @@
   "homepage": "https://github.com/antoniomuso/web-project-lpiw#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
-    "ejs": "^2.5.7",
+    "ejs": "^3.1.6",
     "email-validator": "^1.1.1",
     "escape-html": "^1.0.3",
     "express": "^4.16.2",
@@ -26,8 +26,8 @@
     "express-socket.io-session": "^1.3.2",
     "memorystore": "^1.6.0",
     "multer": "^1.3.0",
-    "nodemailer": "^4.4.0",
+    "nodemailer": "^6.6.1",
     "pg": "^7.4.0",
-    "socket.io": "^2.0.4"
+    "socket.io": "^3.0.0"
   }
 }
